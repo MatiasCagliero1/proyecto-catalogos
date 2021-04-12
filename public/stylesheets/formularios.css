@@ -13,8 +13,9 @@
   .boton {
     background-color: lightgray;
   }
+ 
   form  input{
-    
+    border-radius: 999px;
     
     width: 100%;
     border: 1px solid red;
@@ -41,6 +42,7 @@
       font-family: Arial, Helvetica, sans-serif;
       text-align: center;
       font-size: 20px;
+     
   }
   .tituloLogIn{
       margin: 2% 45%;
