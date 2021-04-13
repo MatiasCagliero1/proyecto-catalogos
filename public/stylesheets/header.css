@@ -1,0 +1,17 @@
+.logueado {
+    display: none;
+}
+
+.deslogueado {
+    display: grid;
+    grid-template-columns: 75% 25%;
+}
+
+.s {
+    margin: 0 85%;
+}
+
+.logo {
+    border-radius: 100%;
+    width: 60%;
+}
