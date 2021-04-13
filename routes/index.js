@@ -6,4 +6,11 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+// Requiriendo controlador 
+const mainController = require('../controllers/mainController')
+
+// Ruta pagina index
+router.get('/home', mainController.index)
+
+
 module.exports = router;
