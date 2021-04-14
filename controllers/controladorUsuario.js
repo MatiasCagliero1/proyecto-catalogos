@@ -4,8 +4,9 @@ var controladorUsuario = {
     },
     logIn: (req, res) => {
         return res.render("login")
+
     }
+
+
 }
-
-
-module.exports= controladorUsuario
+module.exports = controladorUsuario
