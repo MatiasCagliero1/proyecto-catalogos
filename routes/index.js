@@ -1,15 +1,19 @@
 var express = require('express');
 var router = express.Router();
-var searchcontroller = require('../controllers/searchcontroller');
 
 
-router.get('/search/:word', searchcontroller.index);
 
 // Requiriendo controlador 
 const mainController = require('../controllers/mainController')
 
 // Ruta pagina index
 router.get('/home', mainController.index)
+
+// Requiriendo Search
+var productscontroller = require('../controllers/productscontroller');
+
+// Ruta pagina Search
+router.get('/search', productscontroller.index);
 
 
 module.exports = router;

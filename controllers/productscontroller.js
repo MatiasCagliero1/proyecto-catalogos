@@ -1,7 +1,7 @@
 module.exports = {
 
         index: (req, res) => {
-            res.render('./views/search-results' );
+            return res.render("search-results")
     }
 
 
