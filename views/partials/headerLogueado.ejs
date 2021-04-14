@@ -15,11 +15,13 @@
     <!-- Own Stylesheet -->
     <link rel="stylesheet" href="/stylesheets/app.css">
     <link rel="stylesheet" href="/stylesheets/header.css">
+    <script src="/js/logIn.js"></script>
+    <script src="header.js"></script>
 </head>
 
 <body>
     <!-- Header -->
-    <header class="main-header">
+    <header class="main-header ">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-5 col-md-2 logoDiv">
@@ -47,43 +49,46 @@
 			</button>
 
             <nav class="main-navbar">
-                <ul class="left-navbar logueado">
-                    <li><a href="/">Todos los productos</a></li>
-                    <li><a href="">Cargar productos</a></li>
+
+                <ul class="left-navbar  ">
+                    <li class="logueado1"><a href="/">Todos los productos</a></li>
+                    <li class="logueado4"><a href="">Cargar productos</a></li>
                 </ul>
 
-                <ul class="right-navbar s">
+                <ul class="right-navbar ">
 
 
-                    <div class="logueado">
-                        <li><a href="/user/profile">
+
+                    <li class="logueado2"><a href="/user/profile">
 							Nombre del usuario <i class="fas fa-user"></i>
 						</a>
-                        </li>
-                        <li>
-                            <form action="" method="post">
-                                <button class="logout" type="submit">
+                    </li>
+                    <li class="logueado3">
+                        <form action="" method="post">
+                            <button class="logout" type="submit">
 								Cerrar sesión <i class="fas fa-sign-in-alt"></i>
 							</button>
-                            </form>
+                        </form>
 
-                        </li>
-                    </div>
-                    <div class="deslogueado">
-                        <li>
-                            <a href="/users/registracion">Creá tu cuenta <i class="far fa-address-card"></i>
+                    </li>
+
+
+
+                    <li class="deslogueado1">
+                        <a href="/users/registracion">Creá tu cuenta <i class="far fa-address-card"></i>
 						</a>
-                        </li>
-                        <li>
-                            <a href="/users/login">Ingresá <i class="fas fa-sign-in-alt"></i></a>
-                        </li>
+                    </li>
+                    <li class="deslogueado2">
+                        <a href="/users/login">Ingresá <i class="fas fa-sign-in-alt"></i></a>
+                    </li>
 
-                    </div>
+
                 </ul>
             </nav>
         </div>
     </header>
     <!-- /Header -->
+    <div class="botonregistrarses"></div>
 
 </body>
 
