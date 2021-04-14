@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link width="" rel="shortcut icon" href="../public/images/logo-mercado-liebre.jpg" />
+
+	<title> Mercado Liebre Argentina</title>
+	<!-- Font Awesome Stylesheet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<!-- Bootstrap Grid Stylesheet -->
+	<link rel="stylesheet" href="../public/stylesheets/bootstrap-grid.min.css">
+	<!-- Own Stylesheet -->
+	<link rel="stylesheet" href="stylesheets/app.css">
+	<link rel="stylesheet" href="stylesheets/search.css">
+</head>
+
+<body>
+
+	<%-include('./partials/header.ejs')%>
+
+	<section class="maincontent">
+
+		<div class="resultadoyordenar">
+			<h2 class="busqueda">PALABRA BUSCADA</h2>
+			<div class="orden">
+				<h2>Ordenar por:</h2>
+				<ul>
+					<li>Más barato</li>
+					<li>Más caro</li>
+				</ul>
+			</div>
+
+		</div>
+
+		<div class="todoelsearch">
+
+			<div class="filtrar">
+				<ul>
+					<li>
+						<Ul>
+							<li class="black">Costo de Envio</li>
+							<li>Gratis</li>
+						</Ul>
+					</li>
+					<li>
+						<Ul>
+							<li class="black">Tiempo de entrega</li>
+							<li>Mañana</li>							
+							<li>2 días</li>
+							<li>Una semana</li>
+						</Ul>
+					</li>
+					<li>
+						<Ul>
+							<li class="black">Costo de Envio</li>							<li>Gratis</li>
+						</Ul>
+					</li>
+				</ul>
+			</div>
+
+			<div class="resultados">
+
+				<a href="detalle.html?id=${element.id}&from=tienda">
+					<div class="product">
+						<div class="fotos"> <img src="https://vimas.store/attachments/shop_images/Coca_Cola1.png"
+								alt="${element.imgalt}">
+						</div>
+						<h3>${element.nombre}</h3>
+						<h5>Color: ${element.color}</h3>
+					</div>
+				</a>
+
+				<a href="detalle.html?id=${element.id}&from=tienda">
+					<div class="product">
+						<div class="fotos"> <img
+								src="https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png"
+								alt="${element.imgalt}">
+						</div>
+						<h3>${element.nombre}</h3>
+						<h5>Color: ${element.color}</h3>
+					</div>
+				</a>
+				<a href="detalle.html?id=${element.id}&from=tienda">
+					<div class="product">
+						<div class="fotos"> <img
+								src="https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png"
+								alt="${element.imgalt}">
+						</div>
+						<h3>${element.nombre}</h3>
+						<h5>Color: ${element.color}</h3>
+					</div>
+				</a>
+				<a href="detalle.html?id=${element.id}&from=tienda">
+					<div class="product">
+						<div class="fotos"> <img
+								src="https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png"
+								alt="${element.imgalt}">
+						</div>
+						<h3>${element.nombre}</h3>
+						<h5>Color: ${element.color}</h3>
+					</div>
+				</a>
+
+
+			</div>
+	</section>
+
+
+	<!-- footer -->
+	<footer class="main-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-lg-4">
+					<article class="footer-data">
+						<i class="fas fa-credit-card"></i>
+						<h2>Pagá con tarjeta o en efectivo</h2>
+						<p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de pago.
+							¡Y
+							siempre es seguro!</p>
+					</article>
+				</div>
+				<div class="col-12 col-lg-4">
+					<article class="footer-data">
+						<i class="fas fa-gift"></i>
+						<h2>Envío gratis desde $ 1.999</h2>
+						<p>Solo por estar registrado en Mercado Liebre tenés envíos gratis en miles de productos. Es un
+							beneficio de Mercado Puntos.</p>
+					</article>
+				</div>
+				<div class="col-12 col-lg-4">
+					<article class="footer-data">
+						<i class="fas fa-user-shield"></i>
+						<h2>Seguridad, de principio a fin</h2>
+						<p>¿No te gusta? ¡Devolvelo! En Mercado Liebre, no hay nada que no puedas hacer, porque estás
+							siempre protegido.</p>
+					</article>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- /footer -->
+</body>
+
+</html>
