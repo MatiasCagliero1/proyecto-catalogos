@@ -1,6 +1,7 @@
 window.addEventListener("load", function() {
 
 
+
     let logIn = true
     document.querySelector(".botonregistrarse").addEventListener("click", function() {
         logIn = false
