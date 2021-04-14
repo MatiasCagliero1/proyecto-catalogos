@@ -1,14 +1,17 @@
-.logueado {
+.logueado1 {
     display: none;
 }
 
-.deslogueado {
-    display: grid;
-    grid-template-columns: 75% 25%;
+.logueado2 {
+    display: none;
 }
 
-.s {
-    margin: 0 85%;
+.logueado3 {
+    display: none;
+}
+
+.logueado4 {
+    display: none;
 }
 
 .logo {

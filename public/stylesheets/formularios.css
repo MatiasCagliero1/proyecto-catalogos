@@ -3,29 +3,40 @@
     grid-template-columns: 40% 40%;
     margin: 0 auto;
     justify-content: space-around;
-  }
-  .conteiner{
+}
+
+.conteiner {
     margin: 0 auto;
-  }
-  .tituloRegistrate {
+}
+
+.tituloRegistrate {
     margin-left: 35%;
-  }
-  .boton {
+}
+
+.divBotones {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    justify-content: space-around;
+}
+
+.botoncito {
+    display: block;
+}
+
+.boton {
     background-color: lightgray;
-  }
- 
-  form  input{
+}
+
+form input {
     border-radius: 999px;
-    
     width: 100%;
     border: 1px solid red;
     margin: 0 0 15px;
     padding: 15px;
-  
     font-size: 14px;
-    
-  }
-  .form button{
+}
+
+.form button {
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
     outline: 0;
@@ -36,15 +47,14 @@
     padding: 14px;
     font-size: 15px;
     cursor: pointer;
-    
-  }
-  label {
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
-      font-size: 20px;
-     
-  }
-  .tituloLogIn{
-      margin: 2% 45%;
+}
 
-  }
+label {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    font-size: 20px;
+}
+
+.tituloLogIn {
+    margin: 2% 45%;
+}
