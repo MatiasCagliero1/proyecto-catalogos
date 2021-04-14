@@ -3,7 +3,7 @@ var controladorUsuario = {
         return res.render("register")
     },
     logIn: (req, res) => {
-        return res.render("login")
+        return res.render("logIn")
 
     }
 
