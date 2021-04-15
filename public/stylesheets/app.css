@@ -67,7 +67,7 @@ hr {
 
 /*====== Main Header ======*/
 .main-header {
-  padding: 15px 0;
+  padding: 15px0;
   background-color: red;
 }
 
