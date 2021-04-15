@@ -3,13 +3,11 @@ comidas = datoscomidas.comidas
 
 module.exports = {
 
-    index: (req, res) => {
-        var parametro = 0
-        return res.render("search-results", parametro);
+    search: (req, res) => {
+        return res.render("search-results");
     },
 
-    product: (req, res) => {
-        var parametro = 1
+    searchId: (req, res) => {
         let busqueda_array = req.params.id;
         let array_product_found = [];
 
@@ -17,13 +15,24 @@ module.exports = {
         comidas.forEach(element => {
             if (element.imagenSrc == busqueda_array) {
                 array_product_found.push(element)
-                return res.render("search-results", parametro, array_product_found);
+                return res.render("product", parametro, array_product_found);
             }
         });
 
 
-    }
+    },
+
+    detalle: (req, res) => {
+        return res.render("product");
+    },
+
+    detalleId: (req, res) => {
+        return res.render("product");
+    },
 
 
+    newProduct: (req, res) => {
+        return res.render("product-add");
+    },
 
 };

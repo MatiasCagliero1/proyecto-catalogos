@@ -5,23 +5,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link width="" rel="shortcut icon" href="./images/logo-mercado-liebre.jpg" />
+    <link width="" rel="shortcut icon" href="images/logo-mercado-liebre.jpg" />
 
     <title> Mercado Liebre Argentina</title>
     <!-- Font Awesome Stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <!-- Bootstrap Grid Stylesheet -->
-    <link rel="stylesheet" href="../public/stylesheets/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="stylesheets/bootstrap-grid.min.css">
     <!-- Own Stylesheet -->
-    <link rel="stylesheet" href="../public/stylesheets/newproduct.css">
-    <link rel="stylesheet" href="../public/stylesheets/app.css">
+    <link rel="stylesheet" href="stylesheets/newproduct.css">
+    <link rel="stylesheet" href="stylesheets/app.css">
 </head>
 
 <body>
-    <!-- Header -->
-    <!--     <%-include("./partials/headerLogueado") %>
- -->
-    <!-- /Header -->
+       <%-include("./partials/headerLogueado") %>
+ 
 
     <div class="maincontainer">
 
@@ -37,21 +35,21 @@
                     <div class="eachform">
                         <label for="">Descripción</label><textarea name="" id="" cols="30" rows="10"></textarea></div>
 
-                    <div class="eachform"> <label for="">Stock</label>
+                    <div class="eachform"> <label for="">Clasificación</label>
                         <ul>
-                            <li> <input name="stock" type="checkbox"></li>
-                            <li> <input name="stock" type="checkbox"></li>
-                            <li> <input name="stock" type="checkbox"></li>
+                            <li><input name="stock" type="checkbox"><label for="">Vegetariano</label></li>
+                            <li><input name="stock" type="checkbox"><label for="">Vegano</label></li>
+                            <li><input name="stock" type="checkbox"><label for="">Sin TACC</label></li>
                         </ul>
                     </div>
 
                     <div class="eachform">
-                        <label for="">Cargar fotos:</label><input type="file" class="form-control-file" id="exampleFormControlFile1">
+                        <label for="">Cargar imágen</label><input type="file" class="form-control-file" id="exampleFormControlFile1">
                 </div>
                 </div>
 
 
-        <a href="" class="cargarform"><button type="submit">Continuar</button></a>
+        <a href="/detalle:id" class="cargarform"><button type="submit">Guardar y Continuar</button></a>
         </form>
 
     </div>

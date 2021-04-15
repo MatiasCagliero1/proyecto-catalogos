@@ -1,4 +1,5 @@
 .maincontainer {
+    margin-top: 5em;
     display: flex;
     justify-content: center;
 }
@@ -27,14 +28,14 @@
 
 .allform {
     display: grid;
-    grid-template-rows: auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto auto auto auto;
    margin-bottom: 2em;
 }
 
 .eachform{
     display: grid;
-    grid-template-columns: auto auto;
-    justify-content: center;
+    grid-template-columns: auto 75%;
+    justify-content: flex-end;
     align-items: center;
     margin: 1.4em 0em;
 }
@@ -46,33 +47,51 @@ label {
 }
 
 #campotitulo {
-    
     padding: 0.5em 1em 0.5em 1em;
     border-radius: 5px;
+    border: 0.05px solid black;
 }
 
 
 textarea{
     max-height: 5em;
     min-height: 10em;
-    max-width: 100%;
+    max-width: 35em;
+    padding: 0.5em 1em 0.5em 1em;
+    border-radius: 5px;
+    border: 0.05px solid black;
 }
 
 .eachform ul{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .eachform ul li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     list-style: none;
     width: 1em;
-    margin: 0em 2em;
+    margin: 0em;
+    border-radius: 5px;
+    border: 0.05px solid black;
+padding: 1em 3em;
+text-align: center;
 }
 
 .eachform ul li input{
   font-size: 5em;
    
 }
+
+.eachform ul li label{
+    font-size: 1em;
+    margin: 0%;
+     margin-top: 1em;
+  }
 
 .cargarform {
     display: flex;
