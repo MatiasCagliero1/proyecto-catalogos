@@ -16,6 +16,14 @@ window.addEventListener("load", function() {
         deslogueado2.style.display = "none"
     }
 
+    document.querySelector(".logout").addEventListener("click", function() {
+        usuario = "chau"
+        sessionStorage.setItem("usuario", usuario)
+
+
+
+    })
+
 
 
 
