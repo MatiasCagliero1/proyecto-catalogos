@@ -7,27 +7,27 @@ let comidas = {
             imagenSrc: "https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png",
             stock: "permanente"
         }, {
-            nombre: "Coca Cola",
+            nombre: "Fideos",
             detalle: "Rock",
             imagenSrc: "https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png",
             stock: "permanente"
         }, {
-            nombre: "Coca Cola",
+            nombre: "Carne",
             detalle: "Rock",
             imagenSrc: "https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png",
             stock: "permanente"
         }, {
-            nombre: "Coca Cola",
+            nombre: "Arroz",
             detalle: "Rock",
             imagenSrc: "https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png",
             stock: "permanente"
         }, {
-            nombre: "Coca Cola",
+            nombre: "Dulce de Leche",
             detalle: "Rock",
             imagenSrc: "https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png",
             stock: "permanente"
         }, {
-            nombre: "Coca Cola",
+            nombre: "Mermelada",
             detalle: "Rock",
             imagenSrc: "https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png",
             stock: "permanente"
@@ -35,3 +35,4 @@ let comidas = {
 
     ]
 }
+module.exports = comidas
