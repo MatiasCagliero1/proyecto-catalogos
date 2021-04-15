@@ -9,7 +9,7 @@
     justify-content: center;
     width: 50%;
     background: rgb(255, 255, 255);
-    box-shadow: 2px 5px 17px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 5px 17px 0px rgba(0, 0, 0, 0.75);
 }
 
 .maintitle {
@@ -29,10 +29,10 @@
 .allform {
     display: grid;
     grid-template-rows: auto auto auto auto auto auto auto auto;
-   margin-bottom: 2em;
+    margin-bottom: 2em;
 }
 
-.eachform{
+.eachform {
     display: grid;
     grid-template-columns: auto 75%;
     justify-content: flex-end;
@@ -53,7 +53,7 @@ label {
 }
 
 
-textarea{
+textarea {
     max-height: 5em;
     min-height: 10em;
     max-width: 35em;
@@ -62,13 +62,13 @@ textarea{
     border: 0.05px solid black;
 }
 
-.eachform ul{
+.eachform ul {
     display: flex;
     justify-content: space-around;
     width: 100%;
 }
 
-.eachform ul li{
+.eachform ul li {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -78,20 +78,25 @@ textarea{
     margin: 0em;
     border-radius: 5px;
     border: 0.05px solid black;
-padding: 1em 3em;
-text-align: center;
+    padding: 1em 3em;
+    text-align: center;
 }
 
-.eachform ul li input{
-  font-size: 5em;
-   
+.eachform ul li:hover {
+    box-shadow: 0px 0px 16px -6px rgba(0,0,0,0.75);
+    transition: 0.2s;
 }
 
-.eachform ul li label{
+.eachform ul li input {
+    font-size: 5em;
+
+}
+
+.eachform ul li label {
     font-size: 1em;
     margin: 0%;
-     margin-top: 1em;
-  }
+    margin-top: 1em;
+}
 
 .cargarform {
     display: flex;
@@ -101,12 +106,12 @@ text-align: center;
     border-radius: 50px;
     margin-top: 2.4em;
     width: 100%;
-  color: white;
+    color: white;
 }
 
 .cargarform:hover {
     background-color: rgb(2, 152, 7);
-    color:white;
+    color: white;
     text-decoration: none;
 }
 

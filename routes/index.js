@@ -11,12 +11,12 @@ router.get('/', mainController.index)
 
 
 // Requiriendo Search - Detalle - Product Add
-var productscontroller = require('../controllers/productscontroller');
+var productController = require('../controllers/productController');
 // Ruta pagina Search - Detalle - Product Add
-router.get('/search', productscontroller.search);
-router.get('/search:id', productscontroller.searchId);
-router.get('/detalle', productscontroller.detalle);
-router.get('/detalle:id', productscontroller.detalleId);
-router.get('/newproduct:id', productscontroller.newProduct);
+router.get('/search', productController.search);
+router.get('/search:id', productController.searchId);
+router.get('/detalle', productController.detalle);
+router.get('/detalle:id', productController.detalleId);
+router.get('/newproduct:id', productController.newProduct);
 
 module.exports = router;
