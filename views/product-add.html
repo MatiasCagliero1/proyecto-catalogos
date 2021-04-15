@@ -11,55 +11,90 @@
     <!-- Font Awesome Stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
     <!-- Bootstrap Grid Stylesheet -->
-    <link rel="stylesheet" href="./css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../public/stylesheets/bootstrap-grid.min.css">
     <!-- Own Stylesheet -->
-    <link rel="stylesheet" href="./css/app.css">
+    <link rel="stylesheet" href="../public/stylesheets/newproduct.css">
+    <link rel="stylesheet" href="../public/stylesheets/app.css">
 </head>
 
 <body>
     <!-- Header -->
-    <%-include("./partials/headerLogueado") %>
-        <!-- /Header -->
+    <!--     <%-include("./partials/headerLogueado") %>
+ -->
+    <!-- /Header -->
 
-        <!-- Novedades -->
-        <div class="container products-wrapper">
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="products-title">Agregar productos</h2>
-                </div>
-                <!-- Show the "ultimos" products -->
+    <div class="maincontainer">
 
+        <div class="mainAddAll">
+            <h2 class="maintitle">Agregar un nuevo producto</h2>
+            <form action="" method="post">
 
+                <div class="allform">
+                    <div class="eachform">
+                        <label for="">Título</label><input id="campotitulo" type="text"
+                            placeholder="Ejemplo: Salchipapa de carne"></div>
 
-                <!-- footer -->
-                <footer class="main-footer">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-12 col-lg-4">
-                                <article class="footer-data">
-                                    <i class="fas fa-credit-card"></i>
-                                    <h2>Pagá con tarjeta o en efectivo</h2>
-                                    <p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de pago. ¡Y siempre es seguro!</p>
-                                </article>
-                            </div>
-                            <div class="col-12 col-lg-4">
-                                <article class="footer-data">
-                                    <i class="fas fa-gift"></i>
-                                    <h2>Envío gratis desde $ 1.999</h2>
-                                    <p>Solo por estar registrado en Mercado Liebre tenés envíos gratis en miles de productos. Es un beneficio de Mercado Puntos.</p>
-                                </article>
-                            </div>
-                            <div class="col-12 col-lg-4">
-                                <article class="footer-data">
-                                    <i class="fas fa-user-shield"></i>
-                                    <h2>Seguridad, de principio a fin</h2>
-                                    <p>¿No te gusta? ¡Devolvelo! En Mercado Liebre, no hay nada que no puedas hacer, porque estás siempre protegido.</p>
-                                </article>
-                            </div>
-                        </div>
+                    <div class="eachform">
+                        <label for="">Descripción</label><textarea name="" id="" cols="30" rows="10"></textarea></div>
+
+                    <div class="eachform"> <label for="">Stock</label>
+                        <ul>
+                            <li> <input name="stock" type="checkbox"></li>
+                            <li> <input name="stock" type="checkbox"></li>
+                            <li> <input name="stock" type="checkbox"></li>
+                        </ul>
                     </div>
-                </footer>
-                <!-- /footer -->
+
+                    <div class="eachform">
+                        <label for="">Cargar fotos:</label><input type="file" class="form-control-file" id="exampleFormControlFile1">
+                </div>
+                </div>
+
+
+        <a href="" class="cargarform"><button type="submit">Continuar</button></a>
+        </form>
+
+    </div>
+
+
+    </div>
+
+
+    <!-- Novedades -->
+    <div class="container products-wrapper">
+
+        <!-- footer -->
+        <footer class="main-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-4">
+                        <article class="footer-data">
+                            <i class="fas fa-credit-card"></i>
+                            <h2>Pagá con tarjeta o en efectivo</h2>
+                            <p>Con Mercado Liebre Cash, tenés cuotas sin interés con tarjeta o efectivo en puntos de
+                                pago. ¡Y siempre es seguro!</p>
+                        </article>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <article class="footer-data">
+                            <i class="fas fa-gift"></i>
+                            <h2>Envío gratis desde $ 1.999</h2>
+                            <p>Solo por estar registrado en Mercado Liebre tenés envíos gratis en miles de productos. Es
+                                un beneficio de Mercado Puntos.</p>
+                        </article>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <article class="footer-data">
+                            <i class="fas fa-user-shield"></i>
+                            <h2>Seguridad, de principio a fin</h2>
+                            <p>¿No te gusta? ¡Devolvelo! En Mercado Liebre, no hay nada que no puedas hacer, porque
+                                estás siempre protegido.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- /footer -->
 </body>
 
 </html>

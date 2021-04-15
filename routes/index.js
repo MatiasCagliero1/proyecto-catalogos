@@ -13,6 +13,7 @@ var productscontroller = require('../controllers/productscontroller');
 
 // Ruta pagina Search
 router.get('/search', productscontroller.index);
+router.get('/search:id', productscontroller.product);
 
 
 module.exports = router;

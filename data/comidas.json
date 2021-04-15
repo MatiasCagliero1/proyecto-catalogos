@@ -1,0 +1,37 @@
+{
+    "comidas": [
+
+        {
+            "nombre": "Coca Cola",
+            "detalle": "Rock",
+            "imagenSrc": "0",
+            "stock": "permanente"
+        },{
+            "nombre": "Coca Cola",
+            "detalle": "Rock",
+            "imagenSrc": "0",
+            "stock": "permanente"
+        }, {
+            "nombre": "Coca Cola",
+            "detalle": "Rock",
+            "imagenSrc": "0",
+            "stock": "permanente"
+        }, {
+            "nombre": "Coca Cola",
+            "detalle": "Rock",
+            "imagenSrc": "0",
+            "stock": "permanente"
+        }, {
+            "nombre": "Coca Cola",
+            "detalle": "Rock",
+            "imagenSrc": "0",
+            "stock": "permanente"
+        }, {
+            "nombre": "Coca Cola",
+            "detalle": "Rock",
+            "imagenSrc": "0",
+            "stock": "permanente"
+        }
+
+    ]
+}
