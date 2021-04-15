@@ -1,6 +1,9 @@
 var datoscomidas = require('../data/comidas.json');
 comidas = datoscomidas.comidas
 
+var usuariosFalsos = require('../data/fakeUser.json');
+usuariosFalsos = usuariosFalsos.usuarios;
+
 module.exports = {
 
     search: (req, res) => {
@@ -23,11 +26,11 @@ module.exports = {
     },
 
     detalle: (req, res) => {
-        return res.render("product");
+        return res.render("product", {usuariosFalsos});
     },
 
     detalleId: (req, res) => {
-        return res.render("product");
+        return res.render("product", {usuariosFalsos});
     },
 
 

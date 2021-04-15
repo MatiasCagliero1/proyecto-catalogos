@@ -3,3 +3,11 @@ color: rgb(12, 44, 172);
 font-weight: 500;
 }
 
+.userphoto{
+    object-fit: cover;
+}
+
+.main-footer{
+    margin-top: 0em !important;
+    padding: 0% !important;
+}

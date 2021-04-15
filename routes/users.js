@@ -10,3 +10,4 @@ router.get("/registracion", controladorUsuario.index)
 router.get("/login", controladorUsuario.logIn )
 
 module.exports = router;
+
