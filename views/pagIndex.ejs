@@ -14,8 +14,7 @@
     <link rel="stylesheet" href="stylesheets/bootstrap-grid.min.css">
     <!-- Own Stylesheet -->
     <link rel="stylesheet" href="stylesheets/app.css">
-    <!-- Header css -->
-    <link rel="stylesheet" href="stylesheets/header.css">
+    
 </head>
 
 <body>
@@ -38,14 +37,14 @@
                 <!-- Show the "ultimos" products -->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <section class="product-box">
-						<% for(let i = 0; i < comidas.length; i++){ %>
+						<% for(let i = 0; i < productos.length; i++){ %>
                         	<a href="/product">
                             	<figure class="product-box_image">
-                                	<img src="images/<%=comidas[i].imagenSrc%> " alt="cafetera moulinex">
+                                	<img src="images/<%=productos[i].imagenSrc%> " alt="cafetera moulinex">
                             	</figure>
                             	<article class="product-box_data">
-                                	<h2><%=comidas[i].nombre %></h2>
-                                	<p>Precio: $ <%=comidas.[i].precio %></p>
+                                	<h2><%=productos[i].nombre %></h2>
+                                	<p>Precio: $ <%=productos[i].precio %></p>
                                 	<p>Comentarios: 12</p>
                            	 	</article>
                         	</a>
