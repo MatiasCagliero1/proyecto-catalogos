@@ -1,8 +1,7 @@
-const productos = require ('../data/comidas.js')
+const productos = require('../data/comidas.js')
 
-module.exports= {
+module.exports = {
     index: (req, res) => {
-        return res.render("pagIndex")
+        return res.render("pagIndex", { productos })
     }
 }
-

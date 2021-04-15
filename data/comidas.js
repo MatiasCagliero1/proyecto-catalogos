@@ -1,10 +1,10 @@
-
-    [
+let comidas = {
+    lista: [
 
         {
             nombre: "Coca Cola",
             detalle: "Rock",
-            imagenSrc: "https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png",
+            imagenSrc: "coca_cola.jpg",
             stock: "permanente",
             precio: "110"
         }, {
@@ -40,3 +40,5 @@
         }
 
     ]
+}
+module.exports = comidas
