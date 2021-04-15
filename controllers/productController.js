@@ -1,4 +1,4 @@
-var datoscomidas = require('../data/comidas.json');
+var datoscomidas = require('../data/comidas.js');
 comidas = datoscomidas.comidas
 
 var usuariosFalsos = require('../data/fakeUser.json');

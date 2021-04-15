@@ -1,4 +1,4 @@
-const productos = require ('../data/comidas.json')
+const productos = require ('../data/comidas.js')
 
 module.exports= {
     index: (req, res) => {
