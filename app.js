@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var  searchrouter= require('./routes/index');
 var  detallerouter= require('./routes/index');
+var profileRouter = require('./routes/index')
 
 var app = express();
 

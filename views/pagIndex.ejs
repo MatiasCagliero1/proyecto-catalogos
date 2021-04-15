@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="stylesheets/bootstrap-grid.min.css">
     <!-- Own Stylesheet -->
     <link rel="stylesheet" href="stylesheets/app.css">
+    <!-- Header css -->
+    <link rel="stylesheet" href="stylesheets/header.css">
 </head>
 
 <body>
@@ -36,21 +38,23 @@
                 <!-- Show the "ultimos" products -->
                 <div class="col-12 col-sm-6 col-lg-3">
                     <section class="product-box">
-                        <a href="product.html">
-                            <figure class="product-box_image">
-                                <img src="images/products/default-image.png" alt="cafetera moulinex">
-                            </figure>
-                            <article class="product-box_data">
-                                <h2>Nombre del producto</h2>
-                                <p>Descripción corta del producto Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
-                                <p>Comentarios: 12</p>
-                            </article>
-                        </a>
+						<% for(let i = 0; i < comidas.length; i++){ %>
+                        	<a href="/product">
+                            	<figure class="product-box_image">
+                                	<img src="images/<%=comidas[i].imagenSrc%> " alt="cafetera moulinex">
+                            	</figure>
+                            	<article class="product-box_data">
+                                	<h2><%=comidas[i].nombre %></h2>
+                                	<p>Precio: $ <%=comidas.[i].precio %></p>
+                                	<p>Comentarios: 12</p>
+                           	 	</article>
+                        	</a>
+						<% } %>
                     </section>
                 </div>
                 <div class="col-12 col-sm-6 col-lg-3">
                     <section class="product-box">
-                        <a href="product.html">
+                        <a href="/product">
                             <figure class="product-box_image">
                                 <img src="images/products/default-image.png" alt="cafetera moulinex">
                             </figure>
