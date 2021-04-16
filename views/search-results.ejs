@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="../public/images/logo-mercado-liebre.jpg" />
+	<link width="" rel="shortcut icon" href="" />
 
 	<title>Pan Lactal Buscar</title>
 	<!-- Font Awesome Stylesheet -->
@@ -58,50 +58,23 @@
 
 			<div class="resultados">
 
-				<a href="producto/detalle:id">
-					<div class="product">
-						<div class="fotos"> <img src="https://vimas.store/attachments/shop_images/Coca_Cola1.png"
-								alt="${element.imgalt}">
-						</div>
-						<h3>Coca Cola</h3>
-						<h5>Tipo: Normal</h5>
-						<h6>Precio por Kilo: $500</h6>
-					</div>
-				</a>
 
-				<a href="producto/detalle:id">
-					<div class="product">
-						<div class="fotos"> <img
-								src="https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png"
-								alt="${element.imgalt}">
-						</div>
-						<h3>Pan Lactal</h3>
-						<h5>Tipo: Integral</h3>
+	%>				<% comidas.forEach(element => {	%>
+    
+					<a href="producto/detalle:id">
+						<div class="product">
+							<div class="fotos"> <img src="https://vimas.store/attachments/shop_images/Coca_Cola1.png"
+									alt="${element.imgalt}">
+							</div>
+							<h3><%=element.nombre%></h3>
+							<h5>Tipo: Normal</h5>
 							<h6>Precio por Kilo: $500</h6>
-					</div>
-				</a>
-				<a href="producto/detalle:id">
-					<div class="product">
-						<div class="fotos"> <img
-								src="https://static.cotodigital3.com.ar/sitios/fotos/full/00293000/00293087.jpg?3.0.129d"
-								alt="${element.imgalt}">
 						</div>
-						<h3>Pan Bimbo</h3>
-						<h5>Tipo: Artesano</h3>
-							<h6>Precio por Kilo: $500</h6>
-					</div>
-				</a>
-				<a href="producto/detalle:id">
-					<div class="product">
-						<div class="fotos"> <img
-								src="https://static.cotodigital3.com.ar/sitios/fotos/full/00268400/00268423.jpg?3.0.129d"
-								alt="${element.imgalt}">
-						</div>
-						<h3>Pan Lactal</h3>
-						<h5>Tipo: Integral</h3>
-							<h6>Precio por Kilo: $500</h6>
-					</div>
-				</a>
+					</a>
+
+				
+
+				<% 	});%>
 
 
 			</div>
