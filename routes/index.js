@@ -8,16 +8,8 @@ const mainController = require('../controllers/mainController')
 // Ruta pagina index
 router.get('/', mainController.index)
 
-
-// Requiriendo Search - Detalle - Product Add
-var productController = require('../controllers/productController');
+// Requiriendo
 const profileController = require('../controllers/profileController');
-// Ruta pagina Search - Detalle - Product Add
-router.get('/search', productController.search);
-router.get('/search:id', productController.searchId);
-router.get('/detalle', productController.detalle);
-router.get('/detalle:id', productController.detalleId);
-router.get('/newproduct:id', productController.newProduct);
 
 //Ruta pagina Profile - Profile-edit
 router.get('/profile', profileController.index)

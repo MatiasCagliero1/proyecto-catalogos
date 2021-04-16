@@ -10,10 +10,10 @@ module.exports = {
     },
 
     search: (req, res) => {
-        return res.render("search-results");
+        return res.render("search-results",{ comidas });
     },
 
-    searchId: (req, res) => {
+   /*  searchId: (req, res) => {
         let busqueda_array = req.params.id;
         let array_product_found = [];
 
@@ -26,7 +26,7 @@ module.exports = {
         });
 
 
-    },
+    }, */
 
     detalle: (req, res) => {
         return res.render("product", {usuariosFalsos});
