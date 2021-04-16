@@ -2,8 +2,7 @@ window.addEventListener("load", function() {
 
     let usuario = sessionStorage.getItem("usuario")
     if (usuario == "hola") {
-        let logueado1 = document.querySelector(".logueado1")
-        logueado1.style.display = "block"
+
         let logueado2 = document.querySelector(".logueado2")
         logueado2.style.display = "block"
         let logueado3 = document.querySelector(".logueado3")

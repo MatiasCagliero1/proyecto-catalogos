@@ -1,7 +1,7 @@
-const controller = {
+const productos = require('../data/comidas.js')
+
+module.exports = {
     index: (req, res) => {
-        return res.render("pagIndex")
+        return res.render("pagIndex", { productos })
     }
 }
-
-module.exports = controller
