@@ -5,6 +5,9 @@ var usuariosFalsos = require('../data/fakeUser.json');
 usuariosFalsos = usuariosFalsos.usuarios;
 
 module.exports = {
+    index: (req, res) => {
+        return res.render("search-results", { comidas })
+    },
 
     search: (req, res) => {
         return res.render("search-results");

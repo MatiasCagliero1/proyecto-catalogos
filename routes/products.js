@@ -4,7 +4,9 @@ var router = express.Router();
 
 // Requiriendo Search - Detalle - Product Add
 var productController = require('../controllers/productController');
+
 // Ruta pagina Search - Detalle - Product Add
+router.get('/', productController.index);
 router.get('/search', productController.search);
 router.get('/search:id', productController.searchId);
 router.get('/detalle', productController.detalle);

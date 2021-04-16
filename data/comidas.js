@@ -1,44 +1,33 @@
-let comidas = {
-    lista: [
+module.exports = {
+    comidas: [
 
         {
-            nombre: "Coca Cola",
-            detalle: "Rock",
-            imagenSrc: "coca_cola.jpg",
-            stock: "permanente",
-            precio: "110"
-        }, {
-            nombre: "Fideos",
-            detalle: "Rock",
-            imagenSrc: "https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png",
-            stock: "permanente",
-            precio: "80"
-        }, {
-            nombre: "Carne",
-            detalle: "Rock",
-            imagenSrc: "https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png",
-            stock: "permanente",
-            precio: "150"
-        }, {
-            nombre: "Arroz",
-            detalle: "Rock",
-            imagenSrc: "https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png",
-            stock: "permanente",
-            precio: "80"
-        }, {
-            nombre: "Dulce de Leche",
-            detalle: "Rock",
-            imagenSrc: "https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png",
-            stock: "permanente",
-            precio: "150"
-        }, {
-            nombre: "Mermelada",
-            detalle: "Rock",
-            imagenSrc: "https://www.pasosonline.com.ar/wp-content/uploads/2018/12/lactal-360-1.png",
-            stock: "permanente",
-            precio: "400"
-        }
-
+            nombre: "Pan Artesano Bimbo 500grm.",
+            detalle: "Contenido Neto: 500grm. Precio por Kilo: $479,98. SIN TACC: No.",
+            imagenSrc: "https://static.cotodigital3.com.ar/sitios/fotos/full/00293000/00293087.jpg?3.0.129d",
+            condicion: ['Vegetariano', 'Vegano'],
+            sinTacc: false
+        }, 
+        {
+            nombre: "Pan Artesano Bimbo 500grm.",
+            detalle: "Contenido Neto: 500grm. Precio por Kilo: $479,98. SIN TACC: No.",
+            imagenSrc: "https://static.cotodigital3.com.ar/sitios/fotos/full/00293000/00293087.jpg?3.0.129d",
+            condicion: ['Vegetariano', 'Vegano'],
+            sinTacc: false
+        },
+        {
+            nombre: "Pan Artesano Bimbo 500grm.",
+            detalle: "Contenido Neto: 500grm. Precio por Kilo: $479,98. SIN TACC: No.",
+            imagenSrc: "https://static.cotodigital3.com.ar/sitios/fotos/full/00293000/00293087.jpg?3.0.129d",
+            condicion: ['Vegetariano', 'Vegano'],
+            sinTacc: false
+        },
+        {
+            nombre: "Pan Artesano Bimbo 500grm.",
+            detalle: "Contenido Neto: 500grm. Precio por Kilo: $479,98. SIN TACC: No.",
+            imagenSrc: "https://static.cotodigital3.com.ar/sitios/fotos/full/00293000/00293087.jpg?3.0.129d",
+            condicion: ['Vegetariano', 'Vegano'],
+            sinTacc: false
+        },
     ]
 }
-module.exports = comidas
