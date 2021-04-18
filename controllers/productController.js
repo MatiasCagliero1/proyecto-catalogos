@@ -21,7 +21,8 @@ module.exports = {
     },
 
     newProduct: (req, res) => {
-        return res.render("product-add");
+        let id = req.params.id;
+        return res.render("product-add", {id});
     },
 
 };

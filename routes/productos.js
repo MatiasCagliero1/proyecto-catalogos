@@ -8,6 +8,6 @@ var productController = require('../controllers/productController');
 router.get('/', productController.index);
 router.get('/search:busqueda', productController.search);
 router.get('/detalle:id', productController.detalle);
-router.get('/newproduct', productController.newProduct);
+router.get('/newproduct:id', productController.newProduct);
 
 module.exports = router;
