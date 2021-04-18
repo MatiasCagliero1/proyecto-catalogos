@@ -140,3 +140,28 @@ color: rgb(106, 106, 106);
     font-weight: 500;
 }
 
+
+
+@media (max-width: 768px) {
+
+    .resultadoyordenar {
+        display: flex;
+        flex-direction: column;
+    justify-content: space-around;
+    }
+
+    .todoelsearch {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .resultados{
+        display: grid;
+        grid-template-columns: auto auto;
+        width: 100%;
+        border: none;
+        margin: 0em 3em;
+    }
+    
+}
