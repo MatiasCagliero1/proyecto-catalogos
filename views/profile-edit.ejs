@@ -14,70 +14,45 @@
 	<link rel="stylesheet" href="stylesheets/bootstrap-grid.min.css">
 	<!-- Own Stylesheet -->
 	<link rel="stylesheet" href="stylesheets/app.css">
+	<link rel="stylesheet" href="/stylesheets/formularioEditarPerfil.css">
+    <script src="/js/registrarme.js"></script>
+
 </head>
 
 <body>
-	<!-- Header 
-	<header class="main-header">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-5 col-md-2">
-					<a href="index.html" class="main-header_home-link">
-						<img src="./images/logo-mercado-liebre.svg">
-					</a>
-				</div>
-	
-				<div class="col-7 col-md-6">
-					<form action="" method="GET" class="search-form">
-						<input type="text" name="search" placeholder="Buscar productos, marcas y más"
-							class="search-form_input">
-						<button type="submit" class="search-form_button"><i class="fas fa-search"></i></button>
-					</form>
-				</div>
-	
-				<div class="col-12 col-md-4">
-					<a class="main-header_credit-link">
-						<i class="fas fa-hand-holding-usd"></i>
-						Todas las opiniones en un solo lugar.
-					</a>
-				</div>
-			</div>
-	
-			<button class="btn-toggle-navbar">
-				<i class="fas fa-bars"></i>
-			</button>
-	
-			<nav class="main-navbar">
-				<ul class="left-navbar">
-					<li><a href="index.html">Todos los productos</a></li>
-					<li><a href="product-add.html">Cargar productos</a></li>
-				</ul>
-	
-				<ul class="right-navbar">
-					<li><a href="profile.html">
-							Nombre del usuario <i class="fas fa-user"></i>
-						</a>
-					</li>
-					<li>
-						<form action="" method="post">
-							<button class="logout" type="submit">
-								Cerrar sesión <i class="fas fa-sign-in-alt"></i>
-							</button>
-						</form>
-					</li>
-					<!-- Solo deslogueado <li>
-								<a href="register.html">Creá tu cuenta <i class="far fa-address-card"></i>
-								</a>
-							</li>
-							<li>
-								<a href="login.html">Ingresá <i class="fas fa-sign-in-alt"></i></a>
-							</li> 
-				</ul>
-			</nav>
-		</div>
-	</header>-->
+<!--Header-->
 
-	<%-include("./partials/headerCompleto")%>
+<%-include("./partials/headerCompleto")%>
+
+	<!-- formulario para editar perfil-->
+	<h1 class="titulo">Editar Perfil</h1>
+	
+<form class="formulario" action="logIn.html" method="POST">
+		<div class="margen">
+			<input placeholder="Nuevo Email" type="email" name="email" id="email">
+		</div>
+		<div class="margen">
+			<input type="text" placeholder="Nuevo nombre de Usuario" name="usuario" id="username">
+		</div>
+		<div class="margen">
+			<input type="password" placeholder="Contraseña Anterior" name="contraseña" id="password">
+		</div>
+		<div class="margen">
+			<input type="password" placeholder="Nueva Contraseña" name="contraseña" id="password">
+		</div>
+		<div class="margen">
+			<input type="password" placeholder="Confirmar Nueva Contraseña" name="contraseña" id="password">
+		</div>
+		<div class="margen">
+			<a class="botoncito" href="/"><input class="boton botonregistrarse2" type="button" value="Confirmar Cambios"></a>
+		</div>
+
+	
+
+
+	</form>
+
+
 	
 	<%-include('./partials/footer')%>
 </body>
