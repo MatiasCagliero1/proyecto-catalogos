@@ -3,58 +3,58 @@
 <!-- Include Head -->
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link width="" rel="shortcut icon" href="./images/logo-mercado-liebre.jpg" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link width="" rel="shortcut icon" href="./images/logo-mercado-liebre.jpg" />
 
-	<title> Mercado Liebre Argentina</title>
-	<!-- Font Awesome Stylesheet -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-	<!-- Bootstrap Grid Stylesheet -->
-	<link rel="stylesheet" href="stylesheets/bootstrap-grid.min.css">
-	<!-- Own Stylesheet -->
-	<link rel="stylesheet" href="stylesheets/app.css">
-	<link rel="stylesheet" href="/stylesheets/formularioEditarPerfil.css">
-    <script src="/js/registrarme.js"></script>
+    <title> Mercado Liebre Argentina</title>
+    <!-- Font Awesome Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <!-- Bootstrap Grid Stylesheet -->
+    <link rel="stylesheet" href="stylesheets/bootstrap-grid.min.css">
+    <!-- Own Stylesheet -->
+    <link rel="stylesheet" href="stylesheets/app.css">
+    <link rel="stylesheet" href="/stylesheets/formularioEditarPerfil.css">
+
 
 </head>
 
 <body>
-<!--Header-->
+    <!--Header-->
 
-<%-include("./partials/headerCompleto")%>
+    <%-include("./partials/headerCompleto")%>
 
-	<!-- formulario para editar perfil-->
-	<h1 class="titulo">Editar Perfil</h1>
-	
-<form class="formulario" action="logIn.html" method="POST">
-		<div class="margen">
-			<input placeholder="Nuevo Email" type="email" name="email" id="email">
-		</div>
-		<div class="margen">
-			<input type="text" placeholder="Nuevo nombre de Usuario" name="usuario" id="username">
-		</div>
-		<div class="margen">
-			<input type="password" placeholder="Contraseña Anterior" name="contraseña" id="password">
-		</div>
-		<div class="margen">
-			<input type="password" placeholder="Nueva Contraseña" name="contraseña" id="password">
-		</div>
-		<div class="margen">
-			<input type="password" placeholder="Confirmar Nueva Contraseña" name="contraseña" id="password">
-		</div>
-		<div class="margen">
-			<a class="botoncito" href="/"><input class="boton botonregistrarse2" type="button" value="Confirmar Cambios"></a>
-		</div>
+        <!-- formulario para editar perfil-->
+        <h1 class="titulo">Editar Perfil</h1>
 
-	
+        <form class="formulario" action="logIn.html" method="POST">
+            <div class="margen">
+                <input placeholder="Nuevo Email" type="email" name="emailNuevo" id="emailNuevo">
+            </div>
+            <div class="margen">
+                <input type="text" placeholder="Nuevo nombre de Usuario" name="usuarioNuevo" id="usernameNuevo">
+            </div>
+            <div class="margen">
+                <input type="password" placeholder="Contraseña Anterior" name="contraseña" id="password">
+            </div>
+            <div class="margen">
+                <input type="password" placeholder="Nueva Contraseña" name="contraseñaNueva" id="passwordNueva">
+            </div>
+            <div class="margen">
+                <input type="password" placeholder="Confirmar Nueva Contraseña" name="contraseñaNueva" id="passwordNueva">
+            </div>
+            <div class="margen">
+                <a class="botoncito" href="/"><input class="boton botonregistrarse2" type="button" value="Confirmar Cambios"></a>
+            </div>
 
 
-	</form>
 
 
-	
-	<%-include('./partials/footer')%>
+        </form>
+
+
+
+        <%-include('./partials/footer')%>
 </body>
 
 </html>
