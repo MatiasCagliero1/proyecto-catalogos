@@ -11,8 +11,6 @@ router.get('/', mainController.index)
 // Requiriendo
 const profileController = require('../controllers/profileController');
 
-//Ruta pagina Profile - Profile-edit
-router.get('/profile', profileController.index)
-router.get('/profile/edit', profileController.edit)
+
 
 module.exports = router;
