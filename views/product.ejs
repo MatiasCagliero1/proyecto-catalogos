@@ -2,73 +2,65 @@
 <html lang="es">
 
 <head>
-    <%-include('./partials/head')%>
+	<%-include('./partials/head')%>
 
-        <title>
-            <%=productosArray[0].nombre%>| Detalle Producto</title>
+	<title><%=productosArray[id].nombre%> Detalle Producto</title>
 
-        <!-- Stylesheet Propios -->
-        <link rel="stylesheet" href="/stylesheets/header.css">
-        <link rel="stylesheet" href="/stylesheets/product.css">
+	<!-- Stylesheet Propios -->
+	<link rel="stylesheet" href="/stylesheets/header.css">
+	<link rel="stylesheet" href="/stylesheets/product.css">
 </head>
 
 <body>
-    <%-include('./partials/headerCompleto')%>
+	<%-include('./partials/headerCompleto')%>
 
-        <!-- product detail -->
-        <div class="container products-wrapper">
-            <div class="d-flex align-items-center">
-                <h2 class="products-title">
-                    <%=productosArray[0].nombre%>
-                </h2>
-                <p class="product-detail-description">
-                    <a href="/productos/newproduct:id" class="editarLink">Editar</a>
-                </p>
-            </div>
-            <div class="product-detail">
-                <div class="row">
-                    <article class="col-12 col-lg-8 product-detail-info">
-                        <img src="<%=productosArray[0].imagenSrc%>" class="product-detail-img">
-                        <p class="product-detail-description">Nombre:
-                            <%=productosArray[0].nombre%>
-                                <br>
-                                <%=productosArray[0].detalle%>
-                                    <br> Precio por
-                                    <%=productosArray[0].medida%>: $
-                                        <%=productosArray[0].preciopor%>.
-                                            <br> SIN TACC:
-                                            <%=productosArray[0].sinTacc%>.
-                        </p>
-                    </article>
+	<!-- product detail -->
+	<div class="container products-wrapper">
+		<div class="d-flex align-items-center">
+			<h2 class="products-title"><%=productosArray[id].nombre%></h2> 
+			<p class="product-detail-description">
+				<a href="/productos/newproduct:id" class="editarLink">Editar</a>
+			</p>
+		</div>
+		<div class="product-detail">
+			<div class="row">
+				<article class="col-12 col-lg-8 product-detail-info">
+					<img src="/images/products/<%=productosArray[id].imagenSrc%>" class="product-detail-img">
+					<p class="product-detail-description">Nombre: <%=productosArray[id].nombre%>
+						<br>
+						<%=productosArray[id].detalle%> 
+						<br>
+						Precio por <%=productosArray[id].medida%>: $<%=productosArray[id].preciopor%>.
+						<br>
+						SIN TACC: <%=productosArray[id].sinTacc%>.
+					</p>
+				</article>
 
+					
+				<div class="col-12 col-lg-4">
+					<section class="comments">
 
-                    <div class="col-12 col-lg-4">
-                        <section class="comments">
+						<% usuariosFalsos.forEach(element => { %>
+						  
+						<article>
+							<img class="userphoto" src="<%=element.imagenSrc%>" alt="">
+							<div class="data">
+								<p class="user">
+								<strong> <a href="profile.html"><%=element.usuario%></a> </strong><%=element.comentario%></p>
+							</div>
+						</article>
+						<% }); %>
+					</section>
+					<form class="form" action="" method="POST">
+						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+					</form>
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
 
-                            <% usuariosFalsos.forEach(element => { %>
-
-                                <article>
-                                    <img class="userphoto" src="<%=element.imagenSrc%>" alt="">
-                                    <div class="data">
-                                        <p class="user">
-                                            <strong> <a href="profile.html"><%=element.usuario%></a> </strong>
-                                            <%=element.comentario%>
-                                        </p>
-                                    </div>
-                                </article>
-                                <% }); %>
-                        </section>
-                        <form class="form" action="" method="POST">
-                            <input class="form-input" type="text" value="" placeholder="Agregar comentario">
-                            <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-                        </form>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <%-include('./partials/footer')%>
-</body>
-
+	<%-include('./partials/footer')%>
+</body>	
 </html>

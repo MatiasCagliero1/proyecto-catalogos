@@ -18,13 +18,14 @@ module.exports = {
     detalle: (req, res) => {
 
         let id = req.params.id;
-        
+      idFinal =  productosArray[id];
+
        /*  if (id == null || undefined || "") {
             return res.render("pagIndex", {productosArray}); 
         } */
 
 /* Acá realizar consulta con SQL a la base de datos solicitando el id */
-        return res.render("product", {usuariosFalsos, id, productosArray});
+        return res.render("product", {usuariosFalsos, idFinal,id, productosArray});
     },
 
     newProduct: (req, res) => {
