@@ -2,6 +2,9 @@ window.addEventListener("load", function() {
 
     let usuario = sessionStorage.getItem("usuario")
     if (usuario == "hola") {
+        let nombre = sessionStorage.getItem("nombreUsuario")
+
+        document.querySelector(".nombre").innerHTML += nombre
 
         let logueado2 = document.querySelector(".logueado2")
         logueado2.style.display = "block"

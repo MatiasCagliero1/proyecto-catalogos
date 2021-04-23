@@ -5,8 +5,12 @@ window.addEventListener("load", function() {
 
     document.querySelector(".botonregistrarse").addEventListener("click", function() {
         let logIn = "hola"
+        let nombreUsuario = document.querySelector("[name=nombre]")
+        let nombre = nombreUsuario.value
+        sessionStorage.setItem("nombreUsuario", nombre)
 
-        alert(logIn)
+
+
         sessionStorage.setItem("usuario", logIn)
 
         if (logIn == "hola") {
