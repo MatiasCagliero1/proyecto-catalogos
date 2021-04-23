@@ -2,10 +2,9 @@
 <html lang="es">
 
 <head>
-	<%-include('./partials/head')%>
+	<title><%=productosArray[0].nombre%> | Editar Producto</title>
 
-	<title><%=id%> | Editar Producto</title>
-
+    <%-include('./partials/head')%>
 	<!-- Stylesheet Propios -->
 	<link rel="stylesheet" href="/stylesheets/header.css">
 	<link rel="stylesheet" href="/stylesheets/newproduct.css">
@@ -22,7 +21,7 @@
 
                     <div class="allform">
                         <div class="eachform">
-                            <label for="">Título</label><input id="campotitulo" type="text" placeholder="Ejemplo: Salchipapa de carne"></div>
+                            <label for="">Título</label><input id="campotitulo" type="text" placeholder="Ejemplo: Alfajor Terrabusi Chocolate"></div>
 
                         <div class="eachform">
                             <label for="">Descripción</label><textarea name="" id="" cols="30" rows="10"></textarea></div>
@@ -41,7 +40,7 @@
                     </div>
 
 
-                    <a href="/detalle:id" class="cargarform"><button type="submit">Guardar y Continuar</button></a>
+                    <a href="productos/detalle:1" class="cargarform"><button type="submit">Guardar y Continuar</button></a>
                 </form>
 
             </div>
