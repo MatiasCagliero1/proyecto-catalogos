@@ -1,7 +1,9 @@
-const productos = require('../data/comidas.js')
+let comidasModulo = require('../data/comidas.js')
+productosArray = comidasModulo.productos;
+productosArrayOfertas = comidasModulo.ofertas;
 
 module.exports = {
     index: (req, res) => {
-        return res.render("pagIndex", { productos })
+        return res.render("pagIndex", { productosArray })
     }
 }

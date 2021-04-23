@@ -19,9 +19,9 @@ module.exports = {
 
         let id = req.params.id;
         
-        if (id == null || undefined || "") {
+       /*  if (id == null || undefined || "") {
             return res.render("pagIndex", {productosArray}); 
-        }
+        } */
 
 /* Acá realizar consulta con SQL a la base de datos solicitando el id */
         return res.render("product", {usuariosFalsos, id, productosArray});

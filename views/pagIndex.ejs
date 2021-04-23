@@ -35,20 +35,20 @@
                     <h2 class="products-title">Mas Vendidos</h2>
                 </div>
                 <!-- Show the "ultimos" products -->
-                <% for(let i = 0; i < productos.productos.length; i++){ %>
+                <% for(let i = 0; i < productosArray.length; i++){ %>
                     <div class="col-12 col-sm-6 col-lg-3">
                         <section class="product-box">
 
-                            <a href="/productos/detalle:<%= productos.productos[i].id %>">
+                            <a href="/productos/detalle:<%= productosArray[i].id %>">
                                 <figure class="product-box_image">
-                                    <img src="images/products/<%=productos.productos[i].imagenSrc%> " alt="<%=productos.productos[i].nombre%>">
+                                    <img src="images/products/<%=productosArray[i].imagenSrc%> " alt="<%=productosArray[i].nombre%>">
                                 </figure>
                                 <article class="product-box_data">
                                     <h2>
-                                        <%=productos.productos[i].nombre %>
+                                        <%=productosArray[i].nombre %>
                                     </h2>
                                     <p>Precio: $
-                                        <%=productos.productos[i].preciopor %>
+                                        <%=productosArray[i].preciopor %>
                                     </p>
 
                                 </article>
@@ -70,20 +70,20 @@
                     <h2 class="products-title">Oferta 2x1</h2>
                 </div>
                 <!-- Show the "ultimos" products -->
-                <% for(let i = 0; i < productos.ofertas.length; i++){ %>
+                <% for(let i = 0; i < productosArrayOfertas.length; i++){ %>
                     <div class="col-12 col-sm-6 col-lg-3">
                         <section class="product-box">
 
-                            <a href="/productos/detalle:<%= productos.ofertas[i].id %>">
+                            <a href="/productos/detalle:<%= productosArrayOfertas[i].id %>">
                                 <figure class="product-box_image">
-                                    <img src="images/products/<%=productos.ofertas[i].imagenSrc%> " alt="cafetera moulinex">
+                                    <img src="images/products/<%=productosArrayOfertas[i].imagenSrc%> " alt="cafetera moulinex">
                                 </figure>
                                 <article class="product-box_data">
                                     <h2>
-                                        <%=productos.ofertas[i].nombre %>
+                                        <%=productosArrayOfertas[i].nombre %>
                                     </h2>
                                     <p>Precio: $
-                                        <%=productos.ofertas[i].preciopor %>
+                                        <%=productosArrayOfertas[i].preciopor %>
                                     </p>
 
                                 </article>
