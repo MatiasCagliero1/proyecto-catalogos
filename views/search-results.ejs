@@ -2,11 +2,9 @@
 <html lang="es">
 
 <head>
-    <%-include('./partials/head')%>
+        <title><%=title%> | Buscar Catalogo</title>
 
-        <title>
-            <%=title%> | Buscar Catalogo</title>
-
+        <%-include('./partials/head')%>
         <!-- Stylesheet Propios -->
         <link rel="stylesheet" href="/stylesheets/header.css">
         <link rel="stylesheet" href="/stylesheets/search.css">
@@ -14,11 +12,11 @@
 
 <body>
     <%-include('./partials/headerCompleto')%>
-
+  
         <section class="maincontent">
 
             <div class="resultadoyordenar">
-                <h2>Buscar:<span class="busqueda">Pan Lactal</span></h2>
+                <h2>Buscar:<span class="busqueda">Productos de Hogar</span></h2>
                 <div class="orden">
                     <h2>Ordenar por:</h2>
                     <ul>
@@ -53,17 +51,14 @@
 
                 <div class="resultados">
 
-                    <% comidas.forEach(element => {	%>
+                    <% productosArray.forEach(element => {	%>
 
-                        <a href="/productos/detalle:id">
+                        <a href="/productos/detalle:<%=element.id%>">
                             <div class="product">
-                                <div class="fotos"> <img src="/images/products/<%=element.imagenSrc%>" alt="${element.imgalt}">
+                                <div class="fotos"> <img src="/images/products/<%=element.imagenSrc%>">
                                 </div>
-                                <h3>
-                                    <%=element.nombre%>
-                                </h3>
-                                <h5>Tipo: Normal</h5>
-                                <h6>Precio por Kilo: $500</h6>
+                                <h3><%=element.nombre%></h3>
+                                <h6>Precio por <%=element.medida%>: $<%=element.preciopor%></h6>
                             </div>
                         </a>
 

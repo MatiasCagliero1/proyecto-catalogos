@@ -4,7 +4,7 @@
 <head>
 	<%-include('./partials/head')%>
 
-	<title><%=id%> | Detalle Producto</title>
+	<title><%=productosArray[0].nombre%>| Detalle Producto</title>
 
 	<!-- Stylesheet Propios -->
 	<link rel="stylesheet" href="/stylesheets/header.css">
@@ -17,35 +17,39 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title">Pan Artesano Bimbo 500g</h2> 
+			<h2 class="products-title"><%=productosArray[0].nombre%></h2> 
 			<p class="product-detail-description">
-				<a href="/newproduct:id" class="editarLink">Editar</a>
+				<a href="/productos/newproduct:id" class="editarLink">Editar</a>
 			</p>
 		</div>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="https://static.cotodigital3.com.ar/sitios/fotos/full/00293000/00293087.jpg?3.0.129d" alt="" class="product-detail-img">
-					<p class="product-detail-description">Nombre: 
-						Contenido Neto: 500grm.
-						Precio por Kilo: $479,98.
-						SIN TACC: No.
+					<img src="../public/images/products/carne.jpg" alt="" class="product-detail-img">
+					<p class="product-detail-description">Nombre: <%=productosArray[0].nombre%>
+						<br>
+						<%=productosArray[0].detalle%> 
+						<br>
+						Precio por <%=productosArray[0].medida%>: $<%=productosArray[0].preciopor%>.
+						<br>
+						SIN TACC: <%=productosArray[0].sinTacc%>.
 					</p>
 				</article>
+
+					
 				<div class="col-12 col-lg-4">
 					<section class="comments">
 
 						<% usuariosFalsos.forEach(element => { %>
 						  
 						<article>
-							<img class="userphoto" src="images/products/<%=element.imagenSrc%>" alt="">
+							<img class="userphoto" src="<%=element.imagenSrc%>" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="profile.html"><%=element.usuario%> </a> </strong><%=element.comentario%></p>
+								<strong> <a href="profile.html"><%=element.usuario%></a> </strong><%=element.comentario%></p>
 							</div>
 						</article>
-					
-						<%  	});  %>
+						<% }); %>
 					</section>
 					<form class="form" action="" method="POST">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
