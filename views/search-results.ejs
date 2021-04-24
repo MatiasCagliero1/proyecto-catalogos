@@ -17,12 +17,12 @@
         <section class="maincontent">
 
             <div class="resultadoyordenar">
-                <h2>Buscar:<span class="busqueda">Productos de Hogar</span></h2>
+                <h2>Buscar:<span class="busqueda"><%=title%></span></h2>
                 <div class="orden">
                     <h2>Ordenar por:</h2>
                     <ul>
-                        <li><a href="/search/condicion:masbarato/orden">Más barato</a></li>
-                        <li><a href="/search/condicion:mascaro/orden">Más caro</a></li>
+                        <li><a href="/productos/search/<%=title%>/barato">Más barato</a></li>
+                        <li><a href="/productos/search/<%=title%>/caro">Más caro</a></li>
                     </ul>
                 </div>
 
@@ -36,15 +36,15 @@
                             <Ul>
                                 <li class="black">Clasificación</a>
                                 </li>
-                                <li><a href="producto/search/condicion:vegetariano">Vegetariano</a></li>
-                                <li><a href="producto/search/condicion::">Vegano</a></li>
+                                <li><a href="/productos/search/<%=title%>/vegetariano">Vegetariano</a></li>
+                                <li><a href="/productos/search/<%=title%>/vegano">Vegano</a></li>
                             </Ul>
                         </li>
                         <li>
                             <Ul>
                                 <li class="black">Sin TACC</li>
-                                <li><a href="producto/search/condicion:sintacc">Si</a></li>
-                                <li><a href="producto/search/condicion:contacc">No</a></li>
+                                <li><a href="/productos/search/<%=title%>/sintacc">Si</a></li>
+                                <li><a href="/productos/search/<%=title%>/contacc">No</a></li>
                             </Ul>
                         </li>
                     </ul>
@@ -52,14 +52,14 @@
 
                 <div class="resultados">
 
-                    <% productosArray.forEach(element => {	%>
+                    <%productosArray.forEach(element => {	%>
 
-                        <a href="/productos/detalle:<%=element.id%>">
+                        <a href="/productos/detalle/<%=element.id%>">
                             <div class="product">
                                 <div class="fotos"> <img src="/images/products/<%=element.imagenSrc%>">
                                 </div>
                                 <h3>
-                                    <%=element.nombre%>
+                                    <%=element.nombre %>
                                 </h3>
                                 <h6>Precio por
                                     <%=element.medida%>: $
