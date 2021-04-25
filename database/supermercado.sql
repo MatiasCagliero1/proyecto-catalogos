@@ -59,6 +59,9 @@ CREATE TABLE `productos` (
   `imgUrl` varchar(255) NOT NULL,
   `createDate` date NOT NULL,
   `UserAdderId` int(11) DEFAULT NULL,
+  `Condicion` varchar(255),
+  `medida` int(11) DEFAULT NULL,
+    `precioXmedida` FLOAT (11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_95407dd7-28ee-46dc-92a8-7956bc8217b5` (`UserAdderId`),
   CONSTRAINT `FK_95407dd7-28ee-46dc-92a8-7956bc8217b5` FOREIGN KEY (`UserAdderId`) REFERENCES `usuarios` (`id`)
@@ -69,11 +72,11 @@ CREATE TABLE `productos` (
 -- Dumping data for table `productos`
 --
 
-LOCK TABLES `productos` WRITE;
-/*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'Pan Artesano Bimbo 500grm. Celiaco','pan.jpg','2021-04-25',1);
-/*!40000 ALTER TABLE `productos` ENABLE KEYS */;
-UNLOCK TABLES;
+ LOCK TABLES `productos` WRITE;
+    /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
+    INSERT INTO `productos` VALUES (2,'Papas McCain. Fritas cocinadas, con Cascara','papas.jpg','2021-04-25',2,'Vegano','Kilo',200),(3,'Cerveza Lager Heineken Botella 1 Litro','cerveza.jpg','2021-04-25',1,'Vegano','Litro',400),(4,'Lavavajillas Bio Act.Frutas Cif Bot 500 ml','lavavajillas.jpg','2021-04-25',4,'Vegano','Kilo',300),(5,'Jabon Liquido ALA Para Diluir 500 ml. Nueva formula','jabon.jpg','2021-04-25',5,'Vegano','Kilo',500),(6,'Papas Noisette McCain Bsa 1 kg. Nueva reseta.','papas1.jpg','2021-04-25',2,'Vegano','Kilo',300),(7,'Alfajor Terrabusi Chocolate 50 Gr X 6 Uni','yerba.jpg','2021-04-25',2,'Vegano','Kilo',200),(9,'Pan Artesano Bimbo 500grm. Celiaco','pan.jpg','2021-04-25',2,'Vegano','Kilo',500),(10,'Yerba Mate C/Palo Chamigo Paq 500 Grm','yerba.jpg','2021-04-25',5,'Vegano','Kilo',200);
+    /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
+    UNLOCK TABLES;
 
 --
 -- Table structure for table `usuarios`
