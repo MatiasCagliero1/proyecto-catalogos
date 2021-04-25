@@ -1,7 +1,7 @@
 window.addEventListener("load", function() {
     document.querySelector(".botonregistrarse2").addEventListener("click", function() {
         let registrame = "hola"
-        alert(registrame)
+
         sessionStorage.setItem("usuario", registrame)
         if (registrame == "hola") {
             let logueado1 = document.querySelector(".logueado1")

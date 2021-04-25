@@ -5,6 +5,9 @@ window.addEventListener("load", function() {
         let nombre = sessionStorage.getItem("nombreUsuario")
 
         document.querySelector(".nombre").innerHTML += nombre
+        if (nombre == "") {
+            document.querySelector(".nombre").innerHTML += "Hola Usuario"
+        }
 
         let logueado2 = document.querySelector(".logueado2")
         logueado2.style.display = "block"
