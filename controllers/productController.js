@@ -12,7 +12,8 @@ module.exports = {
 
     search: (req, res) => {
         let title = req.params.busqueda;
-        return res.render("search-results",{ title ,productosArray});
+        let condicion = req.params.condicion;
+        return res.render("search-results",{ title, condicion, productosArray});
     },
 
     detalle: (req, res) => {
