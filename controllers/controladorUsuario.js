@@ -1,7 +1,7 @@
 const productos = require("../data/comidas.js")
 
 var controladorUsuario = {
-    index: (req, res) => {
+    registracion: (req, res) => {
         return res.render("register")
     },
     logIn: (req, res) => {
@@ -9,13 +9,13 @@ var controladorUsuario = {
 
     },
     perfil: (req, res) => {
-        return res.render("profile", {productos})
+        return res.render("profile", { productos })
     },
     edit: (req, res) => {
         return res.render("profile-edit")
     }
-    
-    
+
+
 
 
 
