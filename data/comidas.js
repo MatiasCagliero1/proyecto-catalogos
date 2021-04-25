@@ -23,7 +23,7 @@ module.exports = {
 
         }, {
             id: '2',
-            nombre: "Cerveza Lager Heineken Botella 1 L",
+            nombre: "Cerveza Lager Heineken Botella 1 Litro",
             detalle: null,
             imagenSrc: "cerveza.jpg",
             condicion: ['Vegetariano', 'Vegano'],

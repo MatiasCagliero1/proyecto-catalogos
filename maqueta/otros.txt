@@ -1,5 +1,0 @@
-Hablar
-
--Unificar llamado a comida
--Llamar a la foto en detalle
--params
