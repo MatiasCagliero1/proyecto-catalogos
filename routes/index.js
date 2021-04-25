@@ -8,8 +8,7 @@ const mainController = require('../controllers/mainController')
 // Ruta pagina index
 router.get('/', mainController.index)
 
-// Requiriendo
-const profileController = require('../controllers/profileController');
+
 
 
 
