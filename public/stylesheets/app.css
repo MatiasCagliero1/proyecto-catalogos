@@ -45,6 +45,7 @@ a {
     display: inline-block;
     text-decoration: none;
     color: inherit;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 figure {
@@ -538,4 +539,19 @@ textarea.form-input {
         width: 95%;
         margin: auto;
     }
+}
+
+
+/*====== Font para toda la página ======*/
+
+h1 {
+    font-family: 'Orelega One', cursive;
+}
+
+h2 {
+    font-family: 'Quicksand', sans-serif;
+}
+
+h3 {
+    font-family: 'Raleway', sans-serif;
 }
