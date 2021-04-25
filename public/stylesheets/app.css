@@ -539,3 +539,18 @@ textarea.form-input {
         margin: auto;
     }
 }
+
+
+/*====== Font para toda la página ======*/
+
+h1 {
+    font-family: 'Orelega One', cursive;
+}
+
+h2 {
+    font-family: 'Quicksand', sans-serif;
+}
+
+h3 {
+    font-family: 'Raleway', sans-serif;
+}
