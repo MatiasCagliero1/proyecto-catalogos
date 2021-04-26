@@ -2,21 +2,21 @@
     "usuarios": [
 
         {
-            "usuario": "Luis Miguel",
-            "imagenSrc": "https://cloudfront-us-east-1.images.arcpublishing.com/copesa/AA4X2FPV5RB3PFY7A3NAJQ6NJA.jpeg",
+            "usuario": "Angel Daniel Fuentes",
+            "imagenSrc": "https://adanielf.files.wordpress.com/2018/11/daniel_fuentes_dh.jpg?w=1917&h=1278",
             "comentario": "Muy buen producto."
         }, {
-            "usuario": "Tom Crusero",
-            "imagenSrc": "https://lamenteesmaravillosa.com/wp-content/uploads/2018/09/hombre-creido-pensando-que-sabe.jpg",
-            "comentario": "Me gusta porque tiene una buena relación calidad precio."
+            "usuario": "Macarena Armijo",
+            "imagenSrc": "https://ca.slack-edge.com/TGKUAUY5N-U01NN9QGY6L-958a2c912599-512",
+            "comentario": "Y la verdad que tiene buena pinta."
         }, {
             "usuario": "Martina Vallegas",
             "imagenSrc": "https://cdnb.20m.es/sites/112/2019/04/cara6-620x618.jpg",
-            "comentario": "Cúanto sale?"
+            "comentario": "Me gusta porque tiene una buena relación calidad precio."
         }, {
            "usuario": "Facundo Manes",
             "imagenSrc": "https://eststatic.com/2676/conversions/malas-personas-social.jpg",
-            "comentario": "No lo compres, a mi me vino uno vencido."
+            "comentario": "No lo compren, a mi me vino vencido."
         }, {
             "usuario": "Ernesto Van Cubert",
             "imagenSrc": "https://www.xlsemanal.com/wp-content/uploads/sites/3/2019/12/edward-norton-no-te-puedes-fiar-de-las-personas-que-fueron-felices-cuanto-tenian-14-anso-768x506.jpg",
