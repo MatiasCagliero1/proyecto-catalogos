@@ -4,6 +4,6 @@ productosArrayOfertas = comidasModulo.ofertas;
 
 module.exports = {
     index: (req, res) => {
-        return res.render("pagIndex", { productosArray })
+        return res.render("pagIndex")
     }
 }
