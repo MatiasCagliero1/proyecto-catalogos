@@ -144,6 +144,11 @@ color: rgb(106, 106, 106);
 
 @media (max-width: 768px) {
 
+    .maincontent {
+        margin: 0em 1em;
+    }
+
+
     .resultadoyordenar {
         display: flex;
         flex-direction: column;
@@ -159,9 +164,21 @@ color: rgb(106, 106, 106);
     .resultados{
         display: grid;
         grid-template-columns: auto auto;
+        justify-content: center;
         width: 100%;
         border: none;
-        margin: 0em 3em;
+        margin: 0em 0em;
+    }
+
+    .orden{
+width: 100%;
+align-items: center;
+justify-content: space-between;
+margin-top: 3em;
+    }
+
+    .filtrar {
+        display: none;
     }
     
 }
