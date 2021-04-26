@@ -40,15 +40,7 @@ CREATE TABLE `comentarios` (
 -- Dumping data for table `comentarios`
 --
 
-LOCK TABLES `comentarios` WRITE;
-/*!40000 ALTER TABLE `comentarios` DISABLE KEYS */;
-INSERT INTO `comentarios` VALUES (3,'Muy buen producto','2021-04-25',1,1),(4,'Me gusta porque tiene una buena relación calidad p','2021-04-25',1,1),(5,'No lo compres, a mi me vino uno vencido.','2021-04-25',1,1),(6,'Para recetas sobre como cocinar un buen biscocho e','2021-04-25',1,1);
-INSERT INTO `comentarios` VALUES (DEFAULT,'Muy buen producto','2021-04-25',2,2),(DEFAULT,'Me gusta porque tiene una buena relación calidad p','2021-04-25',2,2),(DEFAULT,'No lo compres, a mi me vino uno vencido.','2021-04-25',2,2),(DEFAULT,'Para recetas sobre como cocinar un buen biscocho e','2021-04-25',2,2);
-INSERT INTO `comentarios` VALUES (DEFAULT,'Muy buen producto','2021-04-25',3,3),(DEFAULT,'Me gusta porque tiene una buena relación calidad p','2021-04-25',3,3),(DEFAULT,'No lo compres, a mi me vino uno vencido.','2021-04-25',3,3),(DEFAULT,'Para recetas sobre como cocinar un buen biscocho e','2021-04-25',3,3);
-INSERT INTO `comentarios` VALUES (DEFAULT,'Muy buen producto','2021-04-25',4,4),(DEFAULT,'Me gusta porque tiene una buena relación calidad p','2021-04-25',4,4),(DEFAULT,'No lo compres, a mi me vino uno vencido.','2021-04-25',4,4),(DEFAULT,'Para recetas sobre como cocinar un buen biscocho e','2021-04-25',4,4);
 
-/*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `productos`
@@ -119,5 +111,21 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+LOCK TABLES `comentarios` WRITE;
+/*!40000 ALTER TABLE `comentarios` DISABLE KEYS */;
+INSERT INTO `comentarios`  VALUES (1,'Muy buen producto','2021-04-25',1,1),(2,'Me gusta porque tiene una buena relación calidad p','2021-04-25',1,1),(3,'No lo compres, a mi me vino uno vencido.','2021-04-25',1,1);
+INSERT INTO `comentarios`  VALUES(3,'Para recetas sobre como cocinar un buen biscocho e','2021-04-25',1,1);
+INSERT INTO `comentarios` VALUES (4,'Muy buen producto','2021-04-25',2,2),(5,'Me gusta porque tiene una buena relación calidad p','2021-04-25',2,2),(6,'No lo compres, a mi me vino uno vencido.','2021-04-25',2,2),(7,'Para recetas sobre como cocinar un buen biscocho e','2021-04-25',2,2);
+INSERT INTO `comentarios` VALUES (8,'Muy buen producto','2021-04-25',3,3),(9,'Me gusta porque tiene una buena relación calidad p','2021-04-25',3,3),(10,'No lo compres, a mi me vino uno vencido.','2021-04-25',3,3),(11,'Para recetas sobre como cocinar un buen biscocho e','2021-04-25',3,3);
+INSERT INTO `comentarios` VALUES (12,'Muy buen producto','2021-04-25',4,4),(13,'Me gusta porque tiene una buena relación calidad p','2021-04-25',4,4),(14,'No lo compres, a mi me vino uno vencido.','2021-04-25',4,4),(15,'Para recetas sobre como cocinar un buen biscocho e','2021-04-25',4,4);
+INSERT INTO `comentarios` VALUES (16,'Muy buen producto','2021-04-25',2,5),(17,'Me gusta porque tiene una buena relación calidad p','2021-04-25',2,5),(18,'No lo compres, a mi me vino uno vencido.','2021-04-25',2,5),(19,'Para recetas sobre como cocinar un buen biscocho e','2021-04-25',2,5);
+INSERT INTO `comentarios` VALUES (20,'Muy buen producto','2021-04-25',3,6),(21,'Me gusta porque tiene una buena relación calidad p','2021-04-25',3,6),(22,'No lo compres, a mi me vino uno vencido.','2021-04-25',3,6),(23,'Para recetas sobre como cocinar un buen biscocho e','2021-04-25',3,6);
+INSERT INTO `comentarios` VALUES (24,'Muy buen producto','2021-04-25',4,7),(25,'Me gusta porque tiene una buena relación calidad p','2021-04-25',4,7),(26,'No lo compres, a mi me vino uno vencido.','2021-04-25',4,7),(27,'Para recetas sobre como cocinar un buen biscocho e','2021-04-25',4,7);
+INSERT INTO `comentarios` VALUES (28,'Muy buen producto','2021-04-25',2,8),(29,'Me gusta porque tiene una buena relación calidad p','2021-04-25',2,8),(30,'No lo compres, a mi me vino uno vencido.','2021-04-25',2,8),(31,'Para recetas sobre como cocinar un buen biscocho e','2021-04-25',2,8);
+INSERT INTO `comentarios` VALUES (32,'Muy buen producto','2021-04-25',3,9),(33,'Me gusta porque tiene una buena relación calidad p','2021-04-25',3,9),(34,'No lo compres, a mi me vino uno vencido.','2021-04-25',3,9),(35,'Para recetas sobre como cocinar un buen biscocho e','2021-04-25',3,9);
+INSERT INTO `comentarios` VALUES (36,'Muy buen producto','2021-04-25',4,10),(37,'Me gusta porque tiene una buena relación calidad p','2021-04-25',4,10),(38,'No lo compres, a mi me vino uno vencido.','2021-04-25',4,10),(39,'Para recetas sobre como cocinar un buen biscocho e','2021-04-25',4,10);
 
+
+/*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
+UNLOCK TABLES;
 -- Dump completed on 2021-04-25 10:59:49
