@@ -11,6 +11,6 @@ router.get('/search/:busqueda/:condicion', productController.search);
 
 router.get('/detalle/:id', productController.detalle);
 
-router.get('/newproduct:id', productController.newProduct);
+router.get('/newproduct/:id', productController.newProduct);
 
 module.exports = router;
