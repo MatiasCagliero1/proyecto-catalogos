@@ -19,6 +19,10 @@
 -- Table structure for table `comentarios`
 --
 
+DROP TABLE IF EXISTS DATABASE SUPERMERCADO;
+CREATE DATABASE SUPERMERCADO;
+ USE DATABASE SUPERMERCADO;
+
 DROP TABLE IF EXISTS `comentarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -55,7 +59,7 @@ CREATE TABLE `productos` (
   `imgUrl` varchar(255) NOT NULL,
   `createDate` date NOT NULL,
   `UserAdderId` int(11) DEFAULT NULL,
-  `Condicion` varchar(255),
+  `condicion` varchar(255),
   `medida` int(11) DEFAULT NULL,
     `precioXmedida` FLOAT (11) DEFAULT NULL,
   PRIMARY KEY (`id`),
