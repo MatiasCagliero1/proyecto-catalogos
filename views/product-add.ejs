@@ -17,20 +17,21 @@
 
             <div class="mainAddAll">
                 <h2 class="maintitle">Editar un producto</h2>
-                <form action="" method="post">
+
+                <form action="/newproduct/post" method="post">
 
                     <div class="allform">
                         <div class="eachform">
-                            <label for="">Título</label><input id="campotitulo" type="text" placeholder="Ejemplo: Alfajor Terrabusi Chocolate"></div>
+                            <label for="">Título</label><input id="campotitulo" type="text" name="nombre" placeholder="Ejemplo: Alfajor Terrabusi Chocolate"></div>
 
                         <div class="eachform">
-                            <label for="">Descripción</label><textarea name="" id="" cols="30" rows="10"></textarea></div>
+                            <label for="">Descripción</label><textarea name="detalle" id="" cols="30" rows="10"></textarea></div>
 
                         <div class="eachform"> <label for="">Clasificación</label>
                             <ul>
-                                <li><input name="stock" type="checkbox"><label for="">Vegetariano</label></li>
-                                <li><input name="stock" type="checkbox"><label for="">Vegano</label></li>
-                                <li><input name="stock" type="checkbox"><label for="">Sin TACC</label></li>
+                                 <li><input name="stock" type="checkbox" name="vegetariano"><label for="">Vegetariano</label></li>
+                                <li><input name="stock" type="checkbox" name="vegano"><label for="">Vegano</label></li>
+                                <li><input name="stock" type="checkbox" name="sinTacc"><label for="">Sin TACC</label></li>
                             </ul>
                         </div>
 
@@ -51,3 +52,8 @@
 </body>
 
 </html>
+
+medida: req.body.medida,
+precioMedida: req.body.precioMedida,
+vegetariano: req.body.vegetariano,
+destroy product
