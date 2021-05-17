@@ -6,10 +6,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
-            autoIncrement: true,
-            allowNull: false,
-            defaultValue: true,
-            unique: true
+            allowNull: false
         },
         productName: {
             type: dataTypes.STRING,
@@ -42,9 +39,9 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.DATE
         },
     }
-    
+
     let config = {
-        tableName: "Productos",
+        //tableName: "productos",
         //timestamps: true,
         underscored: true,
     }

@@ -1,13 +1,15 @@
-const db = require('../database/models');
+const db = require('../database/models')
 
 module.exports = {
 
     index: (req, res) => {
-        dbProductos.findAll()
 
-        .then(producto => {
-            return res.render('pagIndex', {Producto})
-        })
+        db.Producto.findAll()
+            .then(producto => {
+                return res.render('pagIndex', {
+                    producto
+                })
+            })
     },
 
     search: (req, res) => {
@@ -15,54 +17,110 @@ module.exports = {
         let condicion = req.params.condicion;
         let orden = req.params.orden;
 
-        dbProductos.Producto.findAll()
+        db.Productos.findAll()
 
-        .then(producto => {
-            return res.render('search-results', {producto, busqueda, condicion, orden})
-        })
+            .then(producto => {
+                return res.render('search-results', {
+                    producto,
+                    busqueda,
+                    condicion,
+                    orden
+                })
+            })
 
     },
 
     detalle: (req, res) => {
         let id = req.params.id;
 
-        dbProductos.findByPk(id)
-        .then(producto => {
-            return res.render('product', {producto})
-        })
-        /* .then(comentarios =>{
-            dbComenarios.findByPk(id)
-        }) */
-            
+        db.Productos.findByPk(id)
+            .then(producto => {
+                return res.render('product', {
+                    producto
+                })
+            })
+
+
     },
 
     newProduct: (req, res) => {
         let id = req.params.id;
 
-        dbComenarios.Producto.findByPk(id)
+        db.Comenarios.findByPk(id)
 
-        .then(producto => {
-            return res.render('product-add', {producto})
-        })
+            .then(producto => {
+                return res.render('product-add', {
+                    producto
+                })
+            })
     },
 
-    changeProduct: (req, res) => {
+    newProductPost: (req, res) => {
+        db.Producto.create({
+                nombre: req.body.nombre,
+                detalle: req.body.detalle,
+                medida: req.body.medida,
+                precioMedida: req.body.precioMedida,
+                vegetariano: req.body.vegetariano,
+                vegano: req.body.vegano,
+                sinTacc: req.body.sinTacc
+            })
+            .then(() => {
+                return res.redirect('/productos');
+            })
+            .catch(error => console.log(error));
+    },
+
+    editProduct: (req, res) => {
         let id = req.params.id;
 
         db.Movie.create({
-            nombre: req.body,nombre,
+            nombre: req.body,
+            nombre,
             length: 190,
             genre_id: 2
         });
-        
 
-        dbComenarios.Producto.findByPk(id)
 
-        .then(producto => {
-            
-let form = req.body
-            return res.redirect('product', {producto})
+        db.Comenarios.findByPk(id)
+
+            .then(producto => {
+
+                let form = req.body
+                return res.redirect('product', {
+                    producto
+                })
+            })
+    },
+
+    editProductPost: (req, res) => {
+        let id = req.params.id;
+
+        db.Producto.update({
+                nombre: req.body.nombre,
+                detalle: req.body.detalle,
+                medida: req.body.medida,
+                precioMedida: req.body.precioMedida,
+                vegetariano: req.body.vegetariano,
+                vegano: req.body.vegano,
+                sinTacc: req.body.sinTacc
+            }, {
+                where: {
+                    id: id
+                }
+            })
+            .then(() => {
+                return res.redirect('/productos');
+            })
+            .catch(error => console.log(error));
+
+        db.Producto.destroy({
+            where: {
+                id: id
+            }
         })
     },
+
+
 
 };
