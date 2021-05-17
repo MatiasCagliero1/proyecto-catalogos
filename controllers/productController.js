@@ -1,5 +1,4 @@
-const dbProductos = require('../database/models/Producto');
-const dbComenarios = require('../database/models/comentarios');
+const db = require('../database/models');
 
 module.exports = {
 
@@ -51,7 +50,7 @@ module.exports = {
         let id = req.params.id;
 
         db.Movie.create({
-            title: "Batman inicia",
+            nombre: req.body,nombre,
             length: 190,
             genre_id: 2
         });

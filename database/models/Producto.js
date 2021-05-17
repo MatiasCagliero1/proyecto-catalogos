@@ -1,12 +1,12 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = Producto;
+    let alias = 'Producto';
     let cols = {
 
         id: {
             type: dataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
-            autoIncrement:true ,
+            autoIncrement: true,
             allowNull: false,
             defaultValue: true,
             unique: true
@@ -19,12 +19,16 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
             allowNull: false
         },
-        condicion: {
+        medida: {
             type: dataTypes.STRING,
             allowNull: false
         },
-        precioXmedida: {
-            type: DataTypes.DOUBLE,
+        precioMedida: {
+            type: dataTypes.DOUBLE,
+            allowNull: false
+        },
+        condicion: {
+            type: dataTypes.STRING,
             allowNull: false
         },
         UserAdderId: {
@@ -40,13 +44,11 @@ module.exports = (sequelize, dataTypes) => {
 
     }
     let config = {
-        tableName: "productos",
+        tableName: "Productos",
         //timestamps: true,
         underscored: true,
     }
 
     const Producto = sequelize.define(alias, cols, config);
-return Producto;
+    return Producto;
 };
-
-

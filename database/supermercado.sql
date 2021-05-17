@@ -19,9 +19,9 @@
 -- Table structure for table `comentarios`
 --
 
-DROP TABLE IF EXISTS DATABASE SUPERMERCADO;
+DROP DATABASE IF EXISTS SUPERMERCADO;
 CREATE DATABASE SUPERMERCADO;
- USE DATABASE SUPERMERCADO;
+ USE  SUPERMERCADO;
 
 DROP TABLE IF EXISTS `comentarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;

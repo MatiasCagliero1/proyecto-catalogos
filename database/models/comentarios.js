@@ -1,4 +1,4 @@
-module.exports = (sequelize, dataTypes) => {
+/* module.exports = (sequelize, dataTypes) => {
     let alias = Productos;
     let cols = {
 
@@ -37,4 +37,4 @@ module.exports = (sequelize, dataTypes) => {
 
     const Producto = sequelize.define(alias, cols, config);
     return Producto;
-};
+}; */
