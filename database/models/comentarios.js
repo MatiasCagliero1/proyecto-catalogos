@@ -11,33 +11,23 @@ module.exports = (sequelize, dataTypes) => {
             defaultValue: true,
             unique: true
         },
-        productName: {
+        texto: {
             type: dataTypes.STRING,
             allowNull: false
         },
-        imgUrl: {
-            type: dataTypes.STRING,
+        fecha_comentario: {
+            type: dataTypes.DATE,
             allowNull: false
         },
-        condicion: {
-            type: dataTypes.STRING,
+        usuarios_id: {
+            type: dataTypes.INTEGER,
             allowNull: false
         },
-        precioXmedida: {
-            type: DataTypes.DOUBLE,
+        productos_id: {
+            type: DataTypes.INTEGER,
             allowNull: false
         },
-        UserAdderId: {
-            type: dataTypes.BOOLEAN,
-            allowNull: false
-        },
-        createdAt: {
-            type: dataTypes.DATE
-        },
-        updatedAt: {
-            type: dataTypes.DATE
-        },
-
+        
     }
     let config = {
         //tableName: "productos",
