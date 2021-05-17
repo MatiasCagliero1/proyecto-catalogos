@@ -4,7 +4,7 @@
 <head>
 	<%-include('./partials/head')%>
 
-	<title><%=productosArray[id].nombre%> Detalle Producto</title>
+	<title><%=producto.nombre%> Detalle Producto</title>
 
 	<!-- Stylesheet Propios -->
 	<link rel="stylesheet" href="/stylesheets/header.css">
@@ -17,7 +17,7 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%=productosArray[id].nombre%></h2> 
+			<h2 class="products-title"><%=producto.nombre%></h2> 
 			<p class="product-detail-description">
 				<a href="/productos/newproduct:id" class="editarLink">Editar</a>
 			</p>
@@ -25,14 +25,14 @@
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/<%=productosArray[id].imagenSrc%>" class="product-detail-img">
-					<p class="product-detail-description">Nombre: <%=productosArray[id].nombre%>
+					<img src="/images/products/<%=producto.imagenSrc%>" class="product-detail-img">
+					<p class="product-detail-description">Nombre: <%=producto.nombre%>
 						<br>
-						<%=productosArray[id].detalle%> 
+						<%=producto.detalle%> 
 						<br>
-						Precio por <%=productosArray[id].medida%>: $<%=productosArray[id].preciopor%>.
+						Precio por <%=producto.medida%>: $<%=producto.preciopor%>.
 						<br>
-						SIN TACC: <%=productosArray[id].sinTacc%>.
+						SIN TACC: <%=producto.sinTacc%>.
 					</p>
 				</article>
 

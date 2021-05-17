@@ -1,37 +1,69 @@
-let comidasModulo = require('../data/comidas.js')
-productosArray = comidasModulo.productos;
-
-
-let usuariosFalsos = require('../data/fakeUser.json');
-usuariosFalsos = usuariosFalsos.usuarios;
+const dbProductos = require('../database/models/Producto');
+const dbComenarios = require('../database/models/comentarios');
 
 module.exports = {
+
     index: (req, res) => {
-        return res.render("pagIndex", {productosArray});
+        dbProductos.findAll()
+
+        .then(producto => {
+            return res.render('pagIndex', {Producto})
+        })
     },
 
     search: (req, res) => {
-        let title = req.params.busqueda;
+        let busqueda = req.params.busqueda;
         let condicion = req.params.condicion;
-        return res.render("search-results",{ title, condicion, productosArray});
+        let orden = req.params.orden;
+
+        dbProductos.Producto.findAll()
+
+        .then(producto => {
+            return res.render('search-results', {producto, busqueda, condicion, orden})
+        })
+
     },
 
     detalle: (req, res) => {
-
         let id = req.params.id;
-      idFinal =  productosArray[id];
 
-       /*  if (id == null || undefined || "") {
-            return res.render("pagIndex", {productosArray}); 
-        } */
-
-/* Acá realizar consulta con SQL a la base de datos solicitando el id */
-        return res.render("product", {usuariosFalsos, idFinal,id, productosArray});
+        dbProductos.findByPk(id)
+        .then(producto => {
+            return res.render('product', {producto})
+        })
+        /* .then(comentarios =>{
+            dbComenarios.findByPk(id)
+        }) */
+            
     },
 
     newProduct: (req, res) => {
         let id = req.params.id;
-        return res.render("product-add", {id, productosArray});
+
+        dbComenarios.Producto.findByPk(id)
+
+        .then(producto => {
+            return res.render('product-add', {producto})
+        })
+    },
+
+    changeProduct: (req, res) => {
+        let id = req.params.id;
+
+        db.Movie.create({
+            title: "Batman inicia",
+            length: 190,
+            genre_id: 2
+        });
+        
+
+        dbComenarios.Producto.findByPk(id)
+
+        .then(producto => {
+            
+let form = req.body
+            return res.redirect('product', {producto})
+        })
     },
 
 };

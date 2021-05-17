@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = Productos;
+    let alias = Producto;
     let cols = {
 
         id: {
@@ -40,7 +40,7 @@ module.exports = (sequelize, dataTypes) => {
 
     }
     let config = {
-        //tableName: "productos",
+        tableName: "productos",
         //timestamps: true,
         underscored: true,
     }
