@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = Usuario;
+    let alias = "Usuario";
     let cols = {
 
         id: {
@@ -12,33 +12,33 @@ module.exports = (sequelize, dataTypes) => {
             unique: true
         },
         nombre: {
-            type: dataTypes.String,
+            type: dataTypes.STRING,
             timestamps: false,
             notnull: true
         },
         apellido: {
-            type: dataTypes.String,
+            type: dataTypes.STRING,
             timestamps: false,
             notnull: true
         },
         email: {
-            type: dataTypes.String,
+            type: dataTypes.STRING,
             timestamps: false,
             notnull: true
         },
         Usuario: {
-            type: dataTypes.String,
+            type: dataTypes.STRING,
             timestamps: false,
             notnull: true,
             unique: true
         },
         contraseña: {
-            type: dataTypes.String,
+            type: dataTypes.STRING,
             timestamps: false,
             notnull: true
         },
         nacimiento: {
-            type: dataTypes.Date,
+            type: dataTypes.DATE,
             timestamps: false,
             notnull: true
         }

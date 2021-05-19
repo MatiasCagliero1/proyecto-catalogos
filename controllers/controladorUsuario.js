@@ -1,5 +1,5 @@
 const productos = require("../data/comidas.js")
-
+const db = require("../database/models")
 var controladorUsuario = {
     registracion: (req, res) => {
         return res.render("register")
