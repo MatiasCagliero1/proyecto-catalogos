@@ -26,37 +26,32 @@
 
                 <!-- Formulario de logIn-->
                 <section class="conteiner">
-                    <form action="" method="GET">
+                    <form action="/users/login" method="POST">
                         <section>
                             <div>
                                 <label for="usuario">Nombre de Usuario:</label>
-                                <input type="text" name="nombre" id="nombre">
+                                <input type="text" name="usuario" id="nombre">
                             </div>
                             <div>
                                 <label for="contraseña">Contraseña:</label>
                                 <input type="password" name="password" id="password">
                             </div>
-                            <div class="divBotones">
+                            <div>
 
 
-                                <a href="/"><input class="boton botonregistrarse" type="button" value="iniciar"></a>
-
-
-
+                                <button class="btn">Iniciar Sesión</button>
 
 
 
 
-
-
-
-
-
-                                <a class="botoncito" href="/users/registracion"><input type="button" value="Crea una cuenta"></a>
                             </div>
 
                         </section>
                     </form>
+                    <div class="boton">
+                        <button class="btn"><a href="/users/registracion">No tengo una cuenta</a></button>
+                    </div>
+
                 </section>
 
 

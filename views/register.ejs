@@ -27,12 +27,12 @@
                     </div>
 
                     <!-- formulario de registración-->
-                    <form class="formulario" action="" method="POST">
+                    <form class="formulario" action="/users/store" method="POST">
 
 
                         <div class="nombreApellido">
                             <input type="text" placeholder="Nombre" name="nombre" id="name">
-                            <input type="text" placeholder="Apellido" name="apellido" id="lastName">
+                            <input type="text" placeholder="Apellido" name="apellido" id="lastname">
                         </div>
 
                         <div>
@@ -48,7 +48,8 @@
                             <input type="date" placeholder="Fecha de nacimiento" name="nacimiento" id="birth">
                         </div>
                         <div>
-                            <a class="botoncito" href="/"><input class="boton botonregistrarse2" type="button" value="Registrarme"></a>
+                            <button class="btn">Registrarme</button>
+
                         </div>
 
 
@@ -56,6 +57,10 @@
 
 
                     </form>
+
+                    <div class="boton">
+                        <button class="btn "><a href="/users/login">Ya tengo cuenta</a></button>
+                    </div>
                 </section>
 
                 <!-- footer -->
