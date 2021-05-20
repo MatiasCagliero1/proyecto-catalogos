@@ -5,48 +5,31 @@ module.exports = (sequelize, dataTypes) => {
         id: {
             type: dataTypes.INTEGER,
             autoIncrement: true,
-            primaryKey: true,
-            autoIncrement: true,
-            allowNull: false,
-            defaultValue: true,
-            unique: true
+            primaryKey: true
         },
         nombre: {
-            type: dataTypes.STRING,
-            timestamps: false,
-            notnull: true
+            type: dataTypes.STRING
         },
         apellido: {
-            type: dataTypes.STRING,
-            timestamps: false,
-            notnull: true
+            type: dataTypes.STRING
         },
         email: {
-            type: dataTypes.STRING,
-            timestamps: false,
-            notnull: true
+            type: dataTypes.STRING
         },
-        Usuario: {
-            type: dataTypes.STRING,
-            timestamps: false,
-            notnull: true,
-            unique: true
+        usuario: {
+            type: dataTypes.STRING
         },
         contraseña: {
-            type: dataTypes.STRING,
-            timestamps: false,
-            notnull: true
+            type: dataTypes.STRING
         },
         nacimiento: {
-            type: dataTypes.DATE,
-            timestamps: false,
-            notnull: true
+            type: dataTypes.DATE
         }
 
     }
     let config = {
         tableName: "usuarios",
-        timestamps: true,
+        timestamps: false,
         underscored: true,
     }
 
