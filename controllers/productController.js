@@ -33,8 +33,11 @@ module.exports = {
     detalle: (req, res) => {
         let id = req.params.id;
 
-        db.Productos.findByPk(id)
+    
+        db.Producto.findByPk(id)
+       
             .then(producto => {
+                return res.send(producto)
                 return res.render('product', {
                     producto
                 })
