@@ -31,12 +31,12 @@ var controladorUsuario = {
         db.Usuario.findOne({ where: [{ usuario: req.body.usuario }] })
             .then(usuario => {
                 if (usuario == null) {
-                    return res.redirect("register")
+                    return res.redirect("/users/registracion")
                 } else {
                     if (bcryptjs.compareSync(req.body.password, usuario.contraseña)) {
                         return res.redirect("/")
                     } else {
-                        return res.redirect("login")
+                        return res.redirect("/users/login")
                     }
                 }
             })
