@@ -6,9 +6,7 @@ module.exports = {
 
         db.Producto.findAll()
             .then(producto => {
-                return res.render('pagIndex', {
-                    producto
-                })
+                return res.render('pagIndex', {producto})
             })
     },
 
@@ -17,7 +15,8 @@ module.exports = {
         let condicion = req.params.condicion;
         let orden = req.params.orden;
 
-        db.Productos.findAll()
+        return res.send(orden)
+        db.Producto.findAll()
 
             .then(producto => {
                 return res.render('search-results', {
@@ -33,15 +32,10 @@ module.exports = {
     detalle: (req, res) => {
         let id = req.params.id;
 
-    
-        db.Producto.findByPk(id)
-       
-            .then(producto => {
-                return res.send(producto)
-                return res.render('product', {
-                    producto
-                })
-            })
+        db.Producto.findByPk(1)
+        .then(producto => {
+            return res.render('product', {producto})
+        })
 
 
     },

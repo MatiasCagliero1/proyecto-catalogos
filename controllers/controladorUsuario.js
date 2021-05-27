@@ -1,4 +1,3 @@
-const productos = require("../data/comidas.js")
 const db = require("../database/models")
 const bcryptjs = require("bcryptjs")
 var controladorUsuario = {
