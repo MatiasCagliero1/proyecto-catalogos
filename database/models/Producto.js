@@ -8,11 +8,11 @@ module.exports = (sequelize, dataTypes) => {
             primaryKey: true,
             allowNull: false
         },
-        product_name: {
+        productName: {
             type: dataTypes.STRING,
             allowNull: false
         },
-        img_url: {
+        imgUrl: {
             type: dataTypes.STRING,
             allowNull: false
         },
@@ -20,7 +20,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
             allowNull: false
         },
-        precio_medida: {
+        precioMedida: {
             type: dataTypes.DOUBLE,
             allowNull: false
         },
@@ -28,21 +28,16 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
             allowNull: false
         },
-        user_adder_id: {
+        userAdderId: {
             type: dataTypes.BOOLEAN,
             allowNull: false
         },
-        created_at: {
-            type: dataTypes.DATE
-        },
-        updated_at: {
-            type: dataTypes.DATE
-        },
+
     }
 
     let config = {
-     //  tableName: "productos",
-        //timestamps: true,
+        tableName: "productos",
+        timestamps: true,
         underscored: true,
     }
 
