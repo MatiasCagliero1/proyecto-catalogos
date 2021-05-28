@@ -35,6 +35,22 @@ form input {
     font-size: 14px;
 }
 
+.checkbox {
+    width: 10%;
+    border: 1px solid gray;
+    margin: 0px;
+    padding: 0px;
+    font-size: 10px;
+}
+
+.checkboxLabel {
+    font-size: 15px;
+}
+
+.checkboxDiv {
+    margin: 2% 0;
+}
+
 .form button {
     font-family: Arial, Helvetica, sans-serif;
     text-transform: uppercase;
