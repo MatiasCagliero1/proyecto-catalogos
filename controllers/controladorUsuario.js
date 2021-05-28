@@ -26,6 +26,7 @@ var controladorUsuario = {
 
     },
     iniciar: (req, res) => {
+        let recordarme = req.body.recordarme
 
         db.Usuario.findOne({ where: [{ usuario: req.body.usuario }] })
             .then(usuario => {
@@ -33,12 +34,15 @@ var controladorUsuario = {
                     return res.redirect("/users/registracion")
                 } else {
                     if (bcryptjs.compareSync(req.body.password, usuario.contraseña)) {
+                        //guardo en session el usuario
+                        req.session.usuarioIngresado = usuario
                         return res.redirect("/")
                     } else {
                         return res.redirect("/users/login")
                     }
                 }
             })
+            .catch(error => console.log(error))
 
     },
     perfil: (req, res) => {

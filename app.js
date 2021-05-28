@@ -4,12 +4,39 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//requiero session
+const session = require("express-session")
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/productos');
 
 
 var app = express();
+
+//configuro session
+app.use(session({
+    secret: "proyecto catalogos",
+    resave: false,
+    saveUninitialized: true
+}))
+
+//info para todas las vistas
+app.use(function(req, res, next) {
+    if (req.session.usuarioIngresado != null) {
+        res.locals = {
+            usuarioLogueado: req.session.usuarioIngresado
+        }
+
+
+    } else {
+        res.locals = {
+            usuarioLogueado: null
+        }
+    }
+    return next()
+
+})
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
