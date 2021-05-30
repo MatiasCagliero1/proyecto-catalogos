@@ -1,51 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
---
--- Host: 127.0.0.1    Database: supermercado
--- ------------------------------------------------------
--- Server version	5.5.5-10.4.18-MariaDB
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `comentarios`
---
 
 DROP DATABASE IF EXISTS SUPERMERCADO;
 CREATE DATABASE SUPERMERCADO;
  USE  SUPERMERCADO;
-
-DROP TABLE IF EXISTS `comentarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `comentarios` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `texto` varchar(50) DEFAULT NULL,
-  `fecha_comentario` date NOT NULL,
-  `usuarios_id` int(11) NOT NULL,
-  `productos_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_59549d28-20d0-4cd7-9199-a731eec636d4` (`usuarios_id`),
-  KEY `FK_ebc754eb-4d64-445b-8845-889d7f2dc391` (`productos_id`),
-  CONSTRAINT `FK_59549d28-20d0-4cd7-9199-a731eec636d4` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`),
-  CONSTRAINT `FK_ebc754eb-4d64-445b-8845-889d7f2dc391` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `comentarios`
---
-
-
-
+ 
 --
 -- Table structure for table `productos`
 --
@@ -55,17 +12,16 @@ DROP TABLE IF EXISTS `productos`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `productName` varchar(255) NOT NULL,
-  `imgUrl` varchar(255) NOT NULL,
-  `medida` varchar(255) NOT NULL,
-  `precioMedida` double NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `img_name` varchar(255) NOT NULL,
+  `detalle` varchar(255) NOT NULL,
   `condicion` varchar(255) NOT NULL,
-  `UserAdderId` int(11) NOT NULL,
+  `user_added` int(11) NOT NULL,
+  `createdAt` date NOT NULL,
   `updatedAt` datetime DEFAULT NULL,
-  `createDate` date NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_95407dd7-28ee-46dc-92a8-7956bc8217b5` (`UserAdderId`),
-  CONSTRAINT `FK_95407dd7-28ee-46dc-92a8-7956bc8217b5` FOREIGN KEY (`UserAdderId`) REFERENCES `usuarios` (`id`)
+  KEY `FK_95407dd7-28ee-46dc-92a8-7956bc8217b5` (`user_added`),
+  CONSTRAINT `FK_95407dd7-28ee-46dc-92a8-7956bc8217b5` FOREIGN KEY (`user_added`) REFERENCES `usuarios` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -75,7 +31,16 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (2,'Papas McCain. Fritas cocinadas, con Cascara','papas.jpg','0',200,'Vegano',2,NULL,'2021-04-25'),(3,'Cerveza Lager Heineken Botella 1 Litro','cerveza.jpg','0',400,'Vegano',1,NULL,'2021-04-25'),(4,'Lavavajillas Bio Act.Frutas Cif Bot 500 ml','lavavajillas.jpg','0',300,'Vegano',4,NULL,'2021-04-25'),(5,'Jabon Liquido ALA Para Diluir 500 ml. Nueva formula','jabon.jpg','0',500,'Vegano',5,NULL,'2021-04-25'),(6,'Papas Noisette McCain Bsa 1 kg. Nueva reseta.','papas1.jpg','0',300,'Vegano',2,NULL,'2021-04-25'),(7,'Alfajor Terrabusi Chocolate 50 Gr X 6 Uni','yerba.jpg','0',200,'Vegano',2,NULL,'2021-04-25'),(9,'Pan Artesano Bimbo 500grm. Celiaco','pan.jpg','0',500,'Vegano',2,NULL,'2021-04-25'),(10,'Yerba Mate C/Palo Chamigo Paq 500 Grm','yerba.jpg','0',200,'Vegano',5,NULL,'2021-04-25');
+INSERT INTO `productos` VALUES 
+(1,'Papas McCain. Fritas cocinadas, con Cascara','papas.jpg','Papas McCain. Fritas cocinadas, con Cascara','Vegano',2,NULL,'2021-04-25'),
+(2,'Cerveza Lager Heineken Botella 1 Litro','cerveza.jpg','Papas McCain. Fritas cocinadas, con Cascara','Vegano',1,NULL,'2021-04-25'),
+(3,'Cerveza Lager Heineken Botella 1 Litro','cerveza.jpg','Papas McCain. Fritas cocinadas, con Cascara','Vegano',1,NULL,'2021-04-25'),
+(4,'Lavavajillas Bio Act.Frutas Cif Bot 500 ml','lavavajillas.jpg''Papas McCain. Fritas cocinadas, con Cascara',,'Vegano',4,NULL,'2021-04-25'),
+(5,'Jabon Liquido ALA Para Diluir 500 ml. Nueva formula','jabon.jpg''Papas McCain. Fritas cocinadas, con Cascara',,'Vegano',5,NULL,'2021-04-25'),
+(6,'Papas Noisette McCain Bsa 1 kg. Nueva reseta.','papas1.jpg''Papas McCain. Fritas cocinadas, con Cascara',,'Vegano',2,NULL,'2021-04-25'),
+(7,'Alfajor Terrabusi Chocolate 50 Gr X 6 Uni','yerba.jpg''Papas McCain. Fritas cocinadas, con Cascara',,'Vegano',2,NULL,'2021-04-25'),
+(9,'Pan Artesano Bimbo 500grm. Celiaco','pan.jpg','Papas McCain. Fritas cocinadas, con Cascara','Vegano',2,NULL,'2021-04-25'),
+(10,'Yerba Mate C/Palo Chamigo Paq 500 Grm','yerba.jpg','Papas McCain. Fritas cocinadas, con Cascara','Vegano',5,NULL,'2021-04-25');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 --
@@ -108,15 +73,31 @@ LOCK TABLES `usuarios` WRITE;
 INSERT INTO `usuarios` VALUES (1,'agostina','cervio','agos@hotmail.com','agosCervio','agos123','2001-08-26'),(2,'santiago','karagozian','santi@hotmail.com','santiKaragozian','santi123','2001-08-26'),(3,'matias','cagliero','mati@hotmail.com','matiCagliero','mati123','2001-08-26'),(4,'ramon','diaz','ramon@hotmail.com','ramonDiaz','ramon','2001-08-26'),(5,'juan','gomez','juan@hotmail.com','juanGomez','juan123','2001-08-26');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+-- Dumping data for table `comentarios`
+
+DROP TABLE IF EXISTS `comentarios`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `comentarios` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `texto` varchar(50) DEFAULT NULL,
+  `fecha_comentario` date NOT NULL,
+  `usuarios_id` int(11) NOT NULL,
+  `productos_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_59549d28-20d0-4cd7-9199-a731eec636d4` (`usuarios_id`),
+  KEY `FK_ebc754eb-4d64-445b-8845-889d7f2dc391` (`productos_id`),
+  CONSTRAINT `FK_59549d28-20d0-4cd7-9199-a731eec636d4` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`),
+  CONSTRAINT `FK_ebc754eb-4d64-445b-8845-889d7f2dc391` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `comentarios`
+--
+
+
 LOCK TABLES `comentarios` WRITE;
 /*!40000 ALTER TABLE `comentarios` DISABLE KEYS */;
 INSERT INTO `comentarios`  VALUES (1,'Muy buen producto','2021-04-25',1,1),(2,'Me gusta porque tiene una buena relación calidad p','2021-04-25',1,1),(3,'No lo compres, a mi me vino uno vencido.','2021-04-25',1,1);
@@ -135,3 +116,5 @@ INSERT INTO `comentarios` VALUES (36,'Muy buen producto','2021-04-25',4,10),(37,
 /*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 -- Dump completed on 2021-04-25 10:59:49
+
+

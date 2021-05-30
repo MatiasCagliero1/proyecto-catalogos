@@ -7,7 +7,6 @@
 	<title><%=producto.product_name%> Detalle Producto</title>
 
 	<!-- Stylesheet Propios -->
-	<link rel="stylesheet" href="/stylesheets/header.css">
 	<link rel="stylesheet" href="/stylesheets/product.css">
 </head>
 
@@ -19,37 +18,34 @@
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%=producto.product_name%></h2> 
 			<p class="product-detail-description">
-				<a href="/productos/newproduct/:id" class="editarLink">Editar</a>
+				<a href="/productos/newproduct/:id" class="editarLink">Editar Producto</a>
+				<a href="/productos/newproduct/:id" class="editarLink">Eliminar Producto</a>
 			</p>
 		</div>
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/<%=producto.img_url%>" class="product-detail-img">
-					<p class="product-detail-description">Nombre: <%=producto.nombre%>
+					<img src="/images/products/<%=producto.img_name%>" class="product-detail-img">
+					<p class="product-detail-description"><%=producto.product_name%>
 						<br>
-						<%=producto.detalle%> 
+						<%=producto.product_name%>
 						<br>
-						Precio por <%=producto.medida%>: $<%=producto.preciopor%>.
-						<br>
-						SIN TACC: <%=producto.sinTacc%>.
+					Condición: <%=producto.condicion%>
 					</p>
 				</article>
 
 					
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-
-						<% usuariosFalsos.forEach(element => { %>
 						  
 						<article>
-							<img class="userphoto" src="<%=element.imagenSrc%>" alt="">
+							<img class="userphoto" src="" alt="">
 							<div class="data">
 								<p class="user">
-								<strong> <a href="profile.html"><%=element.usuario%></a> </strong><%=element.comentario%></p>
+								<strong> <a href="profile.html"></a> </strong></p>
 							</div>
 						</article>
-						<% }); %>
+					
 					</section>
 					<form class="form" action="" method="POST">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">

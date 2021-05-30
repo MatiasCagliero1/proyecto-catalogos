@@ -2,12 +2,12 @@
 <html lang="es">
 
 <head>
-	<title><%=productosArray[0].nombre%> | Editar Producto</title>
+	<title>Crear nuevo producto</title>
 
     <%-include('./partials/head')%>
+
 	<!-- Stylesheet Propios -->
-	<link rel="stylesheet" href="/stylesheets/header.css">
-	<link rel="stylesheet" href="/stylesheets/newproduct.css">
+	<link rel="stylesheet" href="/stylesheets/product-add.css">
 </head>
 
 <body>
@@ -22,26 +22,29 @@
 
                     <div class="allform">
                         <div class="eachform">
-                            <label for="">Título</label><input id="campotitulo" type="text" name="nombre" placeholder="Ejemplo: Alfajor Terrabusi Chocolate"></div>
-
-                        <div class="eachform">
-                            <label for="">Descripción</label><textarea name="detalle" id="" cols="30" rows="10"></textarea></div>
-
-                        <div class="eachform"> <label for="">Clasificación</label>
-                            <ul>
-                                 <li><input name="stock" type="checkbox" name="vegetariano"><label for="">Vegetariano</label></li>
-                                <li><input name="stock" type="checkbox" name="vegano"><label for="">Vegano</label></li>
-                                <li><input name="stock" type="checkbox" name="sinTacc"><label for="">Sin TACC</label></li>
-                            </ul>
+                           <input id="campotitulo" type="text" name="nombre" placeholder="Nombre del plato">
                         </div>
 
                         <div class="eachform">
-                            <label for="">Cargar imágen</label><input type="file" class="form-control-file" id="exampleFormControlFile1">
-                        </div>
+                        <textarea name="detalle" id="" cols="30" rows="10" placeholder="Descripción del plato"></textarea>
                     </div>
 
+                    <div class="eachform">
+                        <select name="condicion" id="" value="1">
+                            <option value="">Seleccionar</option>
+                            <option value="">Sin TACC</option>
+                            <option value="">Vegetariano</option>
+                            <option value="">Vegano</option>
+                        </select>
+                     </div>
 
-                    <a href="productos/detalle:1" class="cargarform"><button type="submit">Guardar y Continuar</button></a>
+                        <div class="eachform">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image">
+                        </div>
+
+                    </div>
+
+                 <button  class="cargarform" type="submit">Guardar y Continuar</button>
                 </form>
 
             </div>
@@ -52,8 +55,3 @@
 </body>
 
 </html>
-
-medida: req.body.medida,
-precioMedida: req.body.precioMedida,
-vegetariano: req.body.vegetariano,
-destroy product

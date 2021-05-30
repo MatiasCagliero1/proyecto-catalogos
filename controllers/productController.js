@@ -1,4 +1,5 @@
 const db = require('../database/models')
+const op = db.Sequelize.Op;
 
 module.exports = {
 
@@ -6,7 +7,11 @@ module.exports = {
 
         db.Producto.findAll()
             .then(producto => {
-                return res.render('pagIndex', {producto})
+
+                return res.send(producto)
+                return res.render('pagIndex', {
+                    producto
+                })
             })
     },
 
@@ -15,37 +20,53 @@ module.exports = {
         let condicion = req.params.condicion;
         let orden = req.params.orden;
 
-        return res.send(orden)
-        db.Producto.findAll()
+if (condicion == null) {
+    
+}
 
-            .then(producto => {
-                return res.render('search-results', {
-                    producto,
-                    busqueda,
-                    condicion,
-                    orden
-                })
+        db.Producto.findAll()
+/* Si no hay condicion anulo el where */
+     /*    ({
+            where: [{
+                    product_name: { [op.like]: "%busqueda%"},
+                    condicion: { [op.like]: "condicion"}
+                }
+
+            ],
+            order: [
+                ['product_name', 'orden'],
+
+            ]
+        }) */
+
+        .then(producto => {
+            //     return res.send(producto)
+            return res.render('search-results', {
+                producto,
+                busqueda,
+                condicion,
+                orden
             })
+        })
 
     },
 
     detalle: (req, res) => {
         let id = req.params.id;
-
-        db.Producto.findByPk(1)
-        .then(producto => {
-            return res.render('product', {producto})
-        })
-
-
+        db.Producto.findByPk(id)
+            .then(producto => {
+                //return res.send(producto);
+                return res.render('product', {
+                    producto
+                })
+            })
     },
 
     newProduct: (req, res) => {
         let id = req.params.id;
-
-        db.Comenarios.findByPk(id)
-
+        db.Producto.findByPk(id)
             .then(producto => {
+                //return res.send(producto);
                 return res.render('product-add', {
                     producto
                 })
@@ -56,11 +77,8 @@ module.exports = {
         db.Producto.create({
                 nombre: req.body.nombre,
                 detalle: req.body.detalle,
-                medida: req.body.medida,
-                precioMedida: req.body.precioMedida,
-                vegetariano: req.body.vegetariano,
-                vegano: req.body.vegano,
-                sinTacc: req.body.sinTacc
+                image: req.body.image,
+
             })
             .then(() => {
                 return res.redirect('/productos');
