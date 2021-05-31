@@ -12,65 +12,70 @@
 </head>
 
 <body>
-    <%-include('./partials/headerCompleto')%>
+    <% if(usuarioLogueado != null){ %>
+        <%-include("./partials/headerLogueado") %>
 
-        <section class="maincontent">
+            <% } else { %>
+                <%-include("./partials/headerDeslogueado")%>
+                    <%}%>
 
-            <div class="resultadoyordenar">
-                <h2>Buscar:<span class="busqueda"><%=busqueda%></span></h2>
-                <div class="orden">
-                    <h2>Ordenar por:</h2>
-                    <ul>
-                        <li><a href="/productos/search/<%=busqueda%>/<%=condicion%>/ASC">Más Reciente</a></li>
-                        <li><a href="/productos/search/<%=busqueda%>/<%=condicion%>/DES">Más Antiguo</a></li>
-                    </ul>
-                </div>
+                        <section class="maincontent">
 
-            </div>
-
-            <div class="todoelsearch">
-
-                <div class="filtrar">
-                    <ul>
-                        <li>
-                            <Ul>
-                                <li class="black">Clasificación</a>
-                                </li>
-                                <li><a href="/productos/search/<%=busqueda%>/vegetariano/<%=orden%>">Vegetariano</a></li>
-                                <li><a href="/productos/search/<%=busqueda%>/vegano/<%=orden%>">Vegano</a></li>
-                                <li><a href="/productos/search/<%=busqueda%>/sintacc/<%=orden%>">Sin TACC</a></li>
-                            </Ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="resultados">
-
-                    <% producto.forEach(element => {%>
-
-                        <a href="/productos/detalle/<%=element.id%>">
-                            <div class="product">
-                                <div class="fotos"> <img src="/images/products/<%=element.img_name%>">
+                            <div class="resultadoyordenar">
+                                <h2>Buscar:<span class="busqueda"><%=busqueda%></span></h2>
+                                <div class="orden">
+                                    <h2>Ordenar por:</h2>
+                                    <ul>
+                                        <li><a href="/productos/search/<%=busqueda%>/<%=condicion%>/ASC">Más Reciente</a></li>
+                                        <li><a href="/productos/search/<%=busqueda%>/<%=condicion%>/DES">Más Antiguo</a></li>
+                                    </ul>
                                 </div>
-                                <h3>
-                                    <%=element.product_name%>
-                                </h3>
-                                <h6>Por
-                                    <%=element.user_added%>
-                                </h6>
-                                <!-- Te trae el id, no el nombre -->
-                                <h6>
-                                    <%=element.condicion%>
-                                </h6>
 
                             </div>
-                        </a>
-                        <% });%>
+
+                            <div class="todoelsearch">
+
+                                <div class="filtrar">
+                                    <ul>
+                                        <li>
+                                            <Ul>
+                                                <li class="black">Clasificación</a>
+                                                </li>
+                                                <li><a href="/productos/search/<%=busqueda%>/vegetariano/<%=orden%>">Vegetariano</a></li>
+                                                <li><a href="/productos/search/<%=busqueda%>/vegano/<%=orden%>">Vegano</a></li>
+                                                <li><a href="/productos/search/<%=busqueda%>/sintacc/<%=orden%>">Sin TACC</a></li>
+                                            </Ul>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="resultados">
+
+                                    <% producto.forEach(element => {%>
+
+                                        <a href="/productos/detalle/<%=element.id%>">
+                                            <div class="product">
+                                                <div class="fotos"> <img src="/images/products/<%=element.img_name%>">
+                                                </div>
+                                                <h3>
+                                                    <%=element.product_name%>
+                                                </h3>
+                                                <h6>Por
+                                                    <%=element.user_added%>
+                                                </h6>
+                                                <!-- Te trae el id, no el nombre -->
+                                                <h6>
+                                                    <%=element.condicion%>
+                                                </h6>
+
+                                            </div>
+                                        </a>
+                                        <% });%>
 
 
-                </div>
-        </section>
-        <%-include("./partials/footer") %>
+                                </div>
+                        </section>
+                        <%-include("./partials/footer") %>
 </body>
 
 </html>
