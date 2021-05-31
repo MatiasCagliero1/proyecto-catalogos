@@ -12,68 +12,73 @@
 </head>
 
 <body>
-    <%-include('./partials/headerCompleto')%>
+    <% if(usuarioLogueado != null){ %>
+        <%-include("./partials/headerLogueado") %>
 
-        <section class="maincontent">
+            <% } else { %>
+                <%-include("./partials/headerDeslogueado")%>
+                    <%}%>
 
-            <div class="resultadoyordenar">
-                <h2>Buscar:<span class="busqueda"><%=title%></span></h2>
-                <div class="orden">
-                    <h2>Ordenar por:</h2>
-                    <ul>
-                        <li><a href="/productos/search/<%=title%>/barato">Más barato</a></li>
-                        <li><a href="/productos/search/<%=title%>/caro">Más caro</a></li>
-                    </ul>
-                </div>
+                        <section class="maincontent">
 
-            </div>
-
-            <div class="todoelsearch">
-
-                <div class="filtrar">
-                    <ul>
-                        <li>
-                            <Ul>
-                                <li class="black">Clasificación</a>
-                                </li>
-                                <li><a href="/productos/search/<%=title%>/vegetariano">Vegetariano</a></li>
-                                <li><a href="/productos/search/<%=title%>/vegano">Vegano</a></li>
-                            </Ul>
-                        </li>
-                        <li>
-                            <Ul>
-                                <li class="black">Sin TACC</li>
-                                <li><a href="/productos/search/<%=title%>/sintacc">Si</a></li>
-                                <li><a href="/productos/search/<%=title%>/contacc">No</a></li>
-                            </Ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="resultados">
-
-                    <%productosArray.forEach(element => {	%>
-
-                        <a href="/productos/detalle/<%=element.id%>">
-                            <div class="product">
-                                <div class="fotos"> <img src="/images/products/<%=element.imagenSrc%>">
+                            <div class="resultadoyordenar">
+                                <h2>Buscar:<span class="busqueda"><%=title%></span></h2>
+                                <div class="orden">
+                                    <h2>Ordenar por:</h2>
+                                    <ul>
+                                        <li><a href="/productos/search/<%=title%>/barato">Más barato</a></li>
+                                        <li><a href="/productos/search/<%=title%>/caro">Más caro</a></li>
+                                    </ul>
                                 </div>
-                                <h3>
-                                    <%=element.nombre %>
-                                </h3>
-                                <h6>Precio por
-                                    <%=element.medida%>: $
-                                        <%=element.preciopor%>
-                                </h6>
+
                             </div>
-                        </a>
 
-                        <% 	});%>
+                            <div class="todoelsearch">
+
+                                <div class="filtrar">
+                                    <ul>
+                                        <li>
+                                            <Ul>
+                                                <li class="black">Clasificación</a>
+                                                </li>
+                                                <li><a href="/productos/search/<%=title%>/vegetariano">Vegetariano</a></li>
+                                                <li><a href="/productos/search/<%=title%>/vegano">Vegano</a></li>
+                                            </Ul>
+                                        </li>
+                                        <li>
+                                            <Ul>
+                                                <li class="black">Sin TACC</li>
+                                                <li><a href="/productos/search/<%=title%>/sintacc">Si</a></li>
+                                                <li><a href="/productos/search/<%=title%>/contacc">No</a></li>
+                                            </Ul>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="resultados">
+
+                                    <%productosArray.forEach(element => {	%>
+
+                                        <a href="/productos/detalle/<%=element.id%>">
+                                            <div class="product">
+                                                <div class="fotos"> <img src="/images/products/<%=element.imagenSrc%>">
+                                                </div>
+                                                <h3>
+                                                    <%=element.nombre %>
+                                                </h3>
+                                                <h6>Precio por
+                                                    <%=element.medida%>: $
+                                                        <%=element.preciopor%>
+                                                </h6>
+                                            </div>
+                                        </a>
+
+                                        <% 	});%>
 
 
-                </div>
-        </section>
-        <%-include("./partials/footer") %>
+                                </div>
+                        </section>
+                        <%-include("./partials/footer") %>
 
 
 </body>

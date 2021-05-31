@@ -2,65 +2,78 @@
 <html lang="es">
 
 <head>
-	<%-include('./partials/head')%>
+    <%-include('./partials/head')%>
 
-	<title><%=producto.product_name%> Detalle Producto</title>
+        <title>
+            <%=producto.product_name%> Detalle Producto</title>
 
-	<!-- Stylesheet Propios -->
-	<link rel="stylesheet" href="/stylesheets/header.css">
-	<link rel="stylesheet" href="/stylesheets/product.css">
+        <!-- Stylesheet Propios -->
+        <link rel="stylesheet" href="/stylesheets/header.css">
+        <link rel="stylesheet" href="/stylesheets/product.css">
 </head>
 
 <body>
-	<%-include('./partials/headerCompleto')%>
+    <% if(usuarioLogueado != null){ %>
+        <%-include("./partials/headerLogueado") %>
 
-	<!-- product detail -->
-	<div class="container products-wrapper">
-		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%=producto.product_name%></h2> 
-			<p class="product-detail-description">
-				<a href="/productos/newproduct/:id" class="editarLink">Editar</a>
-			</p>
-		</div>
-		<div class="product-detail">
-			<div class="row">
-				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/<%=producto.img_url%>" class="product-detail-img">
-					<p class="product-detail-description">Nombre: <%=producto.nombre%>
-						<br>
-						<%=producto.detalle%> 
-						<br>
-						Precio por <%=producto.medida%>: $<%=producto.preciopor%>.
-						<br>
-						SIN TACC: <%=producto.sinTacc%>.
-					</p>
-				</article>
+            <% } else { %>
+                <%-include("./partials/headerDeslogueado")%>
+                    <%}%>
 
-					
-				<div class="col-12 col-lg-4">
-					<section class="comments">
+                        <!-- product detail -->
+                        <div class="container products-wrapper">
+                            <div class="d-flex align-items-center">
+                                <h2 class="products-title">
+                                    <%=producto.product_name%>
+                                </h2>
+                                <p class="product-detail-description">
+                                    <a href="/productos/newproduct/:id" class="editarLink">Editar</a>
+                                </p>
+                            </div>
+                            <div class="product-detail">
+                                <div class="row">
+                                    <article class="col-12 col-lg-8 product-detail-info">
+                                        <img src="/images/products/<%=producto.img_url%>" class="product-detail-img">
+                                        <p class="product-detail-description">Nombre:
+                                            <%=producto.nombre%>
+                                                <br>
+                                                <%=producto.detalle%>
+                                                    <br> Precio por
+                                                    <%=producto.medida%>: $
+                                                        <%=producto.preciopor%>.
+                                                            <br> SIN TACC:
+                                                            <%=producto.sinTacc%>.
+                                        </p>
+                                    </article>
 
-						<% usuariosFalsos.forEach(element => { %>
-						  
-						<article>
-							<img class="userphoto" src="<%=element.imagenSrc%>" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="profile.html"><%=element.usuario%></a> </strong><%=element.comentario%></p>
-							</div>
-						</article>
-						<% }); %>
-					</section>
-					<form class="form" action="" method="POST">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-					</form>
-					<hr>
-				</div>
-			</div>
-		</div>
-	</div>
 
-	<%-include('./partials/footer')%>
-</body>	
+                                    <div class="col-12 col-lg-4">
+                                        <section class="comments">
+
+                                            <% usuariosFalsos.forEach(element => { %>
+
+                                                <article>
+                                                    <img class="userphoto" src="<%=element.imagenSrc%>" alt="">
+                                                    <div class="data">
+                                                        <p class="user">
+                                                            <strong> <a href="profile.html"><%=element.usuario%></a> </strong>
+                                                            <%=element.comentario%>
+                                                        </p>
+                                                    </div>
+                                                </article>
+                                                <% }); %>
+                                        </section>
+                                        <form class="form" action="" method="POST">
+                                            <input class="form-input" type="text" value="" placeholder="Agregar comentario">
+                                            <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+                                        </form>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <%-include('./partials/footer')%>
+</body>
+
 </html>
