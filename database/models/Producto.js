@@ -8,37 +8,33 @@ module.exports = (sequelize, dataTypes) => {
             primaryKey: true,
             allowNull: false
         },
-        productName: {
+        product_name: {
             type: dataTypes.STRING,
             allowNull: false
         },
-        imgUrl: {
+        img_name: {
             type: dataTypes.STRING,
             allowNull: false
         },
-        medida: {
+        detalle: {
             type: dataTypes.STRING,
-            allowNull: false
-        },
-        precioMedida: {
-            type: dataTypes.DOUBLE,
             allowNull: false
         },
         condicion: {
             type: dataTypes.STRING,
             allowNull: false
         },
-        userAdderId: {
+        user_added: {
             type: dataTypes.BOOLEAN,
             allowNull: false
-        },
+        }
 
     }
 
     let config = {
         tableName: "productos",
         timestamps: true,
-        underscored: true,
+        underscored: false,
     }
 
     const Producto = sequelize.define(alias, cols, config);

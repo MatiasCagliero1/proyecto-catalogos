@@ -72,7 +72,7 @@ hr {
 
 .main-header {
     padding: 15px0;
-    background-color: blue;
+    background-color: rgb(12, 81, 201);
 }
 
 .main-header_home-link,
@@ -174,11 +174,6 @@ hr {
     margin-bottom: 30px;
 }
 
-.products-title {
-    font-size: 2.4em;
-    font-weight: 400;
-    color: var(--gray);
-}
 
 .product-box {
     background-color: #ffffff;

@@ -17,7 +17,7 @@
     font-weight: 500;
     text-align: center;
     margin-top: 0ch;
-    margin-bottom: 1.1em;
+    margin-bottom: 0.4em;
 }
 
 .mainAddAll {
@@ -29,81 +29,51 @@
 .allform {
     display: grid;
     grid-template-rows: auto auto auto auto auto auto auto auto;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 .eachform {
-    display: grid;
-    grid-template-columns: auto 75%;
-    justify-content: flex-end;
+    display: flex;
+    justify-content: center;
     align-items: center;
     margin: 1.4em 0em;
 }
 
-label {
-    font-size: 2.4em;
-    margin-right: 2em;
-    font-family: Arial, Helvetica, sans-serif;
-}
 
 #campotitulo {
+    width: 100%;
     padding: 0.5em 1em 0.5em 1em;
     border-radius: 5px;
     border: 0.05px solid black;
 }
-
 
 textarea {
+    width: 100%;
     max-height: 5em;
-    min-height: 10em;
-    max-width: 35em;
     padding: 0.5em 1em 0.5em 1em;
     border-radius: 5px;
     border: 0.05px solid black;
 }
 
-.eachform ul {
-    display: flex;
-    justify-content: space-around;
+select{
     width: 100%;
-}
-
-.eachform ul li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    list-style: none;
-    width: 1em;
-    margin: 0em;
+    padding: 0.5em 1em 0.5em 1em;
     border-radius: 5px;
     border: 0.05px solid black;
-    padding: 1em 3em;
-    text-align: center;
 }
 
-.eachform ul li:hover {
-    box-shadow: 0px 0px 16px -6px rgba(0,0,0,0.75);
-    transition: 0.2s;
-}
-
-.eachform ul li input {
-    font-size: 5em;
-}
-
-.eachform ul li label {
-    font-size: 1em;
-    margin: 0%;
-    margin-top: 1em;
+#exampleFormControlFile1{
+    width: 100%;
+    padding: 0.1em 1em 0.5em 0em;
+    border-radius: 5px;
 }
 
 .cargarform {
     display: flex;
     justify-content: center;
-    background-color: rgb(0, 193, 6);
+    background-color: rgb(24, 201, 30);
     padding: 1em;
-    border-radius: 50px;
-    margin-top: 2.4em;
+    border-radius: 5px;
     width: 100%;
     color: white;
 }
@@ -114,7 +84,7 @@ textarea {
     text-decoration: none;
 }
 
-.cargarform button {
+button {
     background: none;
     outline: none;
     border: none;
