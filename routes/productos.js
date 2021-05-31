@@ -11,7 +11,7 @@ router.get('/search/:busqueda/:condicion/:orden', productController.search);
 
 router.get('/detalle/:id', productController.detalle);
 
-router.post('detalle/destroy/:id', productController.destroy);
+router.post('/destroy/:id', productController.destroy);
 
 router.get('/newproduct', productController.newProduct);
 router.post('/newproduct/post', productController.newProductPost);

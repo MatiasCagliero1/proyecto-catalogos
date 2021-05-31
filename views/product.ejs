@@ -12,7 +12,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD
     <% if(usuarioLogueado != null){ %>
         <%-include("./partials/headerLogueado") %>
 
@@ -70,54 +69,4 @@
                         <%-include('./partials/footer')%>
 </body>
 
-=======
-	<%-include('./partials/headerCompleto')%>
-
-	<!-- product detail -->
-	<div class="container products-wrapper">
-		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%=producto.product_name%></h2> 
-			<p class="product-detail-description">
-				<a href="/editproduct/<%=producto.id%>" class="editarLink">Editar Producto</a>
-				<a href="destroy/<%=producto.id%>" class="editarLink">Eliminar Producto</a>
-			</p>
-		</div>
-		<div class="product-detail">
-			<div class="row">
-				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/<%=producto.img_name%>" class="product-detail-img">
-					<p class="product-detail-description"><%=producto.product_name%>
-						<br>
-						<%=producto.product_name%>
-						<br>
-					Condición: <%=producto.condicion%>
-					</p>
-				</article>
-
-					
-				<div class="col-12 col-lg-4">
-					<section class="comments">
-						  
-						<article>
-							<img class="userphoto" src="" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="profile.html"></a> </strong></p>
-							</div>
-						</article>
-					
-					</section>
-					<form class="form" action="" method="POST">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-					</form>
-					<hr>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<%-include('./partials/footer')%>
-</body>	
->>>>>>> parent of 56ceccc... Cargar ptoducto
 </html>
