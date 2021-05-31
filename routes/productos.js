@@ -11,10 +11,13 @@ router.get('/search/:busqueda/:condicion/:orden', productController.search);
 
 router.get('/detalle/:id', productController.detalle);
 
-router.get('/newproduct/:id', productController.newProduct);
+router.post('detalle/destroy/:id', productController.destroy);
+
+router.get('/newproduct', productController.newProduct);
 router.post('/newproduct/post', productController.newProductPost);
 
 router.get('/editproduct/:id', productController.editProduct);
 router.post('/editproduct/post', productController.editProductPost);
  
 module.exports = router;
+
