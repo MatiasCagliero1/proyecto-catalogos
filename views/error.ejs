@@ -3,21 +3,26 @@
 <!-- Include Head -->
 
 <head>
-	<%-include('./partials/head')%>
-    <title> Oh! No enconramos la página</title>
-    <link rel="stylesheet" href="/stylesheets/error.css">
+    <%-include('./partials/head')%>
+        <title> Oh! No enconramos la página</title>
+        <link rel="stylesheet" href="/stylesheets/error.css">
 </head>
 
 <body>
-	<%-include('./partials/headerCompleto')%>
-    
-    <section class="allPage">
-    <h1>Página no encontrada</h1>
+    <% if(usuarioLogueado != null){ %>
+        <%-include("./partials/headerLogueado") %>
 
-    <p id="error404p">No hemos encontramos la página que buscás, ¡Prueba de nuevo!</p>
-    <p id="error404p">Tu error fue: <%= message %></p>
-    <a class="volveralign" href="/"><button class="volver">Volver a Inicio</button></a>
-    
-</section>
+            <% } else { %>
+                <%-include("./partials/headerDeslogueado")%>
+                    <%}%>
+                        <section class="allPage">
+                            <h1>Página no encontrada</h1>
+
+                            <p id="error404p">No hemos encontramos la página que buscás, ¡Prueba de nuevo!</p>
+                            <p id="error404p">Tu error fue:
+                                <%= message %>
+                            </p>
+                            <a class="volveralign" href="/"><button class="volver">Volver a Inicio</button></a>
+
+                        </section>
 </body>
-

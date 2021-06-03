@@ -13,56 +13,61 @@
 </head>
 
 <body>
-    <%-include("./partials/headerCompleto")%>
+    <% if(usuarioLogueado != null){ %>
+        <%-include("./partials/headerLogueado") %>
+
+            <% } else { %>
+                <%-include("./partials/headerDeslogueado")%>
+                    <%}%>
 
 
-        <!-- Novedades -->
-        <div class="container products-wrapper">
-            <div class="row">
-                <div class="col-12">
-                    <h1 class="products-title tituloLogIn">Ingresar</h1>
-                </div>
-                <!-- Show the "ultimos" products -->
+                        <!-- Novedades -->
+                        <div class="container products-wrapper">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h1 class="products-title tituloLogIn">Ingresar</h1>
+                                </div>
+                                <!-- Show the "ultimos" products -->
 
-                <!-- Formulario de logIn-->
-                <section class="conteiner">
-                    <form action="/users/login" method="POST">
-                        <section>
-                            <div>
-                                <label for="usuario">Nombre de Usuario:</label>
-                                <input type="text" name="usuario" id="nombre">
-                            </div>
-                            <div>
-                                <label for="contraseña">Contraseña:</label>
-                                <input type="password" name="password" id="password">
-                            </div>
-                            <div class="checkboxDiv">
-                                <label class="checkboxLabel" for="recordarme">Recordarme</label>
-                                <input class="checkbox" type="checkbox" id="recordarme" name="recordarme">
-
-
-                            </div>
-
-                            <div>
-                                <button type="submit" class="btn">Iniciar Sesión</button>
-                            </div>
+                                <!-- Formulario de logIn-->
+                                <section class="conteiner">
+                                    <form action="/users/login" method="POST">
+                                        <section>
+                                            <div>
+                                                <label for="usuario">Nombre de Usuario:</label>
+                                                <input type="text" name="usuario" id="nombre">
+                                            </div>
+                                            <div>
+                                                <label for="contraseña">Contraseña:</label>
+                                                <input type="password" name="password" id="password">
+                                            </div>
+                                            <div class="checkboxDiv">
+                                                <label class="checkboxLabel" for="recordarme">Recordarme</label>
+                                                <input class="checkbox" type="checkbox" id="recordarme" name="recordarme">
 
 
+                                            </div>
+
+                                            <div>
+                                                <button type="submit" class="btn">Iniciar Sesión</button>
+                                            </div>
 
 
 
 
 
-                        </section>
-                    </form>
-                    <div class="boton">
-                        <button class="btn"><a href="/users/registracion">No tengo una cuenta</a></button>
-                    </div>
-
-                </section>
 
 
-                <%-include("./partials/footer") %>
+                                        </section>
+                                    </form>
+                                    <div class="boton">
+                                        <button class="btn"><a href="/users/registracion">No tengo una cuenta</a></button>
+                                    </div>
+
+                                </section>
+
+
+                                <%-include("./partials/footer") %>
 </body>
 
 </html>
