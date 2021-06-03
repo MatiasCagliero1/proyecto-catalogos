@@ -36,7 +36,13 @@ var controladorUsuario = {
                     if (bcryptjs.compareSync(req.body.password, usuario.contraseña)) {
                         //guardo en session el usuario
                         req.session.usuarioIngresado = usuario
+
+                        //cookies
+                        if (req.body.recordarme) {
+                            res.cookie("userId", usuario.id, { maxAge: 1000 * 60 * 60 * 24 })
+                        }
                         return res.redirect("/")
+
                     } else {
                         return res.redirect("/users/login")
                     }
@@ -50,6 +56,11 @@ var controladorUsuario = {
     },
     edit: (req, res) => {
         return res.render("profile-edit")
+    },
+    logout: (req, res) => {
+        req.session.destroy()
+        res.cookie("userId", "", { maxAge: -1 })
+        return res.redirect("/")
     }
 
 

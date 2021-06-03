@@ -8,6 +8,7 @@ router.get("/registracion", controladorUsuario.registracion)
 router.post("/store", controladorUsuario.store)
 router.get("/login", controladorUsuario.logIn)
 router.post("/login", controladorUsuario.iniciar)
+router.get("/logout", controladorUsuario.logout)
 
 //Ruta pagina Profile - Profile-edit
 
