@@ -20,25 +20,28 @@ module.exports = {
             let condicion = req.params.condicion;
             let orden = req.params.orden;
 
-          
-            db.Producto.findAll(
-                /* Si no hay condicion anulo el where */
-                   {
-                       where: [{
 
-                               product_name: { [op.like]: `%${busqueda}%`},
-                               condicion: { [op.like]: condicion}
-                               
+            if (condicion == null) {
+
+            }
+
+            db.Producto.findAll()
+                /* Si no hay condicion anulo el where */
+                /*    ({
+                       where: [{
+                               product_name: { [op.like]: "%busqueda%"},
+                               condicion: { [op.like]: "condicion"}
                            }
+
                        ],
                        order: [
-                           ['product_name', orden],
+                           ['product_name', 'orden'],
 
                        ]
-                   })
+                   }) */
 
                 .then(producto => {
-                      return res.send(producto)
+                    //     return res.send(producto)
                     return res.render('search-results', {
                         producto,
                         busqueda,
@@ -79,9 +82,18 @@ module.exports = {
 
 
         newProduct: (req, res) => {
-        
-            return res.render('product-add')
-            
+
+            db.Producto.create({
+                    product_name: req.body.nombre,
+                    detalle: req.body.detalle,
+                    img_name: req.body.image,
+                    condicion: req.body.condicion,
+                    user_added: user_added,
+                })
+                .then(() => {
+                    return res.redirect('/profile');
+                })
+                .catch(error => console.log(error));
         },
 
         newProductPost: (req, res) => {
@@ -89,11 +101,10 @@ module.exports = {
             let user_added = 1;
 
             db.Producto.create({
-                product_name: req.body.nombre,
-                detalle: req.body.detalle,
-                img_name: req.body.image,
-                condicion: req.body.condicion,
-                user_added: user_added,
+                    product_name: req.body.nombre,
+                    detalle: req.body.detalle,
+                    img_name: req.body.image,
+                    condicion: req.body.condicion,
                 })
                 .then(() => {
                     return res.redirect('/profile');
@@ -103,15 +114,6 @@ module.exports = {
 
         editProduct: (req, res) => {
             let id = req.params.id;
-            let user_added = 1;
-
-            db.Producto.findByPk(id)
-            .then(producto => {
-                return res.send(producto);
-                return res.render('product-edit', {
-                    producto
-                })
-            })
 
             db.Producto.update({
                         product_name: req.body.nombre,
