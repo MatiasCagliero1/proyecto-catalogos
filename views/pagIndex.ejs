@@ -32,20 +32,20 @@
                                     <h2 class="products-title">Mas Vendidos</h2>
                                 </div>
                                 <!-- Show the "ultimos" products -->
-                                <% for(let i = 0; i < productosArray.length; i++){ %>
+                                <% for(let i = 0; i < respuesta.length; i++){ %>
                                     <div class="col-12 col-sm-6 col-lg-3">
                                         <section class="product-box">
 
-                                            <a href="/productos/detalle/<%= productosArray[i].id %>">
+                                            <a href="/productos/detalle/<%= respuesta[i].id %>">
                                                 <figure class="product-box_image">
-                                                    <img src="images/products/<%=productosArray[i].imagenSrc%> " alt="<%=productosArray[i].nombre%>">
+                                                    <img src="images/products/<%=respuesta[i].imgName%> " alt="<%=respuesta[i].product_name%>">
                                                 </figure>
                                                 <article class="product-box_data">
                                                     <h2>
-                                                        <%=productosArray[i].nombre %>
+                                                        <%=respuesta[i].product_name %>
                                                     </h2>
                                                     <p>Precio: $
-                                                        <%=productosArray[i].preciopor %>
+                                                        <%=respuesta[i].preciopor %>
                                                     </p>
 
                                                 </article>
@@ -67,20 +67,20 @@
                                     <h2 class="products-title">Oferta 2x1</h2>
                                 </div>
                                 <!-- Show the "ultimos" products -->
-                                <% for(let i = 0; i < productosArrayOfertas.length; i++){ %>
+                                <% for(let i = 0; i < respuesta.length; i++){ %>
                                     <div class="col-12 col-sm-6 col-lg-3">
                                         <section class="product-box">
 
-                                            <a href="/productos/detalle/<%=productosArrayOfertas[i].id %>">
+                                            <a href="/productos/detalle/<%=respuesta[i].id %>">
                                                 <figure class="product-box_image">
-                                                    <img src="images/products/<%=productosArrayOfertas[i].imagenSrc%> " alt="cafetera moulinex">
+                                                    <img src="images/products/<%=respuesta[i].imgName%> " alt=<%= respuesta[i].product_name %> >
                                                 </figure>
                                                 <article class="product-box_data">
                                                     <h2>
-                                                        <%=productosArrayOfertas[i].nombre %>
+                                                        <%=respuesta[i].product_name %>
                                                     </h2>
                                                     <p>Precio: $
-                                                        <%=productosArrayOfertas[i].preciopor %>
+                                                        <%=respuesta[i].preciopor %>
                                                     </p>
 
                                                 </article>

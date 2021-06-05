@@ -1,7 +1,15 @@
-
+const db = require('../database/models')
 
 module.exports = {
     index: (req, res) => {
-        return res.render("pagIndex")
+        db.Producto.findAll(/*{
+            order: [
+                ['']
+            ]
+        }*/)
+        .then(respuesta=>{
+            return res.render("pagIndex", {respuesta})
+        })
+        
     }
 }
