@@ -42,10 +42,10 @@ app.use(function(req, res, next) {
 app.use(cookieParser())
     //middleware para ver si el usuario puso recordarme
 app.use(function(req, res, next) {
-    if (req.cookies.userId != undefined && req.session.user === undefined) {
+    if (req.cookies.userId != undefined && req.session.usuarioIngresado === undefined) {
         db.Usuario.findByPk(req.cookies.userId)
             .then(user => {
-                req.session.user = user
+                req.session.usuarioIngresado = user
                 next()
 
             })
