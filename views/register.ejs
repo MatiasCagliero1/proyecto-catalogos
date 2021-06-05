@@ -16,57 +16,62 @@
 </head>
 
 <body>
-    <%-include("./partials/headerCompleto")%>
+    <% if(usuarioLogueado != null){ %>
+        <%-include("./partials/headerLogueado") %>
 
-        <!-- Novedades -->
-        <div class="container products-wrapper">
-            <div class="row">
-                <section class="conteiner">
-                    <div class="col-12">
-                        <h1 class="products-title tituloRegistrate">Registrate</h1>
-                    </div>
+            <% } else { %>
+                <%-include("./partials/headerDeslogueado")%>
+                    <%}%>
 
-                    <!-- formulario de registración-->
-                    <form class="formulario" action="/users/store" method="POST">
+                        <!-- Novedades -->
+                        <div class="container products-wrapper">
+                            <div class="row">
+                                <section class="conteiner">
+                                    <div class="col-12">
+                                        <h1 class="products-title tituloRegistrate">Registrate</h1>
+                                    </div>
 
-
-                        <div class="nombreApellido">
-                            <input type="text" placeholder="Nombre" name="nombre" id="name">
-                            <input type="text" placeholder="Apellido" name="apellido" id="lastname">
-                        </div>
-
-                        <div>
-                            <input placeholder="Email" type="email" name="email" id="email">
-                        </div>
-                        <div>
-                            <input type="text" placeholder="Usuario" name="usuario" id="username">
-                        </div>
-                        <div>
-                            <input type="password" placeholder="Contraseña" name="contraseña" id="password">
-                        </div>
-                        <div>
-                            <input type="date" placeholder="Fecha de nacimiento" name="nacimiento" id="birth">
-                        </div>
-                        <div>
-                            <button class="btn">Registrarme</button>
-
-                        </div>
+                                    <!-- formulario de registración-->
+                                    <form class="formulario" action="/users/store" method="POST">
 
 
+                                        <div class="nombreApellido">
+                                            <input type="text" placeholder="Nombre" name="nombre" id="name">
+                                            <input type="text" placeholder="Apellido" name="apellido" id="lastname">
+                                        </div>
+
+                                        <div>
+                                            <input placeholder="Email" type="email" name="email" id="email">
+                                        </div>
+                                        <div>
+                                            <input type="text" placeholder="Usuario" name="usuario" id="username">
+                                        </div>
+                                        <div>
+                                            <input type="password" placeholder="Contraseña" name="contraseña" id="password">
+                                        </div>
+                                        <div>
+                                            <input type="date" placeholder="Fecha de nacimiento" name="nacimiento" id="birth">
+                                        </div>
+                                        <div>
+                                            <button class="btn">Registrarme</button>
+
+                                        </div>
 
 
 
-                    </form>
 
-                    <div class="boton">
-                        <button class="btn "><a href="/users/login">Ya tengo cuenta</a></button>
-                    </div>
-                </section>
 
-                <!-- footer -->
-                <%-include("./partials/footer") %>
+                                    </form>
 
-                    <!-- /footer -->
+                                    <div class="boton">
+                                        <button class="btn "><a href="/users/login">Ya tengo cuenta</a></button>
+                                    </div>
+                                </section>
+
+                                <!-- footer -->
+                                <%-include("./partials/footer") %>
+
+                                    <!-- /footer -->
 </body>
 
 </html>

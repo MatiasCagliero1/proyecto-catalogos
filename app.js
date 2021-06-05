@@ -11,7 +11,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/productos');
 
-
+const db = require("./database/models")
 var app = express();
 
 //configuro session
@@ -36,6 +36,23 @@ app.use(function(req, res, next) {
     }
     return next()
 
+})
+
+//implementación de cookies
+app.use(cookieParser())
+    //middleware para ver si el usuario puso recordarme
+app.use(function(req, res, next) {
+    if (req.cookies.userId != undefined && req.session.usuarioIngresado === undefined) {
+        db.Usuario.findByPk(req.cookies.userId)
+            .then(user => {
+                req.session.usuarioIngresado = user
+                next()
+
+            })
+
+    } else {
+        next()
+    }
 })
 
 // view engine setup

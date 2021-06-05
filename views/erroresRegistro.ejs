@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <%-include("./partials/head") %>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+
+<body>
+    <% if(usuarioLogueado != null){ %>
+        <%-include("./partials/headerLogueado") %>
+
+            <% } else { %>
+                <%-include("./partials/headerDeslogueado")%>
+                    <%}%>
+                        <table class="table mt-5">
+                            <thead>
+                                <tr>
+                                    <th>Errores</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% errores.forEach(errores => { %>
+                                    <tr>
+                                        <td>
+                                            <%= errores %>
+                                        </td>
+
+                                    </tr>
+                                    <% }) ; %>
+
+
+                            </tbody>
+                        </table>
+                        <div class="boton">
+                            <button class="btn"><a href="/users/registracion">Volver a iniciar</a></button>
+                        </div>
+                        <%-include("./partials/footer") %>
+</body>
+
+</html>

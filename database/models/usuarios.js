@@ -24,6 +24,9 @@ module.exports = (sequelize, dataTypes) => {
         },
         nacimiento: {
             type: dataTypes.DATE
+        },
+        role: {
+            type: dataTypes.INTEGER
         }
 
     }

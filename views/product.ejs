@@ -2,61 +2,71 @@
 <html lang="es">
 
 <head>
-	<%-include('./partials/head')%>
+    <%-include('./partials/head')%>
 
-	<title><%=producto.product_name%> Detalle Producto</title>
+        <title>
+            <%=producto.product_name%> Detalle Producto</title>
 
-	<!-- Stylesheet Propios -->
-	<link rel="stylesheet" href="/stylesheets/product.css">
+        <!-- Stylesheet Propios -->
+        <link rel="stylesheet" href="/stylesheets/product.css">
 </head>
 
 <body>
-	<%-include('./partials/headerCompleto')%>
+    <% if(usuarioLogueado != null){ %>
+        <%-include("./partials/headerLogueado") %>
 
-	<!-- product detail -->
-	<div class="container products-wrapper">
-		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%=producto.product_name%></h2> 
-			<p class="product-detail-description">
-				<a href="/editproduct/<%=producto.id%>" class="editarLink">Editar Producto</a>
-				<a href="destroy/<%=producto.id%>" class="editarLink">Eliminar Producto</a>
-			</p>
-		</div>
-		<div class="product-detail">
-			<div class="row">
-				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="/images/products/<%=producto.img_name%>" class="product-detail-img">
-					<p class="product-detail-description"><%=producto.product_name%>
-						<br>
-						<%=producto.product_name%>
-						<br>
-					Condición: <%=producto.condicion%>
-					</p>
-				</article>
+            <% } else { %>
+                <%-include("./partials/headerDeslogueado")%>
+                    <%}%>
 
-					
-				<div class="col-12 col-lg-4">
-					<section class="comments">
-						  
-						<article>
-							<img class="userphoto" src="" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="profile.html"></a> </strong></p>
-							</div>
-						</article>
-					
-					</section>
-					<form class="form" action="" method="POST">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
-						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-					</form>
-					<hr>
-				</div>
-			</div>
-		</div>
-	</div>
+                        <!-- product detail -->
+                        <div class="container products-wrapper">
+                            <div class="d-flex align-items-center">
+                                <h2 class="products-title">
+                                    <%=producto.product_name%>
+                                </h2>
+                                <p class="product-detail-description">
+                                    <a href="/productos/editproduct/<%=producto.id%>" class="editarLink">Editar Producto</a>
+                                    <a href="/productos/destroy/<%=producto.id%>" class="editarLink">Eliminar Producto</a>
+                                </p>
+                            </div>
+                            <div class="product-detail">
+                                <div class="row">
+                                    <article class="col-12 col-lg-8 product-detail-info">
+                                        <img src="/images/products/<%=producto.img_name%>" class="product-detail-img">
+                                        <p class="product-detail-description">
+                                            <%=producto.product_name%>
+                                                <br>
+                                                <%=producto.product_name%>
+                                                    <br> Condición:
+                                                    <%=producto.condicion%>
+                                        </p>
+                                    </article>
 
-	<%-include('./partials/footer')%>
-</body>	
+
+                                    <div class="col-12 col-lg-4">
+                                        <section class="comments">
+
+                                            <article>
+                                                <img class="userphoto" src="" alt="">
+                                                <div class="data">
+                                                    <p class="user">
+                                                        <strong> <a href="profile.html"></a> </strong></p>
+                                                </div>
+                                            </article>
+
+                                        </section>
+                                        <form class="form" action="" method="POST">
+                                            <input class="form-input" type="text" value="" placeholder="Agregar comentario">
+                                            <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+                                        </form>
+                                        <hr>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <%-include('./partials/footer')%>
+</body>
+
 </html>

@@ -16,32 +16,36 @@ module.exports = {
         },
 
         search: (req, res) => {
-            let busqueda = req.params.busqueda;
+            let busqueda = req.query.search;
             let condicion = req.params.condicion;
             let orden = req.params.orden;
 
+     /* 
+            db.Usuario.findAll()
+            .then(usuario => {
+                return res.send(usuario)
 
-            if (condicion == null) {
-
-            }
-
-            db.Producto.findAll()
-                /* Si no hay condicion anulo el where */
-                /*    ({
-                       where: [{
-                               product_name: { [op.like]: "%busqueda%"},
-                               condicion: { [op.like]: "condicion"}
+            }) */
+            
+            db.Producto.findAll(
+                
+                /* Si no hay condicion anulo el where con mensaje*/
+                {
+                       where: [{ product_name: { [op.like]: `%${busqueda}%`},
                            }
 
                        ],
-                       order: [
-                           ['product_name', 'orden'],
+                   /*     order: [
 
-                       ]
-                   }) */
+                           [ 'product_name', `${orden}`]
+
+                       ] */
+                   }
+                   )
 
                 .then(producto => {
-                    //     return res.send(producto)
+               
+                    
                     return res.render('search-results', {
                         producto,
                         busqueda,
@@ -49,6 +53,7 @@ module.exports = {
                         orden
                     })
                 })
+                
 
         },
 

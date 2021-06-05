@@ -140,7 +140,19 @@ color: rgb(106, 106, 106);
     font-weight: 500;
 }
 
+.sinResultados{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.sinResultados h5{
+font-size: 2em;
+font-weight: 500;
+}
 
 @media (max-width: 768px) {
 
