@@ -23,15 +23,15 @@
                             <div class="mainAddAll">
                                 <h2 class="maintitle">Editar un producto</h2>
 
-                                <form action="/productos/newproduct/post" method="post">
+                                <form action="/productos/editproduct/post/<%id%>" method="post">
 
                                     <div class="allform">
                                         <div class="eachform">
-                                            <input id="campotitulo" type="text" name="nombre" placeholder="Nombre del plato" required>
+                                            <input value='<%producto.product_name%>' id="campotitulo" type="text" name="nombre" placeholder="Nombre del plato" required>
                                         </div>
 
                                         <div class="eachform">
-                                            <textarea name="detalle" id="" cols="30" rows="10" placeholder="Descripción del plato" required></textarea>
+                                            <textarea value='<%producto.detalle%>' name="detalle" id="" cols="30" rows="10" placeholder="Descripción del plato" required></textarea>
                                         </div>
 
                                         <div class="eachform">
