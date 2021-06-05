@@ -20,14 +20,9 @@ module.exports = {
             let condicion = req.params.condicion;
             let orden = req.params.orden;
 
-
-            if (condicion == null) {
-
-            }
-
             db.Producto.findAll()
                 /* Si no hay condicion anulo el where */
-                /*    ({
+                ({
                        where: [{
                                product_name: { [op.like]: "%busqueda%"},
                                condicion: { [op.like]: "condicion"}
@@ -38,7 +33,7 @@ module.exports = {
                            ['product_name', 'orden'],
 
                        ]
-                   }) */
+                   }) 
 
                 .then(producto => {
                     //     return res.send(producto)
