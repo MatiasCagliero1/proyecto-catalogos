@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <%-include("./partials/head") %>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+
+<body>
+    <% if(usuarioLogueado != null){ %>
+        <%-include("./partials/headerLogueado") %>
+
+            <% } else { %>
+                <%-include("./partials/headerDeslogueado")%>
+                    <%}%>
+                        <table class="table mt-5">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre del Producto</th>
+                                    <th>Ver</th>
+                                    <th>Editar</th>
+                                    <th>Borrar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% productos.forEach(productos => { %>
+                                    <tr>
+                                        <td>
+                                            <%= productos.id %>
+                                        </td>
+                                        <td>
+                                            <%= productos.product_name%>
+                                        </td>
+                                        <td>
+                                            <a href="/users/admin/detailProducto/<%= productos.id%>">
+                                                <i class="far fa-eye"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/users/admin/editProducto/<%= productos.id%>">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="/users/admin/deleteProducto/<%= productos.id%>">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <% }) ; %>
+
+
+                            </tbody>
+                        </table>
+                        <%-include("./partials/footer") %>
+</body>
+
+</html>
