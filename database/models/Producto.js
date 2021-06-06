@@ -27,6 +27,12 @@ module.exports = (sequelize, dataTypes) => {
         user_added: {
             type: dataTypes.BOOLEAN,
             allowNull: false
+        },
+        createdAt: {
+            type: dataTypes.DATE,
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
         }
 
     }
