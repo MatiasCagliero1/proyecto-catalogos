@@ -27,7 +27,7 @@
         <h2>Ordenar por:</h2>
         <ul>
             <li><a href="/productos/search/<%=busqueda%>/<%=condicionNumber%>/ASC">Más Reciente</a></li>
-            <li><a href="/productos/search/<%=busqueda%>/<%=condicionNumber%>/DES">Más Antiguo</a></li>
+            <li><a href="/productos/search/<%=busqueda%>/<%=condicionNumber%>/DESC">Más Antiguo</a></li>
         </ul>
     </div>
 
@@ -55,6 +55,8 @@
             <%if (producto.length > 0 ){ %>
                 
             <% producto.forEach(element => {%>
+
+                <% if (condicionNumber !== 0 && condicionNumber == element.condicion) {%>
 
             <a href="/productos/detalle/<%=element.id%>">
                 <div class="product">
@@ -91,12 +93,52 @@
 
                         <%     break;
                 
-                    }%>
-                        
-
+                    }%>      
                 </div>
             </a>
-            <% }) %>
+
+            <% } if (condicionNumber == 0) { %>
+
+                <a href="/productos/detalle/<%=element.id%>">
+                    <div class="product">
+                        <div class="fotos"> <img src="/images/products/<%=element.img_name%>">
+                        </div>
+                        <h3>
+                            <%=element.product_name%>
+                        </h3>
+                        <h6>Por
+                            <%=element.user_added%>
+                        </h6>
+                        <!-- Te trae el id, no el nombre -->
+                        
+                            <%
+                            switch (element.condicion) {
+    
+                                case '1':%>
+                              <h6>Vegetariano</h6>
+    
+                               <%     break;
+                        
+                            case '2':%>
+                            <h6>Vegano</h6>
+    
+                             <%     break;
+                     
+                          case '3':%>
+                          <h6>Sin TACC</h6>
+    
+                           <%     break;
+    
+                          default:%>
+                           <h6>Normal</h6>
+    
+                            <%     break;
+                    
+                        }%>      
+                    </div>
+                </a>
+
+            <%} }) %>
 
             <% } else { %>
             <div class="sinResultados">

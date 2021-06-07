@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+
 const multer = require('multer');
 const path = require('path');
 
@@ -7,7 +8,7 @@ var storage = multer.diskStorage({
 
   destination: (req, file, cb) => {
 
-    cb(null, 'public/img/productosFile')
+    cb(null,path.resolve(__dirname,'../public/images/productosFile'))
 
   },
 
@@ -18,7 +19,7 @@ var storage = multer.diskStorage({
   }
 })
 
-var upload = multer({storage: storage});
+var upload = multer({storage});
 
 // Requiriendo Search - Detalle - Product Add
 var productController = require('../controllers/productController');
@@ -33,26 +34,30 @@ router.get('/detalle/:id', productController.detalle);
 router.get('/destroy/:id', productController.destroy);
 
 router.get('/newproduct', productController.newProduct);
-router.post('/newproduct/post', upload.single('ProductoImg'), productController.newProductPost);
+router.post('/newproduct/post', upload.single('img_name'), productController.newProductPost);
 
 router.get('/editproduct/:id', productController.editProduct);
-router.post('/editproduct/post', upload.single('ProductoImg'), productController.editProductPost);
+router.post('/editproduct/post', upload.single('img_name'), productController.editProductPost);
 
 
 
 module.exports = router;
 
-
 //No me carga el value en el edit product para mandarlo al post
-//IF condicion == 0  sacar where condition en search
+
 //Como saco el id del producto que mando en newProductPost
-//Multer
-//Llamar a varias bases de datos, como hago el fetch?
 
 
 
-
+//IF condicion == 0  sacar where condition en search
 
 //If el producto es del usuraio aparece editar y eliminar 
 
 //Se borro bien o mail el producto? . Hacer verificacion
+
+
+/* 
+
+  
+  
+*/

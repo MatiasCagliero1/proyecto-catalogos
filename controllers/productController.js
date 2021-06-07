@@ -25,50 +25,39 @@ module.exports = {
         let paramSearch = req.params.busqueda;
 
         if (QuerySearch == undefined || QuerySearch == '') {
-            var busqueda  = paramSearch
-        }else{ 
-            var busqueda  = QuerySearch
+            var busqueda = paramSearch
+        } else {
+            var busqueda = QuerySearch
         }
 
         let condicionNumber = req.params.condicion;
         let orden = req.params.orden;
 
-        /* llamar a los comentarios
-               db.Usuario.findAll()
-               .then(usuario => {
-                   return res.send(usuario)
+        let usuario = db.Usuario.findAll()
+        let producto = db.Producto.findAll(
 
-               }) */
-
-        db.Producto.findAll(
-
-                {
-                    where: [{
-                            product_name: {
-                                [op.like]: `%${busqueda}%`
-                            },
-                           //IF condicion == 0  sacar condition
-                                condicion: {
-                                    [op.like]: `${condicionNumber}`
-                                }
-                    
-
+            {
+                where: [{
+                        product_name: {
+                            [op.like]: `%${busqueda}%`
                         }
+                    }
 
-                    ],
-                    /* order: [
+                ],
+                 /*  order: [
 
-                         [ 'product_name', `${orden}`]
+                      [ 'product_name', `${orden}`]
 
-                     ]  */
-                }
-            )
+                  ]   */
+            }
+        )
 
-            .then(producto => {
+        Promise.all([producto])
 
-
+            .then(([producto]) => {
 
                 return res.render('search-results', {
+
                     producto,
                     busqueda,
                     condicionNumber,
@@ -81,12 +70,13 @@ module.exports = {
 
     detalle: (req, res) => {
         let id = req.params.id;
-        db.Producto.findByPk(id)
-            .then(producto => {
-                //return res.send(producto);
-                return res.render('product', {
-                    producto
-                })
+        let producto = db.Producto.findByPk(id)
+
+        Promise.all([producto])
+
+        .then(([producto]) => {
+
+                return res.render('product', {producto})
             })
     },
 
@@ -114,10 +104,11 @@ module.exports = {
         //Saco del session el id de usuario
         let user_added = 1;
 
+
         db.Producto.create({
                 product_name: req.body.nombre,
                 detalle: req.body.detalle,
-                img_name: req.body.image,
+                img_name: req.file ? req.file.filename : '',
                 condicion: req.body.condicion,
                 user_added: user_added,
             })

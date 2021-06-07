@@ -4,69 +4,98 @@
 <head>
     <%-include('./partials/head')%>
 
-        <title>
-            <%=producto.product_name%> Detalle Producto</title>
+    <title>
+        <%=producto.product_name%> Detalle Producto</title>
 
-        <!-- Stylesheet Propios -->
-        <link rel="stylesheet" href="/stylesheets/product.css">
+    <!-- Stylesheet Propios -->
+    <link rel="stylesheet" href="/stylesheets/product.css">
 </head>
 
 <body>
     <% if(usuarioLogueado != null){ %>
-        <%-include("./partials/headerLogueado") %>
+    <%-include("./partials/headerLogueado") %>
 
-            <% } else { %>
-                <%-include("./partials/headerDeslogueado")%>
-                    <%}%>
+    <% } else { %>
+    <%-include("./partials/headerDeslogueado")%>
+    <%}%>
 
                         <!-- product detail -->
                         <div class="container products-wrapper">
                             <div class="d-flex align-items-center">
                                 <h2 class="products-title">
                                     <%=producto.product_name%>
-                                </h2>
-                                <p class="product-detail-description">
-                                    <a href="/productos/editproduct/<%=producto.id%>" class="editarLink">Editar Producto</a>
-                                    <a href="/productos/destroy/<%=producto.id%>" class="editarLink">Eliminar Producto</a>
-                                </p>
-                            </div>
-                            <div class="product-detail">
-                                <div class="row">
-                                    <article class="col-12 col-lg-8 product-detail-info">
-                                        <img src="/images/products/<%=producto.img_name%>" class="product-detail-img">
-                                        <p class="product-detail-description">
-                                            <%=producto.product_name%>
-                                                <br>
-                                                <%=producto.product_name%>
-                                                    <br> Condición:
-                                                    <%=producto.condicion%>
-                                        </p>
-                                    </article>
+    </h2>
+
+    <% if(usuarioLogueado != null){ %>
+    <p class="product-detail-description">
+        <a href="/productos/editproduct/<%=producto.id%>" class="editarLink">Editar Producto</a>
+        <a href="/productos/destroy/<%=producto.id%>" class="editarLink">Eliminar Producto</a>
+    </p>
+
+    <% } %>
 
 
-                                    <div class="col-12 col-lg-4">
-                                        <section class="comments">
+    </div>
+    <div class="product-detail">
+        <div class="row">
+            <article class="col-12 col-lg-8 product-detail-info">
+                <img src="/images/productosFile/<%=producto.img_name%>" class="product-detail-img">
+                <p class="product-detail-description">
+                    <%=producto.product_name%>
+                    <br>
+                    <%=producto.detalle%>
+                    <br>
+                Condición: <%
+                switch (producto.condicion) {
 
-                                            <article>
-                                                <img class="userphoto" src="" alt="">
-                                                <div class="data">
-                                                    <p class="user">
-                                                        <strong> <a href="profile.html"></a> </strong></p>
-                                                </div>
-                                            </article>
+                    case '1':%>
+                Vegetariano
 
-                                        </section>
-                                        <form class="form" action="" method="POST">
-                                            <input class="form-input" type="text" value="" placeholder="Agregar comentario">
-                                            <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-                                        </form>
-                                        <hr>
-                                    </div>
-                                </div>
-                            </div>
+                <%     break;
+            
+                case '2':%>
+                Vegano
+
+                <%     break;
+         
+              case '3':%>
+                Sin TACC
+
+                <%     break;
+
+              default:%>
+                Normal
+
+                <%     break;
+        
+            }%> </p>
+
+            </article>
+
+
+            <div class="col-12 col-lg-4">
+                <section class="comments">
+
+                    <article>
+                        <img class="userphoto" src="" alt="">
+                        <div class="data">
+                            <p class="user">
+                                <strong> <a href="profile.html"></a> </strong></p>
                         </div>
+                    </article>
 
-                        <%-include('./partials/footer')%>
+                </section>
+                <form class="form" action="" method="POST">
+                    <input class="form-input" type="text" value="" placeholder="Agregar comentario">
+                    <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+                </form>
+                <hr>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <%-include('./partials/footer')%>
 </body>
 
 </html>
