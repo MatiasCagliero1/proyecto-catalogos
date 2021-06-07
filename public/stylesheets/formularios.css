@@ -47,6 +47,16 @@ form input {
     font-size: 15px;
 }
 
+.errores {
+    text-align: center;
+    width: 50%;
+    margin: 1% auto;
+}
+
+.botonerror {
+    width: 50%;
+}
+
 .checkboxDiv {
     margin: 2% 0;
 }
