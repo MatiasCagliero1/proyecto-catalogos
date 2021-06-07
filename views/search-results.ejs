@@ -26,8 +26,8 @@
     <div class="orden">
         <h2>Ordenar por:</h2>
         <ul>
-            <li><a href="/productos/search/<%=busqueda%>/<%=condicion%>/ASC">Más Reciente</a></li>
-            <li><a href="/productos/search/<%=busqueda%>/<%=condicion%>/DES">Más Antiguo</a></li>
+            <li><a href="/productos/search/<%=busqueda%>/<%=condicionNumber%>/ASC">Más Reciente</a></li>
+            <li><a href="/productos/search/<%=busqueda%>/<%=condicionNumber%>/DES">Más Antiguo</a></li>
         </ul>
     </div>
 
@@ -41,9 +41,10 @@
                     <Ul>
                         <li class="black">Clasificación</a>
                         </li>
-                        <li><a href="/productos/search/<%=busqueda%>/vegetariano/<%=orden%>">Vegetariano</a></li>
-                        <li><a href="/productos/search/<%=busqueda%>/vegano/<%=orden%>">Vegano</a></li>
-                        <li><a href="/productos/search/<%=busqueda%>/sintacc/<%=orden%>">Sin TACC</a></li>
+                        <li><a href="/productos/search/<%=busqueda%>/0/<%=orden%>">Todos</a></li>
+                        <li><a href="/productos/search/<%=busqueda%>/1/<%=orden%>">Vegetariano</a></li>
+                        <li><a href="/productos/search/<%=busqueda%>/2/<%=orden%>">Vegano</a></li>
+                        <li><a href="/productos/search/<%=busqueda%>/3/<%=orden%>">Sin TACC</a></li>
                     </Ul>
                 </li>
             </ul>
@@ -66,9 +67,32 @@
                         <%=element.user_added%>
                     </h6>
                     <!-- Te trae el id, no el nombre -->
-                    <h6>
-                        <%=element.condicion%>
-                    </h6>
+                    
+                        <%
+                        switch (element.condicion) {
+
+                            case '1':%>
+                          <h6>Vegetariano</h6>
+
+                           <%     break;
+                    
+                        case '2':%>
+                        <h6>Vegano</h6>
+
+                         <%     break;
+                 
+                      case '3':%>
+                      <h6>Sin TACC</h6>
+
+                       <%     break;
+
+                      default:%>
+                       <h6>Normal</h6>
+
+                        <%     break;
+                
+                    }%>
+                        
 
                 </div>
             </a>

@@ -11,6 +11,13 @@
         <title>Register</title>
 
         <!-- UIkit JS -->
+        <!-- UIkit CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/css/uikit.min.css" />
+
+        <!-- UIkit JS -->
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/js/uikit.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/js/uikit-icons.min.js"></script>
+
 
 
 </head>
@@ -22,56 +29,71 @@
             <% } else { %>
                 <%-include("./partials/headerDeslogueado")%>
                     <%}%>
+                        <% if (locals.errores != null){ %>
+                            <div class="errores">
+                                Errores</div>
+                            <% for (let index = 0; index < errores.length; index++) {
+                                const cadaError = errores[index];%>
 
-                        <!-- Novedades -->
-                        <div class="container products-wrapper">
-                            <div class="row">
-                                <section class="conteiner">
-                                    <div class="col-12">
-                                        <h1 class="products-title tituloRegistrate">Registrate</h1>
-                                    </div>
+                                <div class="errores">
+                                    <button class="uk-button uk-button-default demo  uk-button-large uk-button-danger botonerror " type="button" onclick="UIkit.notification({message: 'Corriga su error para continuar', status: 'warning'})"><%=cadaError %> </button>
+                                </div>
 
-                                    <!-- formulario de registración-->
-                                    <form class="formulario" action="/users/store" method="POST">
-
-
-                                        <div class="nombreApellido">
-                                            <input type="text" placeholder="Nombre" name="nombre" id="name">
-                                            <input type="text" placeholder="Apellido" name="apellido" id="lastname">
-                                        </div>
-
-                                        <div>
-                                            <input placeholder="Email" type="email" name="email" id="email">
-                                        </div>
-                                        <div>
-                                            <input type="text" placeholder="Usuario" name="usuario" id="username">
-                                        </div>
-                                        <div>
-                                            <input type="password" placeholder="Contraseña" name="contraseña" id="password">
-                                        </div>
-                                        <div>
-                                            <input type="date" placeholder="Fecha de nacimiento" name="nacimiento" id="birth">
-                                        </div>
-                                        <div>
-                                            <button class="btn">Registrarme</button>
-
-                                        </div>
+                                <% } %>
 
 
 
 
+                                    <%  } %>
+                                        <!-- Novedades -->
+                                        <div class="container products-wrapper">
+                                            <div class="row">
+                                                <section class="conteiner">
+                                                    <div class="col-12">
+                                                        <h1 class="products-title tituloRegistrate">Registrate</h1>
+                                                    </div>
 
-                                    </form>
+                                                    <!-- formulario de registración-->
+                                                    <form class="formulario" action="/users/store" method="POST">
 
-                                    <div class="boton">
-                                        <button class="btn "><a href="/users/login">Ya tengo cuenta</a></button>
-                                    </div>
-                                </section>
 
-                                <!-- footer -->
-                                <%-include("./partials/footer") %>
+                                                        <div class="nombreApellido">
+                                                            <input type="text" placeholder="Nombre" name="nombre" id="name">
+                                                            <input type="text" placeholder="Apellido" name="apellido" id="lastname">
+                                                        </div>
 
-                                    <!-- /footer -->
+                                                        <div>
+                                                            <input placeholder="Email" type="email" name="email" id="email">
+                                                        </div>
+                                                        <div>
+                                                            <input type="text" placeholder="Usuario" name="usuario" id="username">
+                                                        </div>
+                                                        <div>
+                                                            <input type="password" placeholder="Contraseña" name="contraseña" id="password">
+                                                        </div>
+                                                        <div>
+                                                            <input type="date" placeholder="Fecha de nacimiento" name="nacimiento" id="birth">
+                                                        </div>
+                                                        <div>
+                                                            <button class="btn">Registrarme</button>
+
+                                                        </div>
+
+
+
+
+
+                                                    </form>
+
+                                                    <div class="boton">
+                                                        <button class="btn "><a href="/users/login">Ya tengo cuenta</a></button>
+                                                    </div>
+                                                </section>
+
+                                                <!-- footer -->
+                                                <%-include("./partials/footer") %>
+
+                                                    <!-- /footer -->
 </body>
 
 </html>
