@@ -27,13 +27,19 @@ module.exports = (sequelize, dataTypes) => {
         },
         role: {
             type: dataTypes.INTEGER
+        },
+        createdAt: {
+            type: dataTypes.DATE
+        },
+        updatedAt: {
+            type: dataTypes.DATE
         }
 
     }
     let config = {
         tableName: "usuarios",
-        timestamps: false,
-        underscored: true,
+        timestamps: true,
+        underscored: false,
     }
 
     const Usuario = sequelize.define(alias, cols, config);
