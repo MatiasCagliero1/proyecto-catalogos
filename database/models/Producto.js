@@ -23,7 +23,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
             allowNull: false
         },
-        user_added: {
+        userAdded: {
             type: dataTypes.BOOLEAN,
             allowNull: false
         },
@@ -39,7 +39,7 @@ module.exports = (sequelize, dataTypes) => {
     let config = {
         tableName: "productos",
         timestamps: true,
-        underscored: true,
+        underscored: false,
     }
 
     const Producto = sequelize.define(alias, cols, config);

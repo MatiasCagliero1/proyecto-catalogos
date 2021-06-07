@@ -33,8 +33,6 @@ INSERT INTO `usuarios` VALUES (1,'agostina','cervio','agos@hotmail.com','agosCer
 UNLOCK TABLES;
 
 
-
-
 --
 -- Table structure for table `productos`
 --
@@ -45,16 +43,16 @@ DROP TABLE IF EXISTS `productos`;
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(255) NOT NULL,
-  `img_name` varchar(255) NOT NULL,
+  `img_name` varchar(255) DEFAULT,
   `detalle` varchar(255) NOT NULL,
   `condicion` varchar(255) NOT NULL,
-  `user_added` int(11) NOT NULL,
-  `createdAt` date NOT NULL,
+  `userAdded` int(11) NOT NULL,
+  `createAt` date NOT NULL,
   `updatedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_95407dd7-28ee-46dc-92a8-7956bc8217b5` (`user_added`),
   CONSTRAINT `FK_95407dd7-28ee-46dc-92a8-7956bc8217b5` FOREIGN KEY (`user_added`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

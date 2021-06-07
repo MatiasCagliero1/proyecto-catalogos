@@ -40,7 +40,6 @@ router.get('/editproduct/:id', productController.editProduct);
 router.post('/editproduct/post', upload.single('img_name'), productController.editProductPost);
 
 
-
 module.exports = router;
 
 //No me carga el value en el edit product para mandarlo al post
