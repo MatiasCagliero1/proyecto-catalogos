@@ -6,57 +6,60 @@
 
     <%-include('./partials/head')%>
 
-        <!-- Stylesheet Propios -->
-        <link rel="stylesheet" href="/stylesheets/product-add.css">
+    <!-- Stylesheet Propios -->
+    <link rel="stylesheet" href="/stylesheets/product-add.css">
 </head>
 
 <body>
     <% if(usuarioLogueado != null){ %>
-        <%-include("./partials/headerLogueado") %>
+    <%-include("./partials/headerLogueado") %>
 
-            <% } else { %>
-                <%-include("./partials/headerDeslogueado")%>
-                    <%}%>
+    <% } else { %>
+    <%-include("./partials/headerDeslogueado")%>
+    <%}%>
 
                         <div class="maincontainer">
 
                             <div class="mainAddAll">
                                 <h2 class="maintitle">Editar un producto</h2>
 
-                                <form action="/productos/editproduct/post/<%id%>" method="post">
+                                <form action="/productos/editproduct/post" method="post">
 
-                                    <div class="allform">
-                                        <div class="eachform">
-                                            <input value='<%producto.product_name%>' id="campotitulo" type="text" name="nombre" placeholder="Nombre del plato" required>
-                                        </div>
+    <div class="allform">
+        <div class="eachform">
+            <input type="text" id="idP" minlength="30" name="id" value='<%producto.id%>'>
+            <input value='<%producto.product_name%>' id="campotitulo" type="text" name="nombre"
+                placeholder="Nombre del plato" required>
+        </div>
 
-                                        <div class="eachform">
-                                            <textarea value='<%producto.detalle%>' name="detalle" id="" cols="30" rows="10" placeholder="Descripción del plato" required></textarea>
-                                        </div>
+        <div class="eachform">
+            <textarea value='<%producto.detalle%>' name="detalle" id="" cols="30" rows="10"
+                placeholder="Descripción del plato" required></textarea>
+        </div>
 
-                                        <div class="eachform">
-                                            <select name="condicion" id="" value="1">
-                            <option value="">Seleccionar</option>
-                            <option value="">Sin TACC</option>
-                            <option value="">Vegetariano</option>
-                            <option value="">Vegano</option>
-                        </select>
-                                        </div>
+        <div class="eachform">
+            <select name="condicion" id="" value="1">
+                <option value="">Seleccionar</option>
+                <option value="">Sin TACC</option>
+                <option value="">Vegetariano</option>
+                <option value="">Vegano</option>
+            </select>
+        </div>
 
-                                        <div class="eachform">
-                                            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" required>
-                                        </div>
+        <div class="eachform">
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" required>
+        </div>
 
-                                    </div>
+    </div>
 
-                                    <button class="cargarform" type="submit">Guardar y Continuar</button>
-                                </form>
+    <button class="cargarform" type="submit">Guardar y Continuar</button>
+    </form>
 
-                            </div>
+    </div>
 
 
-                        </div>
-                        <%-include('./partials/footer')%>
+    </div>
+    <%-include('./partials/footer')%>
 </body>
 
 </html>

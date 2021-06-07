@@ -39,6 +39,9 @@
     margin: 1.4em 0em;
 }
 
+#idP{
+    display: none;
+}
 
 #campotitulo {
     width: 100%;
