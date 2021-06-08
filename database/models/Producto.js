@@ -13,8 +13,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         img_name: {
-            type: dataTypes.STRING,
-            allowNull: false
+            type: dataTypes.STRING
         },
         detalle: {
             type: dataTypes.STRING,
@@ -24,7 +23,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
             allowNull: false
         },
-        user_added: {
+        userAdded: {
             type: dataTypes.BOOLEAN,
             allowNull: false
         },

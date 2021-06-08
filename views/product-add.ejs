@@ -23,12 +23,12 @@
                             <div class="mainAddAll">
                                 <h2 class="maintitle">Agregar Nuevo producto</h2>
 
-                                <form action="/productos/newproduct/post" method="post">
+                                <form action="/productos/newproduct/post" method="post" enctype="multipart/form-data">
 
     <div class="allform">
         <div class="eachform">
             <input type="text" id="idP" name="id" >
-            <input id="campotitulo" minlength="30" type="text" name="nombre"
+            <input id="campotitulo" maxlength="30" type="text" name="nombre"
                 placeholder="Nombre del plato" required>
         </div>
 
@@ -47,8 +47,9 @@
         </div>
 
         <div class="eachform">
-            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" required>
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="img_name">
         </div>
+
 
     </div>
 

@@ -165,7 +165,10 @@ var controladorUsuario = {
 
     },
     perfil: (req, res) => {
-        return res.render("profile", { productos })
+        db.Producto.findAll()
+        .then(respuesta=>{
+            return res.render('profile', {respuesta})
+        })
     },
     edit: (req, res) => {
         return res.render("profile-edit")
