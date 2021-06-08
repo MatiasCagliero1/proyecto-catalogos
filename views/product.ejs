@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    
     <% if(usuarioLogueado != null){ %>
     <%-include("./partials/headerLogueado") %>
 
@@ -19,20 +20,34 @@
     <%-include("./partials/headerDeslogueado")%>
     <%}%>
 
+    <%  if (mensajeBack == 'actualizado') {%>
+        <div class="alignMensaje">
+       <h3 class="actualizado">El producto se ha actualizado correctamente</h3>
+    </div>
+        <%}%>
+
+        <% if ( mensajeBack == 'creado') {%>
+            <div class="alignMensaje">
+            <h3 class="creado">El producto se ha creado correctamente</h3>
+        </div>
+    } 
+
+    <%}%>
+
                         <!-- product detail -->
-                        <div class="container products-wrapper">
+                        <div class="container products-wrapper contenedor">
                             <div class="d-flex align-items-center">
                                 <h2 class="products-title">
                                     <%=producto.product_name%>
     </h2>
 
-    <% if(usuarioLogueado != null){ %>
+    <% // if(usuarioLogueado != null){ %>
     <p class="product-detail-description">
         <a href="/productos/editproduct/<%=producto.id%>" class="editarLink">Editar Producto</a>
         <a href="/productos/destroy/<%=producto.id%>" class="editarLink">Eliminar Producto</a>
     </p>
 
-    <% } %>
+    <% //} %>
 
 
     </div>

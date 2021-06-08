@@ -72,11 +72,22 @@ module.exports = {
         let id = req.params.id;
         let producto = db.Producto.findByPk(id)
 
+        let mensaje = req.query.mensaje;
+
+        if (mensaje == 'actualizadoBien') {
+            mensajeBack = 'actualizado';
+        }if (mensaje == 'creadoBien') {
+            mensajeBack = 'creado';
+        }else{
+            mensajeBack = 0;
+        }
+        
         Promise.all([producto])
 
         .then(([producto]) => {
+            //return res.send (req.session.usuarioIngresado)
 
-                return res.render('product', {producto})
+                return res.render('product', {producto, mensajeBack})
             })
     },
 
@@ -90,7 +101,7 @@ module.exports = {
             })
 
             .then(producto => {
-                //return res.send(producto);
+            
                 return res.redirect('/')
             })
     },
@@ -103,28 +114,28 @@ module.exports = {
     newProductPost: (req, res) => {
         //Saco del session el id de usuario
         let user_added = 1;
-
+        //req.session.usuarioIngresado.id
 
         db.Producto.create({
                 product_name: req.body.nombre,
                 detalle: req.body.detalle,
                 img_name: req.file ? req.file.filename : '',
                 condicion: req.body.condicion,
-                user_added: user_added,
+                userAdded:user_added ,
             })
-            .then(() => {
-                // Como saco el id?
-                return res.redirect('/productos/detalle/2');
+            .then(producto => {
+            
+                return res.redirect(`/productos/detalle/${producto.id}?mensaje=creadoBien`);
             })
             .catch(error => console.log(error));
     },
 
     editProduct: (req, res) => {
         let id = req.params.id;
-        let user_added = 1;
-
+       
         db.Producto.findByPk(id)
-            .then(producto => {
+       
+        .then(producto => {
                 return res.render('product-edit', {
                     producto,
                     id
@@ -135,18 +146,21 @@ module.exports = {
     editProductPost: (req, res) => {
         let id = req.params.id;
 
+        let user_added = 1;
+
         db.Producto.update({
                 product_name: req.body.nombre,
                 detalle: req.body.detalle,
                 img_name: req.body.image,
                 condicion: req.body.condicion,
+                user_added: user_added,
             }, {
                 where: {
                     id: id
                 }
             })
-            .then(() => {
-                return res.redirect('/productos');
+            .then(product => {
+                return res.redirect(`/productos/detalle/${product.id}?mensaje=actualizadoBien`);
             })
             .catch(error => console.log(error));
 

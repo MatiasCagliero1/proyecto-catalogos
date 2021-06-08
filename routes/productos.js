@@ -30,7 +30,6 @@ router.get('/', productController.index);
 router.get('/search/:busqueda/:condicion/:orden', productController.search);
 
 router.get('/detalle/:id', productController.detalle);
-
 router.get('/destroy/:id', productController.destroy);
 
 router.get('/newproduct', productController.newProduct);
@@ -42,21 +41,8 @@ router.post('/editproduct/post', upload.single('img_name'), productController.ed
 
 module.exports = router;
 
-//No me carga el value en el edit product para mandarlo al post
+//No anda el order sequialize en search
 
-//Como saco el id del producto que mando en newProductPost
+//No anda el value en product-edit
 
-
-
-//IF condicion == 0  sacar where condition en search
-
-//If el producto es del usuraio aparece editar y eliminar 
-
-//Se borro bien o mail el producto? . Hacer verificacion
-
-
-/* 
-
-  
-  
-*/
+//If el usuario es administrador, aparece editar y eliminar -- Preguntar a Agos

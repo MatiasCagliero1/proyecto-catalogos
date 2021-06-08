@@ -1,5 +1,6 @@
 const db = require("../database/models")
 const bcryptjs = require("bcryptjs")
+
 var controladorUsuario = {
     registracion: (req, res) => {
         if (req.session.usuarioIngresado != null) {
@@ -8,18 +9,17 @@ var controladorUsuario = {
             return res.render("register")
         }
 
-
     },
+
     store: (req, res) => {
         //let flag = true
         // let form = req.body
         // return res.send(form)
         let errores = {}
-            //let erroresVarios = []
+        //let erroresVarios = []
         if (req.body.nombre === "") {
 
             errores.nombre = "Nombre"
-
 
         }
 
@@ -80,11 +80,15 @@ var controladorUsuario = {
 
         }
         let registrado = ""
-            //console.log(errores.email + "----------")
-            //console.log(errores.email + "------------")
-            // console.log(errores.email + "-------------")
+        //console.log(errores.email + "----------")
+        //console.log(errores.email + "------------")
+        // console.log(errores.email + "-------------")
         if (Object.keys(errores).length == 0) {
-            db.Usuario.findOne({ where: [{ email: req.body.email, }] })
+            db.Usuario.findOne({
+                    where: [{
+                        email: req.body.email,
+                    }]
+                })
                 .then(usuarioEmail => {
                     if (usuarioEmail != null) {
                         registrado = "email ya registrado"
@@ -103,7 +107,7 @@ var controladorUsuario = {
                             })
                             .then(usuario => {
                                 console.log(usuario + "-----------")
-                                    //guardo en session el usuario
+                                //guardo en session el usuario
                                 req.session.usuarioIngresado = usuario
                                 return res.redirect("/")
 
@@ -118,8 +122,6 @@ var controladorUsuario = {
 
             //return res.send(res.locals.errores)
             return res.render("register")
-
-
 
         }
 
@@ -136,7 +138,11 @@ var controladorUsuario = {
     iniciar: (req, res) => {
 
         let erroresLogin = {}
-        db.Usuario.findOne({ where: [{ email: req.body.email }] })
+        db.Usuario.findOne({
+                where: [{
+                    email: req.body.email
+                }]
+            })
             .then(usuario => {
                 if (usuario == null) {
                     erroresLogin.email = "Usted no tiene cuenta con ese email"
@@ -149,7 +155,9 @@ var controladorUsuario = {
 
                         //cookies
                         if (req.body.recordarme) {
-                            res.cookie("userId", usuario.id, { maxAge: 1000 * 60 * 60 * 24 })
+                            res.cookie("userId", usuario.id, {
+                                maxAge: 1000 * 60 * 60 * 24
+                            })
                         }
                         return res.redirect("/")
 
@@ -166,16 +174,20 @@ var controladorUsuario = {
     },
     perfil: (req, res) => {
         db.Producto.findAll()
-        .then(respuesta=>{
-            return res.render('profile', {respuesta})
-        })
+            .then(respuesta => {
+                return res.render('profile', {
+                    respuesta
+                })
+            })
     },
     edit: (req, res) => {
         return res.render("profile-edit")
     },
     logout: (req, res) => {
         req.session.destroy()
-        res.cookie("userId", "", { maxAge: -1 })
+        res.cookie("userId", "", {
+            maxAge: -1
+        })
         return res.redirect("/")
     },
     adminProductos: (req, res) => {
@@ -184,8 +196,10 @@ var controladorUsuario = {
         if (req.session.usuarioIngresado.role === 3) {
             db.Producto.findAll()
                 .then(productos => {
-                    return res.render("adminProductos", { productos })
-                        //return res.send(productos)
+                    return res.render("adminProductos", {
+                        productos
+                    })
+                    //return res.send(productos)
                 })
                 .catch(error => error)
 
@@ -204,8 +218,10 @@ var controladorUsuario = {
         if (req.session.usuarioIngresado.role === 3) {
             db.Usuario.findAll()
                 .then(usuarios => {
-                    return res.render("adminUsuarios", { usuarios })
-                        //return res.send(usuarios)
+                    return res.render("adminUsuarios", {
+                        usuarios
+                    })
+                    //return res.send(usuarios)
                 })
 
         } else {

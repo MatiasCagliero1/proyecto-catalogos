@@ -6,30 +6,64 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.editarLink{
+.editarLink {
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
-color: rgb(12, 44, 172);
-font-weight: 500;
-text-transform: uppercase;
+    color: rgb(12, 44, 172);
+    font-weight: 500;
+    text-transform: uppercase;
 
 }
 
 .product-detail-description {
     width: 100%;
-padding: 0%;
+    padding: 0%;
 }
 
-.editarLink:hover{
+.editarLink:hover {
     color: #0b9af3;
-    }
+}
 
-.userphoto{
+.userphoto {
     object-fit: cover;
 }
 
-.main-footer{
+.main-footer {
     margin-top: 0em !important;
     padding: 0% !important;
+}
+
+.alignMensaje {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.actualizado {
+    width: 80%;
+    background-color: rgb(42, 204, 18);
+    color: black;
+    padding: 0.3em;
+    font-size: 2em;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.creado {
+    width: 80%;
+    background-color: rgb(42, 204, 18);
+    color: black;
+    padding: 0.3em;
+    font-size: 2em;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.contenedor {
+    margin-top: 0em !important;
 }
