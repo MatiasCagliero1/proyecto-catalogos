@@ -47,6 +47,14 @@ form input {
     font-size: 15px;
 }
 
+.file {
+    border-radius: 50%;
+}
+
+.filelabel {
+    margin: 0 30%;
+}
+
 .errores {
     text-align: center;
     width: 50%;
