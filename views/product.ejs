@@ -14,10 +14,13 @@
 <body>
     
     <% if(usuarioLogueado != null){ %>
+
     <%-include("./partials/headerLogueado") %>
 
     <% } else { %>
+
     <%-include("./partials/headerDeslogueado")%>
+    
     <%}%>
 
     <%  if (mensajeBack == 'actualizado') {%>
