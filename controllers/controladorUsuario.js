@@ -1,5 +1,6 @@
 const db = require("../database/models")
 const bcryptjs = require("bcryptjs")
+
 var controladorUsuario = {
     registracion: (req, res) => {
         if (req.session.usuarioIngresado != null) {
@@ -8,28 +9,25 @@ var controladorUsuario = {
             return res.render("register")
         }
 
-
     },
+
     store: (req, res) => {
         //let flag = true
         // let form = req.body
         // return res.send(form)
-        let errores = []
+        let errores = {}
+        //let erroresVarios = []
         if (req.body.nombre === "") {
 
-            errores.push("El nombre no puede estar vacío")
-
+            errores.nombre = "Nombre"
 
         }
 
         if (req.body.apellido === "") {
-            errores.push("Su apellido no puede estar vacío")
+            errores.apellido = "Apellido"
 
         }
-        if (req.body.email === "") {
-            errores.push("Su email no puede estar vacío")
-
-        } //else {
+        //else {
 
         // db.Usuario.findOne({ where: [{ email: req.body.email }] })
         //.then(emailRegistrado => {
@@ -62,57 +60,71 @@ var controladorUsuario = {
 
 
         if (req.body.usuario === "") {
-            errores.push("Su usuario no puede estar vacío")
+            errores.usuario = "Su usuario no puede estar vacío"
 
         }
         if (req.body.contraseña === "") {
-            errores.push("Su contraseña no puede estar vacío")
+            errores.contraseña = "Su contraseña no puede estar vacío"
 
         }
         if (req.body.contraseña.length <= 3) {
-            errores.push("Su contraseña debe contar con al menos 3 caracteres")
+            errores.contraseñaExtensión = "Su contraseña debe contar con al menos 3 caracteres"
 
         }
         if (req.body.nacimiento === "") {
-            errores.push("Su fecha de nacimiento no puede estar vacío")
+            errores.nacimiento = "Su fecha de nacimiento no puede estar vacío"
 
         }
+        if (req.body.email === "") {
+            errores.email = "Su email no puede estar vacío"
 
-        db.Usuario.findOne({ where: [{ email: req.body.email, }] })
-            .then(email => {
-                if (email != null) {
-                    errores.push("email ya registrado")
+        }
+        let registrado = ""
+        //console.log(errores.email + "----------")
+        //console.log(errores.email + "------------")
+        // console.log(errores.email + "-------------")
+        if (Object.keys(errores).length == 0) {
+            db.Usuario.findOne({
+                    where: [{
+                        email: req.body.email,
+                    }]
+                })
+                .then(usuarioEmail => {
+                    if (usuarioEmail != null) {
+                        registrado = "email ya registrado"
+                        res.locals.registrado = registrado
+                        return res.render("login")
+                    } else {
+
+                        console.log("kjfskfdskldakafkld")
+                        db.Usuario.create({
+                                nombre: req.body.nombre,
+                                apellido: req.body.apellido,
+                                email: req.body.email,
+                                usuario: req.body.usuario,
+                                contraseña: bcryptjs.hashSync(req.body.contraseña, 10),
+                                nacimiento: req.body.nacimiento
+                            })
+                            .then(usuario => {
+                                console.log(usuario + "-----------")
+                                //guardo en session el usuario
+                                req.session.usuarioIngresado = usuario
+                                return res.redirect("/")
 
 
-
-                }
-                if (email == null && errores.length === 0) {
-                    db.Usuario.create({
-                            nombre: req.body.nombre,
-                            apellido: req.body.apellido,
-                            email: req.body.email,
-                            usuario: req.body.usuario,
-                            contraseña: bcryptjs.hashSync(req.body.contraseña, 10),
-                            nacimiento: req.body.nacimiento
-                        })
-                        .then(usuario => {
-                            //guardo en session el usuario
-                            req.session.usuarioIngresado = usuario
-                            return res.redirect("/")
-                        })
-                        .catch(error => console.log(error))
-
-                } else {
-                    res.locals.errores = errores
-                    return res.render("register")
-                }
-            })
-        if (errores.length != 0) {
+                            })
+                            .catch(error => console.log(error))
+                    }
+                })
+        } else {
+            //res.locals.erroresVarios = erroresVarios
             res.locals.errores = errores
+
+            //return res.send(res.locals.errores)
             return res.render("register")
 
-
         }
+
     },
     logIn: (req, res) => {
         if (req.session.usuarioIngresado != null) {
@@ -124,12 +136,18 @@ var controladorUsuario = {
 
     },
     iniciar: (req, res) => {
-        let recordarme = req.body.recordarme
 
-        db.Usuario.findOne({ where: [{ usuario: req.body.usuario }] })
+        let erroresLogin = {}
+        db.Usuario.findOne({
+                where: [{
+                    email: req.body.email
+                }]
+            })
             .then(usuario => {
                 if (usuario == null) {
-                    return res.redirect("/users/registracion")
+                    erroresLogin.email = "Usted no tiene cuenta con ese email"
+                    res.locals.erroresLogin = erroresLogin
+                    return res.render("login")
                 } else {
                     if (bcryptjs.compareSync(req.body.password, usuario.contraseña)) {
                         //guardo en session el usuario
@@ -137,14 +155,19 @@ var controladorUsuario = {
 
                         //cookies
                         if (req.body.recordarme) {
-                            res.cookie("userId", usuario.id, { maxAge: 1000 * 60 * 60 * 24 })
+                            res.cookie("userId", usuario.id, {
+                                maxAge: 1000 * 60 * 60 * 24
+                            })
                         }
                         return res.redirect("/")
 
                     } else {
-                        return res.redirect("/users/login")
+                        erroresLogin.contraseña = "Contraseña Incorrecta"
+                        res.locals.erroresLogin = erroresLogin
+                        return res.render("login")
                     }
                 }
+
             })
             .catch(error => console.log(error))
 
@@ -158,6 +181,11 @@ var controladorUsuario = {
         .then(usuario=>{
             return res.render('profile', {usuario})
         }))
+            .then(respuesta => {
+                return res.render('profile', {
+                    respuesta
+                })
+            })
     },
     edit: (req,res) =>{
         res.render('profile-edit')
@@ -179,7 +207,9 @@ var controladorUsuario = {
     },
     logout: (req, res) => {
         req.session.destroy()
-        res.cookie("userId", "", { maxAge: -1 })
+        res.cookie("userId", "", {
+            maxAge: -1
+        })
         return res.redirect("/")
     },
     adminProductos: (req, res) => {
@@ -188,8 +218,10 @@ var controladorUsuario = {
         if (req.session.usuarioIngresado.role === 3) {
             db.Producto.findAll()
                 .then(productos => {
-                    return res.render("adminProductos", { productos })
-                        //return res.send(productos)
+                    return res.render("adminProductos", {
+                        productos
+                    })
+                    //return res.send(productos)
                 })
                 .catch(error => error)
 
@@ -208,8 +240,10 @@ var controladorUsuario = {
         if (req.session.usuarioIngresado.role === 3) {
             db.Usuario.findAll()
                 .then(usuarios => {
-                    return res.render("adminUsuarios", { usuarios })
-                        //return res.send(usuarios)
+                    return res.render("adminUsuarios", {
+                        usuarios
+                    })
+                    //return res.send(usuarios)
                 })
 
         } else {

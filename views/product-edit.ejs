@@ -27,22 +27,22 @@
 
     <div class="allform">
         <div class="eachform">
-            <input type="text" id="idP" maxlength="30" name="id" value='<%producto.id%>'>
-            <input value='<%producto.product_name%>' id="campotitulo" type="text" name="nombre"
+            <input type="text" id="idP" maxlength="30" name="id" value='<%=producto.id%>'>
+            <input value="<%=producto.product_name%>" id="campotitulo" type="text" name="nombre"
                 placeholder="Nombre del plato" required>
         </div>
 
         <div class="eachform">
-            <textarea value='<%producto.detalle%>' name="detalle" id="" cols="30" rows="10"
+            <textarea value="<%=producto.detalle%>" name="detalle" id="" cols="30" rows="10"
                 placeholder="Descripción del plato" required></textarea>
         </div>
 
         <div class="eachform">
-            <select name="condicion" id="" value="1">
-                <option value="">Seleccionar</option>
-                <option value="">Sin TACC</option>
-                <option value="">Vegetariano</option>
-                <option value="">Vegano</option>
+            <select name="condicion" id="" value='<%producto.condicion%>'>
+                <option value="0">Seleccionar</option>
+                <option value="1">Sin TACC</option>
+                <option value="2">Vegetariano</option>
+                <option value="3">Vegano</option>
             </select>
         </div>
 

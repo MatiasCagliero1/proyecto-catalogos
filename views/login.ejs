@@ -6,6 +6,13 @@
     <%-include("./partials/head") %>
         <link rel="stylesheet" href="/stylesheets/formularios.css">
         <script src="/js/logIn.js"></script>
+        <!-- UIkit JS -->
+        <!-- UIkit CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/css/uikit.min.css" />
+
+        <!-- UIkit JS -->
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/js/uikit.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/js/uikit-icons.min.js"></script>
         <title>LogIn</title>
 
 
@@ -19,38 +26,58 @@
             <% } else { %>
                 <%-include("./partials/headerDeslogueado")%>
                     <%}%>
-
-
-                        <!-- Novedades -->
-                        <div class="container products-wrapper">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h1 class="products-title tituloLogIn">Ingresar</h1>
+                        <% if (locals.registrado != null){ %>
+                            <div class="errores uk-animation-toggle">
+                                <div>
+                                    <button class="uk-button uk-button-default demo  uk-button-large uk-button-danger botonerror uk-animation-shake " type="button" onclick="UIkit.notification({message: 'Corriga su error para continuar', status: 'warning'})"><%=locals.registrado %> </button>
                                 </div>
-                                <!-- Show the "ultimos" products -->
 
-                                <!-- Formulario de logIn-->
-                                <section class="conteiner">
-                                    <form action="/users/login" method="POST">
-                                        <section>
-                                            <div>
-                                                <label for="usuario">Nombre de Usuario:</label>
-                                                <input type="text" name="usuario" id="nombre">
-                                            </div>
-                                            <div>
-                                                <label for="contraseña">Contraseña:</label>
-                                                <input type="password" name="password" id="password">
-                                            </div>
-                                            <div class="checkboxDiv">
-                                                <label class="checkboxLabel" for="recordarme">Recordarme</label>
-                                                <input class="checkbox" type="checkbox" id="recordarme" name="recordarme">
+                            </div>
 
+                            <% } %>
 
+                                <% if (locals.erroresLogin != null){ %>
+                                    <div class="container products-wrapper">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h1 class="products-title tituloLogIn">Ingresar</h1>
                                             </div>
 
-                                            <div>
-                                                <button type="submit" class="btn">Iniciar Sesión</button>
-                                            </div>
+                                            <!-- Show the "ultimos" products -->
+
+                                            <!-- Formulario de logIn-->
+                                            <section class="conteiner">
+                                                <form action="/users/login" method="POST">
+                                                    <section>
+                                                        <div class=" uk-animation-toggle">
+                                                            <label for="email">Email</label>
+                                                            <%if (erroresLogin.email){ %>
+                                                                <input class="uk-animation-shake uk-button-danger" placeholder="<%=erroresLogin.email%> " type="text" name="email" id="email">
+
+                                                                <%} else { %>
+                                                                    <input type="text" name="email" id="email">
+                                                                    <%} %>
+
+                                                        </div>
+                                                        <div class=" uk-animation-toggle">
+                                                            <label for="contraseña">Contraseña:</label>
+                                                            <%if(erroresLogin.contraseña){ %>
+                                                                <input class="uk-animation-shake uk-button-danger" placeholder="<%=erroresLogin.contraseña%> " type="password" name="password" id="password">
+                                                                <%} else { %>
+                                                                    <input type="password" name="password" id="password">
+                                                                    <% } %>
+
+                                                        </div>
+                                                        <div class="checkboxDiv">
+                                                            <label class="checkboxLabel" for="recordarme">Recordarme</label>
+                                                            <input class="checkbox" type="checkbox" id="recordarme" name="recordarme">
+
+
+                                                        </div>
+
+                                                        <div>
+                                                            <button type="submit" class="btn">Iniciar Sesión</button>
+                                                        </div>
 
 
 
@@ -58,16 +85,71 @@
 
 
 
-                                        </section>
-                                    </form>
-                                    <div class="boton">
-                                        <button class="btn"><a href="/users/registracion">No tengo una cuenta</a></button>
-                                    </div>
+                                                    </section>
+                                                </form>
+                                                <div class="boton">
+                                                    <button class="btn"><a href="/users/registracion">No tengo una cuenta</a></button>
+                                                </div>
 
-                                </section>
+                                            </section>
 
 
-                                <%-include("./partials/footer") %>
+
+
+
+                                            <!--<div class="errores">
+                                <button class="uk-button uk-button-default demo  uk-button-large uk-button-danger botonerror " type="button" onclick="UIkit.notification({message: 'Corriga su error para continuar', status: 'warning'})"><%=erroresLogin %> </button>
+                            </div>-->
+
+                                            <% } else {%>
+                                                <!-- Novedades -->
+                                                <div class="container products-wrapper">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <h1 class="products-title tituloLogIn">Ingresar</h1>
+                                                        </div>
+                                                        <!-- Show the "ultimos" products -->
+
+                                                        <!-- Formulario de logIn-->
+                                                        <section class="conteiner">
+                                                            <form action="/users/login" method="POST">
+                                                                <section>
+                                                                    <div>
+                                                                        <label for="email">Email</label>
+                                                                        <input type="text" name="email" id="email">
+                                                                    </div>
+                                                                    <div>
+                                                                        <label for="contraseña">Contraseña:</label>
+                                                                        <input type="password" name="password" id="password">
+                                                                    </div>
+                                                                    <div class="checkboxDiv">
+                                                                        <label class="checkboxLabel" for="recordarme">Recordarme</label>
+                                                                        <input class="checkbox" type="checkbox" id="recordarme" name="recordarme">
+
+
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <button type="submit" class="btn">Iniciar Sesión</button>
+                                                                    </div>
+
+
+
+
+
+
+
+                                                                </section>
+                                                            </form>
+                                                            <div class="boton">
+                                                                <button class="btn"><a href="/users/registracion">No tengo una cuenta</a></button>
+                                                            </div>
+
+                                                        </section>
+                                                        <%  } %>
+
+
+                                                            <%-include("./partials/footer") %>
 </body>
 
 </html>

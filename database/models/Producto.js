@@ -24,7 +24,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         userAdded: {
-            type: dataTypes.BOOLEAN,
+            type: dataTypes.INTEGER,
             allowNull: false
         },
         createdAt: {
