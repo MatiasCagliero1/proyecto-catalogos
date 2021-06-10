@@ -16,7 +16,7 @@ var controladorUsuario = {
         // let form = req.body
         // return res.send(form)
         let errores = {}
-        //let erroresVarios = []
+            //let erroresVarios = []
         if (req.body.nombre === "") {
 
             errores.nombre = "Nombre"
@@ -80,9 +80,9 @@ var controladorUsuario = {
 
         }
         let registrado = ""
-        //console.log(errores.email + "----------")
-        //console.log(errores.email + "------------")
-        // console.log(errores.email + "-------------")
+            //console.log(errores.email + "----------")
+            //console.log(errores.email + "------------")
+            // console.log(errores.email + "-------------")
         if (Object.keys(errores).length == 0) {
             db.Usuario.findOne({
                     where: [{
@@ -93,7 +93,7 @@ var controladorUsuario = {
                     if (usuarioEmail != null) {
                         registrado = "email ya registrado"
                         res.locals.registrado = registrado
-                        return res.render("login")
+                        return res.render("register")
                     } else {
 
                         console.log("kjfskfdskldakafkld")
@@ -107,7 +107,7 @@ var controladorUsuario = {
                             })
                             .then(usuario => {
                                 console.log(usuario + "-----------")
-                                //guardo en session el usuario
+                                    //guardo en session el usuario
                                 req.session.usuarioIngresado = usuario
                                 return res.redirect("/")
 
@@ -221,9 +221,9 @@ var controladorUsuario = {
             db.Producto.findAll()
                 .then(productos => {
                     return res.render("adminProductos", {
-                        productos
-                    })
-                    //return res.send(productos)
+                            productos
+                        })
+                        //return res.send(productos)
                 })
                 .catch(error => error)
 
@@ -243,9 +243,9 @@ var controladorUsuario = {
             db.Usuario.findAll()
                 .then(usuarios => {
                     return res.render("adminUsuarios", {
-                        usuarios
-                    })
-                    //return res.send(usuarios)
+                            usuarios
+                        })
+                        //return res.send(usuarios)
                 })
 
         } else {

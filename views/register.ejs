@@ -29,122 +29,131 @@
             <% } else { %>
                 <%-include("./partials/headerDeslogueado")%>
                     <%}%>
+                        <% if (locals.registrado != null){ %>
+                            <div class="errores uk-animation-toggle">
+                                <div>
+                                    <button class="uk-button uk-button-default demo  uk-button-large uk-button-danger botonerror uk-animation-shake " type="button" onclick="UIkit.notification({message: 'Corriga su error para continuar', status: 'warning'})"><%=locals.registrado %> </button>
+                                </div>
 
+                            </div>
 
-                        <!-- Novedades -->
-                        <div class="container products-wrapper">
-                            <div class="row">
-                                <section class="conteiner">
-                                    <div class="col-12">
-                                        <h1 class="products-title tituloRegistrate">Registrate</h1>
-                                    </div>
+                            <% } %>
 
-                                    <!-- formulario de registración-->
-                                    <form class="formulario" action="/users/store" method="POST">
-                                        <% if (locals.errores != null && locals.errores.apellido != null && locals.errores.nombre){%>
-                                            <div class="nombreApellido uk-animation-toggle">
-
-                                                <input class="uk-animation-shake uk-button-danger" type="text" placeholder="<%= locals.errores.nombre %> " name="nombre" id="name">
-                                                <input class="uk-animation-shake uk-button-danger" type="text" placeholder=<%=locals.errores.apellido %> name="apellido" id="lastname">
+                                <!-- Novedades -->
+                                <div class="container products-wrapper">
+                                    <div class="row">
+                                        <section class="conteiner">
+                                            <div class="col-12">
+                                                <h1 class="products-title tituloRegistrate">Registrate</h1>
                                             </div>
 
 
-                                            <% } else {%>
+                                            <!-- formulario de registración-->
+                                            <form class="formulario" action="/users/store" method="POST">
+                                                <% if (locals.errores != null && locals.errores.apellido != null && locals.errores.nombre){%>
+                                                    <div class="nombreApellido uk-animation-toggle">
 
-                                                <div class="nombreApellido">
-                                                    <input type="text" placeholder="Nombre" name="nombre" id="name">
-                                                    <input type="text" placeholder="Apellido" name="apellido" id="lastname">
-                                                </div>
-                                                <%} %>
-                                                    <%if( locals.errores != null  ){
-                                                        if (errores.email) { %>
-                                                        <div class="uk-animation-toggle">
+                                                        <input class="uk-animation-shake uk-button-danger" type="text" placeholder="<%= locals.errores.nombre %> " name="nombre" id="name">
+                                                        <input class="uk-animation-shake uk-button-danger" type="text" placeholder=<%=locals.errores.apellido %> name="apellido" id="lastname">
+                                                    </div>
 
-                                                            <input class="uk-animation-shake uk-button-danger" placeholder="<%= locals.errores.email %> " type="email" name="email" id="email">
+
+                                                    <% } else {%>
+
+                                                        <div class="nombreApellido">
+                                                            <input type="text" placeholder="Nombre" name="nombre" id="name">
+                                                            <input type="text" placeholder="Apellido" name="apellido" id="lastname">
                                                         </div>
+                                                        <%} %>
+                                                            <%if( locals.errores != null  ){
+                                                        if (errores.email) { %>
+                                                                <div class="uk-animation-toggle">
 
-                                                        <% } else if (errores.registrado){%>
-                                                            <div class="uk-animation-toggle">
-                                                                <input class="uk-animation-shake uk-button-danger" placeholder="<%=errores.registrado%>" type="email" name="email" id="email">
-                                                            </div>
-
-
-                                                            <% } if( errores.email == null && errores.registrado == null){%>
-                                                                <div>
-                                                                    <input placeholder="Email" type="email" name="email" id="email">
+                                                                    <input class="uk-animation-shake uk-button-danger" placeholder="<%= locals.errores.email %> " type="email" name="email" id="email">
                                                                 </div>
 
-                                                                <%} } else {%>
-                                                                    <div>
-                                                                        <input placeholder="Email" type="email" name="email" id="email">
+                                                                <% } else if (errores.registrado){%>
+                                                                    <div class="uk-animation-toggle">
+                                                                        <input class="uk-animation-shake uk-button-danger" placeholder="<%=errores.registrado%>" type="email" name="email" id="email">
                                                                     </div>
-                                                                    <%}%>
 
 
+                                                                    <% } if( errores.email == null && errores.registrado == null){%>
+                                                                        <div>
+                                                                            <input placeholder="Email" type="email" name="email" id="email">
+                                                                        </div>
 
-                                                                        <%if(locals.errores && locals.errores.usuario){%>
-                                                                            <div class="uk-animation-toggle">
-
-                                                                                <input class="uk-animation-shake uk-button-danger" type="text" placeholder="<%=locals.errores.usuario%> " name="usuario" id="username">
+                                                                        <%} } else {%>
+                                                                            <div>
+                                                                                <input placeholder="Email" type="email" name="email" id="email">
                                                                             </div>
-
-                                                                            <% } else{ %>
-                                                                                <div>
-                                                                                    <input type="text" placeholder="Usuario" name="usuario" id="username">
-                                                                                </div>
-                                                                                <%} %>
+                                                                            <%}%>
 
 
-                                                                                    <%if( locals.errores && locals.errores.contraseña){%>
-                                                                                        <div class="uk-animation-toggle">
 
-                                                                                            <input class="uk-animation-shake uk-button-danger" type="password" placeholder="<%=locals.errores.contraseña%> " name="contraseña" id="password">
+                                                                                <%if(locals.errores && locals.errores.usuario){%>
+                                                                                    <div class="uk-animation-toggle">
+
+                                                                                        <input class="uk-animation-shake uk-button-danger" type="text" placeholder="<%=locals.errores.usuario%> " name="usuario" id="username">
+                                                                                    </div>
+
+                                                                                    <% } else{ %>
+                                                                                        <div>
+                                                                                            <input type="text" placeholder="Usuario" name="usuario" id="username">
                                                                                         </div>
+                                                                                        <%} %>
 
-                                                                                        <% } else if ( locals.errores &&locals.errores.contraseña == null && locals.errores.contraseñaExtensión != null){%>
-                                                                                            <div class="uk-animation-toggle">
-                                                                                                <input class="uk-animation-shake uk-button-danger" type="password" placeholder="<%=locals.errores.contraseñaExtensión%> " name="contraseña" id="password">
-                                                                                            </div>
 
-                                                                                            <%}else{ %>
-                                                                                                <div>
-                                                                                                    <input type="password" placeholder="Contraseña" name="contraseña" id="password">
+                                                                                            <%if( locals.errores && locals.errores.contraseña){%>
+                                                                                                <div class="uk-animation-toggle">
+
+                                                                                                    <input class="uk-animation-shake uk-button-danger" type="password" placeholder="<%=locals.errores.contraseña%> " name="contraseña" id="password">
                                                                                                 </div>
-                                                                                                <%} %>
 
-                                                                                                    <%if( locals.errores &&locals.errores.nacimiento){%>
-                                                                                                        <div class="uk-animation-toggle">
+                                                                                                <% } else if ( locals.errores &&locals.errores.contraseña == null && locals.errores.contraseñaExtensión != null){%>
+                                                                                                    <div class="uk-animation-toggle">
+                                                                                                        <input class="uk-animation-shake uk-button-danger" type="password" placeholder="<%=locals.errores.contraseñaExtensión%> " name="contraseña" id="password">
+                                                                                                    </div>
 
-                                                                                                            <input class="uk-animation-shake uk-button-danger" type="date" placeholder="<%=locals.errores.nacimiento%> " name="nacimiento" id="birth">
+                                                                                                    <%}else{ %>
+                                                                                                        <div>
+                                                                                                            <input type="password" placeholder="Contraseña" name="contraseña" id="password">
                                                                                                         </div>
+                                                                                                        <%} %>
 
-                                                                                                        <% }else{ %>
-                                                                                                            <div>
-                                                                                                                <input type="date" placeholder="Fecha de nacimiento" name="nacimiento" id="birth">
-                                                                                                            </div>
-                                                                                                            <%} %>
+                                                                                                            <%if( locals.errores &&locals.errores.nacimiento){%>
+                                                                                                                <div class="uk-animation-toggle">
 
-                                                                                                                <div>
-                                                                                                                    <button class="btn">Registrarme</button>
-
+                                                                                                                    <input class="uk-animation-shake uk-button-danger" type="date" placeholder="<%=locals.errores.nacimiento%> " name="nacimiento" id="birth">
                                                                                                                 </div>
 
+                                                                                                                <% }else{ %>
+                                                                                                                    <div>
+                                                                                                                        <input type="date" placeholder="Fecha de nacimiento" name="nacimiento" id="birth">
+                                                                                                                    </div>
+                                                                                                                    <%} %>
+
+                                                                                                                        <div>
+                                                                                                                            <button class="btn">Registrarme</button>
+
+                                                                                                                        </div>
 
 
 
 
-                                    </form>
 
-                                    <div class="boton">
-                                        <button class="btn "><a href="/users/login">Ya tengo cuenta</a></button>
-                                    </div>
-                                </section>
+                                            </form>
+
+                                            <div class="boton">
+                                                <button class="btn "><a href="/users/login">Ya tengo cuenta</a></button>
+                                            </div>
+                                        </section>
 
 
-                                <!-- footer -->
-                                <%-include("./partials/footer") %>
+                                        <!-- footer -->
+                                        <%-include("./partials/footer") %>
 
-                                    <!-- /footer -->
+                                            <!-- /footer -->
 </body>
 
 </html>
