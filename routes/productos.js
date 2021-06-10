@@ -47,3 +47,6 @@ module.exports = router;
 //No anda el value en product-edit
 
 //If el usuario es administrador, aparece editar y eliminar -- Preguntar a Agos
+
+
+//

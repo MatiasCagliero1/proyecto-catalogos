@@ -5,11 +5,11 @@ module.exports = {
 
     // El metodo index lleva a la ruta / llevando los productos ordenados
     index: (req, res) => {
-        if (req.session.usuarioIngresado === null || req.session.usuarioIngresado === undefined) {
+/*         if (req.session.usuarioIngresado === null || req.session.usuarioIngresado === undefined) {
             return res.send('req.session.usuarioIngresado')
         } else {
             return res.send(req.session.usuarioIngresado)
-        }
+        } */
 
         db.Producto.findAll({
 

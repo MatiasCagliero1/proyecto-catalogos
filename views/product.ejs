@@ -44,10 +44,12 @@
                                     <%=producto.product_name%>
     </h2>
 
+
     <% // if(usuarioLogueado != null){ %>
+        
     <p class="product-detail-description">
-        <a href="/productos/editproduct/<%=producto.id%>" class="editarLink">Editar Producto</a>
-        <a href="/productos/destroy/<%=producto.id%>" class="editarLink">Eliminar Producto</a>
+        <button href="/productos/editproduct/<%=producto.id%>" class="editarLink">Editar Producto</button>
+        <button onclick="alerta()" class="editarLink">Eliminar Producto</button> 
     </p>
 
     <% //} %>
@@ -114,6 +116,7 @@
     </div>
 
     <%-include('./partials/footer')%>
+    <script src="/js/producto.js"></script>
 </body>
 
 </html>
