@@ -1,6 +1,7 @@
 const db = require("../database/models")
 const bcryptjs = require("bcryptjs")
 
+
 var controladorUsuario = {
     registracion: (req, res) => {
         if (req.session.usuarioIngresado != null) {
@@ -95,9 +96,8 @@ var controladorUsuario = {
                         res.locals.registrado = registrado
                         return res.render("register")
                     } else {
-
-                        console.log("kjfskfdskldakafkld")
                         db.Usuario.create({
+                                imgUsuario: req.file.filename,
                                 nombre: req.body.nombre,
                                 apellido: req.body.apellido,
                                 email: req.body.email,
@@ -106,8 +106,8 @@ var controladorUsuario = {
                                 nacimiento: req.body.nacimiento
                             })
                             .then(usuario => {
-                                console.log(usuario + "-----------")
-                                    //guardo en session el usuario
+
+                                //guardo en session el usuario
                                 req.session.usuarioIngresado = usuario
                                 return res.redirect("/")
 
@@ -174,38 +174,37 @@ var controladorUsuario = {
     },
     perfil: (req, res) => {
         db.Producto.findAll()
-        .then(respuesta=>{
-            return res.render('profile', {respuesta})
-        },
-        db.Usuario.findAll()
-        .then(usuario=>{
-            return res.render('profile', {usuario})
-        }))
+            .then(respuesta => {
+                    return res.render('profile', { respuesta })
+                },
+                db.Usuario.findAll()
+                .then(usuario => {
+                    return res.render('profile', { usuario })
+                }))
             .then(respuesta => {
                 return res.render('profile', {
                     respuesta
                 })
             })
     },
-    edit: (req,res) =>{
+    edit: (req, res) => {
         res.render('profile-edit')
     },
     editado: (req, res) => {
         let editado = req.params.id
         let errores = []
-        
-        
-        db.Usuario.update({
-            email: req.body.email,
-            usuario: req.body.usuario
-        },
-        { where: { id: editado } }
 
-        )
-        .then(()=>{
-            return res.redirect('/')
-        }) 
-    
+
+        db.Usuario.update({
+                    email: req.body.email,
+                    usuario: req.body.usuario
+                }, { where: { id: editado } }
+
+            )
+            .then(() => {
+                return res.redirect('/')
+            })
+
     },
     logout: (req, res) => {
         req.session.destroy()
