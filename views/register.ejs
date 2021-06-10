@@ -49,7 +49,8 @@
 
 
                                             <!-- formulario de registración-->
-                                            <form class="formulario" action="/users/store" method="POST">
+                                            <form class="formulario" action="/users/store" method="POST" enctype="multipart/form-data">
+                                                <input accept=".jpg , .png" type="file" name="fotoUsuario">
                                                 <% if (locals.errores != null && locals.errores.apellido != null && locals.errores.nombre){%>
                                                     <div class="nombreApellido uk-animation-toggle">
 
