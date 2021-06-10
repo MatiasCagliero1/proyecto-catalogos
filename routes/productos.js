@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+// Requiero Multer
 const multer = require('multer');
 const path = require('path');
 

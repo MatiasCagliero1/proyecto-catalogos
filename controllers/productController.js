@@ -5,7 +5,12 @@ module.exports = {
 
     // El metodo index lleva a la ruta / llevando los productos ordenados
     index: (req, res) => {
-       
+        if (req.session.usuarioIngresado === null || req.session.usuarioIngresado === undefined) {
+            return res.send('req.session.usuarioIngresado')
+        } else {
+            return res.send(req.session.usuarioIngresado)
+        }
+
         db.Producto.findAll({
 
                 order: [
@@ -46,12 +51,12 @@ module.exports = {
                         }
                     }
 
-                ],
-                 /*  order: [
+                ], // <<<<<<< NO ANDA EL ORDER >>>>>>>>>>
+                /*  order: [
 
-                      [ 'product_name', `${orden}`]
+                     [ 'product_name', `${orden}`]
 
-                  ]   */
+                 ]   */
             }
         )
 
@@ -66,11 +71,9 @@ module.exports = {
                     orden
                 })
             })
-
-
     },
 
-  // El metodo detalle lleva a la pagina de producto
+    // El metodo detalle lleva a la pagina de producto
     detalle: (req, res) => {
         let id = req.params.id;
         let producto = db.Producto.findByPk(id)
@@ -80,21 +83,25 @@ module.exports = {
 
         if (mensaje == 'actualizadoBien') {
             mensajeBack = 'actualizado';
-        }if (mensaje == 'creadoBien') {
+        }
+        if (mensaje == 'creadoBien') {
             mensajeBack = 'creado';
-        }else{
+        } else {
             mensajeBack = 0;
         }
-        
+
         Promise.all([producto])
 
-        .then(([producto]) => {
-            //return res.send (req.session.usuarioIngresado)
-                return res.render('product', {producto, mensajeBack})
+            .then(([producto]) => {
+                //return res.send (req.session.usuarioIngresado)
+                return res.render('product', {
+                    producto,
+                    mensajeBack
+                })
             })
     },
 
-  // El metodo destroy elimina el producto en la base de datos
+    // El metodo destroy elimina el producto en la base de datos
     destroy: (req, res) => {
         let idProduct = req.params.id;
 
@@ -109,15 +116,15 @@ module.exports = {
             })
     },
 
-// El metodo newProduct renderiza una vista para crear un nuevo producto
+    // El metodo newProduct renderiza una vista para crear un nuevo producto
     newProduct: (req, res) => {
         return res.render('product-add');
     },
 
-// El metodo newProductPost carga la info subida al formulario en la base de datos
+    // El metodo newProductPost carga la info subida al formulario en la base de datos
     newProductPost: (req, res) => {
-        //Saco del session el id de usuario
-        let user_added = 1;
+
+        let user_added = req.session.usuarioIngresado;
         //req.session.usuarioIngresado.id
 
         db.Producto.create({
@@ -125,7 +132,7 @@ module.exports = {
                 detalle: req.body.detalle,
                 img_name: req.file ? req.file.filename : '',
                 condicion: req.body.condicion,
-                userAdded:user_added ,
+                userAdded: user_added,
             })
             .then(producto => {
                 return res.redirect(`/productos/detalle/${producto.id}?mensaje=creadoBien`);
@@ -136,10 +143,10 @@ module.exports = {
     // Editar un producto en funcion del id
     editProduct: (req, res) => {
         let id = req.params.id;
-       
+
         db.Producto.findByPk(id)
-       
-        .then(producto => {
+
+            .then(producto => {
                 return res.render('product-edit', {
                     producto,
                     id
@@ -153,7 +160,7 @@ module.exports = {
 
         let user_added = 1;
 
-        //LLAMAR AL ID USUARIO
+        // <<<<<<< LLAMAR AL ID USUARIO >>>>>>>>>>
 
         db.Producto.update({
                 product_name: req.body.nombre,
@@ -170,7 +177,7 @@ module.exports = {
                 return res.redirect(`/productos/detalle/${product.id}?mensaje=actualizadoBien`);
             })
             .catch(error => console.log(error));
-    
+
     },
 
 
