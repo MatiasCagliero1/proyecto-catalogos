@@ -192,6 +192,8 @@ var controladorUsuario = {
     },
     editado: (req, res) => {
         let editado = req.params.id
+        let errores = []
+        
         
         db.Usuario.update({
             email: req.body.email,
@@ -199,11 +201,11 @@ var controladorUsuario = {
         },
         { where: { id: editado } }
 
-    )
-    .then(()=>{
-        return res.redirect('/')
-    }) 
-
+        )
+        .then(()=>{
+            return res.redirect('/')
+        }) 
+    
     },
     logout: (req, res) => {
         req.session.destroy()
