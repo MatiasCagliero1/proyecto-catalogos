@@ -153,10 +153,29 @@ var controladorUsuario = {
         db.Producto.findAll()
         .then(respuesta=>{
             return res.render('profile', {respuesta})
-        })
+        },
+        db.Usuario.findAll()
+        .then(usuario=>{
+            return res.render('profile', {usuario})
+        }))
     },
-    edit: (req, res) => {
-        return res.render("profile-edit")
+    edit: (req,res) =>{
+        res.render('profile-edit')
+    },
+    editado: (req, res) => {
+        let editado = req.params.id
+        
+        db.Usuario.update({
+            email: req.body.email,
+            usuario: req.body.usuario
+        },
+        { where: { id: editado } }
+
+    )
+    .then(()=>{
+        return res.redirect('/')
+    }) 
+
     },
     logout: (req, res) => {
         req.session.destroy()

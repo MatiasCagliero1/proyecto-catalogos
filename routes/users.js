@@ -16,5 +16,7 @@ router.get("/admin/usuarios", controladorUsuario.adminUsuarios)
 
 router.get('/profile', controladorUsuario.perfil)
 router.get('/profile/edit', controladorUsuario.edit)
+router.post('/profile/edit/:id', controladorUsuario.editado)
+
 
 module.exports = router;
