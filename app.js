@@ -8,7 +8,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 const session = require("express-session")
 
-// Las rutas principales
+// Llamo a los controladores de las rutas
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/productos');
@@ -67,6 +67,10 @@ app.use(function (req, res, next) {
     }
 })
 
+// Las rutas principales
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/productos', productsRouter);
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -79,10 +83,6 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/productos', productsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

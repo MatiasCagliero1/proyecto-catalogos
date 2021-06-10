@@ -3,9 +3,9 @@ const op = db.Sequelize.Op;
 
 module.exports = {
 
+    // El metodo index lleva a la ruta / llevando los productos ordenados
     index: (req, res) => {
-        //  return res.redirect('/')
-
+       
         db.Producto.findAll({
 
                 order: [
@@ -20,10 +20,12 @@ module.exports = {
             })
     },
 
+    // El metodo search se encarga de llamar a los productos rn funcion de la palabra clave
     search: (req, res) => {
         let QuerySearch = req.query.search;
         let paramSearch = req.params.busqueda;
 
+        // Tomas si la palabra clave viene de req.query o req.params
         if (QuerySearch == undefined || QuerySearch == '') {
             var busqueda = paramSearch
         } else {
@@ -33,6 +35,7 @@ module.exports = {
         let condicionNumber = req.params.condicion;
         let orden = req.params.orden;
 
+        //Llamo a las bases de datos -- La de 'producto' que me traiga en funcion de la palabra clave
         let usuario = db.Usuario.findAll()
         let producto = db.Producto.findAll(
 
@@ -57,7 +60,6 @@ module.exports = {
             .then(([producto]) => {
 
                 return res.render('search-results', {
-
                     producto,
                     busqueda,
                     condicionNumber,
@@ -68,10 +70,12 @@ module.exports = {
 
     },
 
+  // El metodo detalle lleva a la pagina de producto
     detalle: (req, res) => {
         let id = req.params.id;
         let producto = db.Producto.findByPk(id)
 
+        // Si se acaba de agregar un producto o editar, manda un valor (mensajeBack) a la vista para renderizar un mensaje
         let mensaje = req.query.mensaje;
 
         if (mensaje == 'actualizadoBien') {
@@ -86,11 +90,11 @@ module.exports = {
 
         .then(([producto]) => {
             //return res.send (req.session.usuarioIngresado)
-
                 return res.render('product', {producto, mensajeBack})
             })
     },
 
+  // El metodo destroy elimina el producto en la base de datos
     destroy: (req, res) => {
         let idProduct = req.params.id;
 
@@ -101,16 +105,16 @@ module.exports = {
             })
 
             .then(producto => {
-            
                 return res.redirect('/')
             })
     },
 
-
+// El metodo newProduct renderiza una vista para crear un nuevo producto
     newProduct: (req, res) => {
         return res.render('product-add');
     },
 
+// El metodo newProductPost carga la info subida al formulario en la base de datos
     newProductPost: (req, res) => {
         //Saco del session el id de usuario
         let user_added = 1;
@@ -124,12 +128,12 @@ module.exports = {
                 userAdded:user_added ,
             })
             .then(producto => {
-            
                 return res.redirect(`/productos/detalle/${producto.id}?mensaje=creadoBien`);
             })
             .catch(error => console.log(error));
     },
 
+    // Editar un producto en funcion del id
     editProduct: (req, res) => {
         let id = req.params.id;
        
@@ -143,10 +147,13 @@ module.exports = {
             })
     },
 
+    // El metodo editProductPost modifica la info subida al formulario en la base de datos
     editProductPost: (req, res) => {
         let id = req.params.id;
 
         let user_added = 1;
+
+        //LLAMAR AL ID USUARIO
 
         db.Producto.update({
                 product_name: req.body.nombre,
@@ -163,14 +170,8 @@ module.exports = {
                 return res.redirect(`/productos/detalle/${product.id}?mensaje=actualizadoBien`);
             })
             .catch(error => console.log(error));
-
-        db.Producto.destroy({
-            where: {
-                id: id
-            }
-        })
+    
     },
-
 
 
 };
