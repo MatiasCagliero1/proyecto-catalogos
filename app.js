@@ -1,8 +1,9 @@
-var createError = require('http-errors');
+// Requiero las dependencias necesarias
 var express = require('express');
 var path = require('path');
-var app = express();
 var logger = require('morgan');
+
+var app = express();
 
 // Necesario para Session
 var cookieParser = require('cookie-parser');
@@ -15,7 +16,6 @@ var productsRouter = require('./routes/productos');
 
 // Requiero la base de datos
 const db = require("./database/models")
-
 
 // Configuro session -- Los valores son un estandar. El resave en false y saveUninitialized en true.
 app.use(
@@ -83,6 +83,8 @@ app.use(express.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+var createError = require('http-errors');
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
