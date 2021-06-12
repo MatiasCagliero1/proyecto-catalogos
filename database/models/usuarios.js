@@ -25,7 +25,7 @@ module.exports = (sequelize, dataTypes) => {
         nacimiento: {
             type: dataTypes.DATE
         },
-        role: {
+        /*role: {
             type: dataTypes.INTEGER
         },
         createdAt: {
@@ -33,12 +33,12 @@ module.exports = (sequelize, dataTypes) => {
         },
         updatedAt: {
             type: dataTypes.DATE
-        }
+        }*/
 
     }
     let config = {
         tableName: "usuarios",
-        timestamps: true,
+        timestamps: false,
         underscored: false,
     }
 

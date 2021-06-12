@@ -188,16 +188,22 @@ var controladorUsuario = {
             })
     },
     edit: (req,res) =>{
-        res.render('profile-edit')
-    },
+        let id = req.params.id;
+        
+        db.Usuario.findByPk(id)
+    
+        .then(res.render('profile-edit'))
+        },
+
     editado: (req, res) => {
         let editado = req.params.id
-        let errores = []
+        //let errores = []
         
         
         db.Usuario.update({
             email: req.body.email,
-            usuario: req.body.usuario
+            usuario: req.body.usuario,
+            //contraseña
         },
         { where: { id: editado } }
 

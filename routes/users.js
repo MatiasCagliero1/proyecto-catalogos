@@ -15,8 +15,8 @@ router.get("/admin/usuarios", controladorUsuario.adminUsuarios)
 //Ruta pagina Profile - Profile-edit
 
 router.get('/profile', controladorUsuario.perfil)
-router.get('/profile/edit', controladorUsuario.edit)
-router.post('/profile/edit/:id', controladorUsuario.editado)
+router.get('/profile/edit/:id', controladorUsuario.edit)
+router.post('/profile/edit/post', controladorUsuario.editado)
 
 
 module.exports = router;
