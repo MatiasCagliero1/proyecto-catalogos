@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+// Requiero Multer
 const multer = require('multer');
 const path = require('path');
 
@@ -21,10 +22,10 @@ var storage = multer.diskStorage({
 
 var upload = multer({storage});
 
-// Requiriendo Search - Detalle - Product Add
+// Requiriendo Controlador
 var productController = require('../controllers/productController');
 
-// Ruta pagina Search - Detalle - Product Add
+// Relacionando Rutas con metodos
 router.get('/', productController.index);
 
 router.get('/search/:busqueda/:condicion/:orden', productController.search);
@@ -45,4 +46,6 @@ module.exports = router;
 
 //No anda el value en product-edit
 
-//If el usuario es administrador, aparece editar y eliminar -- Preguntar a Agos
+// Carpeta bin?
+
+// Fotos no encontradas

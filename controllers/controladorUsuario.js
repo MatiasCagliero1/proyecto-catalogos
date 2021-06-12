@@ -1,6 +1,7 @@
 const db = require("../database/models")
 const bcryptjs = require("bcryptjs")
 
+
 var controladorUsuario = {
     registracion: (req, res) => {
         if (req.session.usuarioIngresado != null) {
@@ -16,7 +17,7 @@ var controladorUsuario = {
         // let form = req.body
         // return res.send(form)
         let errores = {}
-        //let erroresVarios = []
+            //let erroresVarios = []
         if (req.body.nombre === "") {
 
             errores.nombre = "Nombre"
@@ -80,9 +81,9 @@ var controladorUsuario = {
 
         }
         let registrado = ""
-        //console.log(errores.email + "----------")
-        //console.log(errores.email + "------------")
-        // console.log(errores.email + "-------------")
+            //console.log(errores.email + "----------")
+            //console.log(errores.email + "------------")
+            // console.log(errores.email + "-------------")
         if (Object.keys(errores).length == 0) {
             db.Usuario.findOne({
                     where: [{
@@ -93,11 +94,10 @@ var controladorUsuario = {
                     if (usuarioEmail != null) {
                         registrado = "email ya registrado"
                         res.locals.registrado = registrado
-                        return res.render("login")
+                        return res.render("register")
                     } else {
-
-                        console.log("kjfskfdskldakafkld")
                         db.Usuario.create({
+                                imgUsuario: req.file.filename,
                                 nombre: req.body.nombre,
                                 apellido: req.body.apellido,
                                 email: req.body.email,
@@ -106,7 +106,7 @@ var controladorUsuario = {
                                 nacimiento: req.body.nacimiento
                             })
                             .then(usuario => {
-                                console.log(usuario + "-----------")
+
                                 //guardo en session el usuario
                                 req.session.usuarioIngresado = usuario
                                 return res.redirect("/")
@@ -153,7 +153,7 @@ var controladorUsuario = {
                         //guardo en session el usuario
                         req.session.usuarioIngresado = usuario
 
-                        //cookies
+                        // Si el usuario tildo el 'recordarme', guardar el usuario.id en cookies por unas 24 horas
                         if (req.body.recordarme) {
                             res.cookie("userId", usuario.id, {
                                 maxAge: 1000 * 60 * 60 * 24
@@ -174,13 +174,13 @@ var controladorUsuario = {
     },
     perfil: (req, res) => {
         db.Producto.findAll()
-        .then(respuesta=>{
-            return res.render('profile', {respuesta})
-        },
-        db.Usuario.findAll()
-        .then(usuario=>{
-            return res.render('profile', {usuario})
-        }))
+            .then(respuesta => {
+                    return res.render('profile', { respuesta })
+                },
+                db.Usuario.findAll()
+                .then(usuario => {
+                    return res.render('profile', { usuario })
+                }))
             .then(respuesta => {
                 return res.render('profile', {
                     respuesta
@@ -227,9 +227,9 @@ var controladorUsuario = {
             db.Producto.findAll()
                 .then(productos => {
                     return res.render("adminProductos", {
-                        productos
-                    })
-                    //return res.send(productos)
+                            productos
+                        })
+                        //return res.send(productos)
                 })
                 .catch(error => error)
 
@@ -249,9 +249,9 @@ var controladorUsuario = {
             db.Usuario.findAll()
                 .then(usuarios => {
                     return res.render("adminUsuarios", {
-                        usuarios
-                    })
-                    //return res.send(usuarios)
+                            usuarios
+                        })
+                        //return res.send(usuarios)
                 })
 
         } else {

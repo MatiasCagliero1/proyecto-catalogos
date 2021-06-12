@@ -34,6 +34,9 @@ module.exports = (sequelize, dataTypes) => {
         updatedAt: {
             type: dataTypes.DATE
         }*/
+        imgUsuario: {
+            type: dataTypes.STRING
+        }
 
     }
     let config = {

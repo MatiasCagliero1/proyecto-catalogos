@@ -58,9 +58,9 @@
 
                 <% if (condicionNumber !== 0 && condicionNumber == element.condicion) {%>
 
-            <a href="/productos/detalle/<%=element.id%>">
+            <a href="/productos/detalle/<%=element.id%>?id=<%=element.id%>">
                 <div class="product">
-                    <div class="fotos"> <img src="/images/products/<%=element.img_name%>">
+                    <div class="fotos"> <img src="/images/productosFile/<%=element.img_name%>">
                     </div>
                     <h3>
                         <%=element.product_name%>
@@ -99,9 +99,9 @@
 
             <% } if (condicionNumber == 0) { %>
 
-                <a href="/productos/detalle/<%=element.id%>">
+                <a href="/productos/detalle/<%=element.id%>?id=<%=element.id%>">
                     <div class="product">
-                        <div class="fotos"> <img src="/images/products/<%=element.img_name%>">
+                        <div class="fotos"> <img src="/images/productosFile/<%=element.img_name%>">
                         </div>
                         <h3>
                             <%=element.product_name%>
