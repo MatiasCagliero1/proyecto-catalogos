@@ -39,20 +39,20 @@
 
                                 <!-- Formulario de logIn-->
                                 <section class="conteiner">
-                                    <form action="/users/login" method="POST">
+                                    <form action="/users/iniciar" method="POST">
 
                                         <div class=" uk-animation-toggle">
                                             <label for="email">Email</label>
                                             <%if (locals.erroresLogin != null && erroresLogin.email){ %>
-                                                <input class="uk-animation-shake uk-button-danger" placeholder="<%=erroresLogin.email%> " type="text" name="email">
+                                                <input class="uk-animation-shake uk-button-danger" placeholder="<%=erroresLogin.email%> " type="text" name="email" id="email">
 
                                                 <%} else { %>
-                                                    <input type="text" name="email">
+                                                    <input type="email" name="email" id="email">
                                                     <%} %>
 
                                         </div>
                                         <div class=" uk-animation-toggle">
-                                            <label for="contraseña">Contraseña:</label>
+                                            <label for="password">Contraseña:</label>
                                             <%if(locals.erroresLogin != null && erroresLogin.contraseña){ %>
                                                 <input class="uk-animation-shake uk-button-danger" placeholder="<%=erroresLogin.contraseña%> " type="password" name="password">
                                                 <%} else { %>
@@ -68,7 +68,7 @@
                                         </div>
 
                                         <div>
-                                            <button class="btn">Iniciar Sesión</button>
+                                            <button type="submit" class="btn">Iniciar Sesión</button>
                                         </div>
 
 
