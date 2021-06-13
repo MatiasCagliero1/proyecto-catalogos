@@ -189,12 +189,12 @@ var controladorUsuario = {
     },
     edit: (req,res) =>{
         let id = req.params.id;
-        
+        //res.send(id)
         db.Usuario.findByPk(id)
-    
+        
         .then(res.render('profile-edit'))
         },
-
+        
     editado: (req, res) => {
         let editado = req.params.id
         //let errores = []
@@ -211,7 +211,7 @@ var controladorUsuario = {
         .then(()=>{
             return res.redirect('/')
         }) 
-    
+        
     },
     logout: (req, res) => {
         req.session.destroy()
