@@ -27,7 +27,7 @@ app.use(
 )
 
 // Comprobar si el el usuario esta logueado en el session
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
 
     if (req.session.usuarioIngresado != null) {
         res.locals = {
@@ -48,29 +48,26 @@ app.use(function (req, res, next) {
 app.use(cookieParser())
 
 // middleware para ver si el usuario puso recordarme
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
 
     if (req.cookies.userId != undefined && req.session.usuarioIngresado === undefined) {
 
         db.Usuario.findByPk(req.cookies.userId)
 
-            .then(user => {
+        .then(user => {
 
-                req.session.usuarioIngresado = user
+            req.session.usuarioIngresado = user
 
-                next()
+            next()
 
-            })
+        })
 
     } else {
         next()
     }
 })
 
-// Las rutas principales
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-app.use('/productos', productsRouter);
+
 
 // View engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -84,15 +81,20 @@ app.use(express.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Las rutas principales
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/productos', productsRouter);
+
 var createError = require('http-errors');
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use(function(req, res, next) {
     next(createError(404));
 });
 
 // error handler
-app.use(function (err, req, res, next) {
+app.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};

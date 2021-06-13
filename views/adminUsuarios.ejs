@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <%-include("./partials/head") %>
+        <link rel="stylesheet" href="/stylesheets/admin.css">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
@@ -36,12 +37,12 @@
                                             <%= usuarios.nombre +" "+ usuarios.apellido%>
                                         </td>
                                         <td>
-                                            <a href="/users/admin/detailUsuario/<%= usuarios.id%>">
+                                            <a href="/users/profile/<%= usuarios.id%>">
                                                 <i class="far fa-eye"></i>
                                             </a>
                                         </td>
                                         <td>
-                                            <a href="/users/admin/editUsuario/<%= usuarios.id%>">
+                                            <a href="/users/edit/<%= usuarios.id%>">
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                         </td>

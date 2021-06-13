@@ -13,6 +13,7 @@ var controladorUsuario = {
     },
 
     store: (req, res) => {
+
         //let flag = true
         // let form = req.body
         // return res.send(form)
@@ -135,13 +136,13 @@ var controladorUsuario = {
 
 
     },
+
     iniciar: (req, res) => {
+
 
         let erroresLogin = {}
         db.Usuario.findOne({
-                where: [{
-                    email: req.body.email
-                }]
+                where: [{ email: req.body.email }]
             })
             .then(usuario => {
                 if (usuario == null) {
@@ -170,7 +171,6 @@ var controladorUsuario = {
 
             })
             .catch(error => console.log(error))
-
     },
     perfil: (req, res) => {
         db.Producto.findAll()
@@ -187,7 +187,7 @@ var controladorUsuario = {
                 })
             })
     },
-    edit: (req,res) =>{
+    edit: (req, res) => {
         let id = req.params.id;
         //res.send(id)
         db.Usuario.findByPk(id)
@@ -197,21 +197,20 @@ var controladorUsuario = {
         
     editado: (req, res) => {
         let editado = req.params.id
-        //let errores = []
-        
-        
-        db.Usuario.update({
-            email: req.body.email,
-            usuario: req.body.usuario,
-            //contraseña
-        },
-        { where: { id: editado } }
+            //let errores = []
 
-        )
-        .then(()=>{
-            return res.redirect('/')
-        }) 
-        
+
+        db.Usuario.update({
+                    email: req.body.email,
+                    usuario: req.body.usuario,
+                    //contraseña
+                }, { where: { id: editado } }
+
+            )
+            .then(() => {
+                return res.redirect('/')
+            })
+
     },
     logout: (req, res) => {
         req.session.destroy()
@@ -223,13 +222,13 @@ var controladorUsuario = {
     adminProductos: (req, res) => {
         let usuario = req.session.usuarioIngresado
 
-        if (req.session.usuarioIngresado.role === 3) {
+        if (req.session.usuarioIngresado != null && req.session.usuarioIngresado.role === 3) {
             db.Producto.findAll()
                 .then(productos => {
                     return res.render("adminProductos", {
-                            productos
-                        })
-                        //return res.send(productos)
+                        productos
+                    })
+
                 })
                 .catch(error => error)
 
@@ -249,9 +248,9 @@ var controladorUsuario = {
             db.Usuario.findAll()
                 .then(usuarios => {
                     return res.render("adminUsuarios", {
-                            usuarios
-                        })
-                        //return res.send(usuarios)
+                        usuarios
+                    })
+                    return res.send(usuarios)
                 })
 
         } else {
@@ -259,7 +258,27 @@ var controladorUsuario = {
         }
 
 
+    },
+    adminProductoDelete: (req, res) => {
+        db.Producto.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+            .then(() => {
+                return res.redirect("/users/admin/productos")
+
+            })
+    },
+    adminUsuariosDelete: (req, res) => {
+        db.Usuario.destroy({
+                where: { id: req.params.id }
+            })
+            .then(() => {
+                return res.redirect("/users/admin/usuarios")
+            })
     }
+
 
 
 
