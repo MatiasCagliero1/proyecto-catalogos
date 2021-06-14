@@ -20,18 +20,18 @@
         <!-- formulario para editar perfil-->
         <h1 class="titulo">Editar Perfil</h1>
 
-        <form class="formulario" action="logIn.html" method="POST">
+        <form class="formulario" action="/users/profile/edit/<%= usuario.id %>  " method="POST">
             <div class="margen">
-                <input placeholder="Nuevo Email" type="email" name="emailNuevo" id="emailNuevo">
+                <input placeholder="Nuevo Email" type="email" name="email" id="email">
             </div>
             <div class="margen">
-                <input type="text" placeholder="Nuevo nombre de Usuario" name="usuarioNuevo" id="usernameNuevo">
+                <input type="text" placeholder="Nuevo nombre de Usuario" name="usuario" id="usuario">
             </div>
             <div class="margen">
                 <input type="password" placeholder="Nueva contraseña" name="contraseña" id="password">
             </div>
             <div class="margen">
-                <a class="botoncito" href="/"><input class="boton botonregistrarse2" type="button" value="Confirmar Cambios"></a>
+                <button type="submit">Confirmar cambios</button>
             </div>
 
 

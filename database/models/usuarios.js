@@ -25,7 +25,7 @@ module.exports = (sequelize, dataTypes) => {
         nacimiento: {
             type: dataTypes.DATE
         },
-        /*role: {
+        role: {
             type: dataTypes.INTEGER
         },
         createdAt: {
@@ -33,7 +33,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         updatedAt: {
             type: dataTypes.DATE
-        }*/
+        },
         imgUsuario: {
             type: dataTypes.STRING
         }
