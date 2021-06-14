@@ -33,7 +33,7 @@ router.get("/admin/deleteUsuario/:id", controladorUsuario.adminUsuariosDelete)
 
 router.get('/profile', controladorUsuario.perfil)
 router.get('/profile/edit/:id', controladorUsuario.edit)
-router.post('/profile/edit/post', controladorUsuario.editado)
+router.post('/profile/edit/:id', controladorUsuario.editado)
 
 
 

@@ -192,8 +192,10 @@ var controladorUsuario = {
         //res.send(id)
         db.Usuario.findByPk(id)
         
-        .then(res.render('profile-edit'))
-        },
+        .then(usuario => {
+            res.render('profile-edit', {usuario})
+            }
+        )},
         
     editado: (req, res) => {
         let editado = req.params.id
@@ -201,6 +203,7 @@ var controladorUsuario = {
 
 
         db.Usuario.update({
+                    id: editado,
                     email: req.body.email,
                     usuario: req.body.usuario,
                     //contraseña

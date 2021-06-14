@@ -20,7 +20,7 @@
         <!-- formulario para editar perfil-->
         <h1 class="titulo">Editar Perfil</h1>
 
-        <form class="formulario" action="/users/profile/edit/post " method="POST">
+        <form class="formulario" action="/users/profile/edit/<%= usuario.id %>  " method="POST">
             <div class="margen">
                 <input placeholder="Nuevo Email" type="email" name="email" id="email">
             </div>
