@@ -106,15 +106,7 @@ module.exports = {
                 })
             })
 
-        /*        <% comentarios.forEach(element => { %>
-                <article>
-                    <img class="userphoto" src="/images/users/<%=usuarios.imgUsuario%>" alt="<%=usuarios.imgUsuario%>">
-                    <div class="data">
-                            <strong> <a href="profile.html"><%=usuarios.nombre usuarios.apellido%></a> </strong><%=comentarios.texto%></p>
-                    </div>
-                </article>
-                <% }); %>  */
-          
+    
     },
 
     // El metodo destroy elimina el producto en la base de datos
@@ -156,7 +148,7 @@ module.exports = {
         db.Producto.create({
                 product_name: req.body.nombre,
                 detalle: req.body.detalle,
-                img_name: req.file ? req.file.filename : '',
+                img_name: req.file ? req.file.filename : 'default-image',
                 condicion: req.body.condicion,
                 userAdded: user_added,
             })
@@ -176,6 +168,7 @@ module.exports = {
         db.Producto.findByPk(id)
 
             .then(producto => {
+                //llamar al product usser added
                 return res.render('product-edit', {
                     producto,
                     id

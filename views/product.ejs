@@ -96,7 +96,14 @@
             <div class="col-12 col-lg-4">
                 <section class="comments">
 
-            
+                    <% comentarios.forEach(element => { %>
+                        <article>
+                            <img class="userphoto" src="/images/users/<%=usuarios.imgUsuario%>" alt="<%=usuarios.imgUsuario%>">
+                            <div class="data">
+                                    <strong> <a href="profile.html"><%=usuarios.nombre + usuarios.apellido%></a></strong><%=comentarios.texto%></p>
+                            </div>
+                        </article>
+                        <% }); %> 
                     
                 </section>
 
@@ -109,9 +116,11 @@
             </div>
         </div>
     </div>
+    
     </div>
 
     <%-include('./partials/footer')%>
+
     <script src="/js/producto.js"></script>
 </body>
 

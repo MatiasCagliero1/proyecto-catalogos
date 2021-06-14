@@ -94,6 +94,8 @@ CREATE TABLE `comentarios` (
   `fecha_comentario` date NOT NULL,
   `usuarios_id` int(11) NOT NULL,
   `productos_id` int(11) NOT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_59549d28-20d0-4cd7-9199-a731eec636d4` (`usuarios_id`),
   KEY `FK_ebc754eb-4d64-445b-8845-889d7f2dc391` (`productos_id`),
