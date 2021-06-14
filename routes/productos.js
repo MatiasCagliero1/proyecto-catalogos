@@ -42,10 +42,10 @@ router.post('/editproduct/post', upload.single('img_name'), productController.ed
 
 module.exports = router;
 
-//No anda el order sequialize en search
 
 //No anda el value en product-edit
 
-// Carpeta bin?
+//No anda el order sequialize en search
 
 // Fotos no encontradas
+
