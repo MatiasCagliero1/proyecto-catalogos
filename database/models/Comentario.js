@@ -27,12 +27,18 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER,
             allowNull: false
         },
+        createdAt: {
+            type: dataTypes.DATE,
+        },
+        updatedAt: {
+            type: dataTypes.DATE,
+        }
         
     }
     let config = {
         //tableName: "productos",
         //timestamps: true,
-        underscored: true,
+        underscored: false,
     }
 
     const Comentario = sequelize.define(alias, cols, config);

@@ -4,6 +4,7 @@
     font-weight: 400;
     color: var(--gray);
     font-family: Arial, Helvetica, sans-serif;
+    margin-top: 1.5em;
 }
 
 .editarLink {

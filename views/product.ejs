@@ -44,16 +44,16 @@
                                     <%=producto.product_name%>
     </h2>
 
-
-    <% // if(usuarioLogueado.role===3){ %>
+    <% if(usuarioLogueado != null ){ %>
+    <% if(usuarioLogueado.role === 3 || usuarioLogueado.id == producto.userAdded ){ %>
         
     <p class="product-detail-description">
         <button class="editarLink"><a href="/productos/editproduct/<%=producto.id%>">Editar Producto</a></button>
         <button onclick="alerta()" class="editarLink">Eliminar Producto</button> 
     </p>
 
-    <% //} %>
-
+    <% } %>
+    <% } %>
 
     </div>
     <div class="product-detail">
@@ -96,19 +96,15 @@
             <div class="col-12 col-lg-4">
                 <section class="comments">
 
-                    <article>
-                        <img class="userphoto" src="" alt="">
-                        <div class="data">
-                            <p class="user">
-                                <strong> <a href="profile.html"></a> </strong></p>
-                        </div>
-                    </article>
-
+            
+                    
                 </section>
+
                 <form class="form" action="" method="POST">
                     <input class="form-input" type="text" value="" placeholder="Agregar comentario">
                     <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
                 </form>
+
                 <hr>
             </div>
         </div>

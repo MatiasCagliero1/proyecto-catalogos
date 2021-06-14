@@ -77,6 +77,8 @@ module.exports = {
     detalle: (req, res) => {
         let id = req.params.id;
         let producto = db.Producto.findByPk(id)
+        let comentarios = db.Comentario.findAll()
+        let usuarios = db.Usuario.findAll()
 
         // Si se acaba de agregar un producto o editar, manda un valor (mensajeBack) a la vista para renderizar un mensaje
         let mensaje = req.query.mensaje;
@@ -90,19 +92,37 @@ module.exports = {
             mensajeBack = 0;
         }
 
-        Promise.all([producto])
+        Promise.all([producto,comentarios,usuarios ])
 
-            .then(([producto]) => {
+            .then(([producto,comentarios, usuarios]) => {
                 //return res.send (req.session.usuarioIngresado)
+    //         return res.send(comentarios)
+
                 return res.render('product', {
                     producto,
-                    mensajeBack
+                    mensajeBack,
+                    comentarios,
+                    usuarios
                 })
             })
+
+        /*        <% comentarios.forEach(element => { %>
+                <article>
+                    <img class="userphoto" src="/images/users/<%=usuarios.imgUsuario%>" alt="<%=usuarios.imgUsuario%>">
+                    <div class="data">
+                            <strong> <a href="profile.html"><%=usuarios.nombre usuarios.apellido%></a> </strong><%=comentarios.texto%></p>
+                    </div>
+                </article>
+                <% }); %>  */
+          
     },
 
     // El metodo destroy elimina el producto en la base de datos
     destroy: (req, res) => {
+        if (req.session.usuarioIngresado == null) {
+             res.redirect("/")
+        } else {
+          
         let idProduct = req.params.id;
 
         db.Producto.destroy({
@@ -114,17 +134,23 @@ module.exports = {
             .then(producto => {
                 return res.redirect('/')
             })
+        }
     },
 
     // El metodo newProduct renderiza una vista para crear un nuevo producto
     newProduct: (req, res) => {
-        return res.render('product-add');
+
+        if (req.session.usuarioIngresado == null) {
+            return res.redirect("/")
+        } else {
+            return res.render("product-add")
+        }
     },
 
     // El metodo newProductPost carga la info subida al formulario en la base de datos
     newProductPost: (req, res) => {
 
-        let user_added = req.session.usuarioIngresado;
+        let user_added = req.session.usuarioIngresado.id;
         //req.session.usuarioIngresado.id
 
         db.Producto.create({
@@ -144,6 +170,9 @@ module.exports = {
     editProduct: (req, res) => {
         let id = req.params.id;
 
+        if (req.session.usuarioIngresado == null) {
+             res.redirect("/")
+        } else {
         db.Producto.findByPk(id)
 
             .then(producto => {
@@ -152,13 +181,14 @@ module.exports = {
                     id
                 })
             })
+        }
     },
 
     // El metodo editProductPost modifica la info subida al formulario en la base de datos
     editProductPost: (req, res) => {
         let id = req.params.id;
 
-        let user_added = 1;
+        let user_added = req.session.usuarioIngresado.id;
 
         // <<<<<<< LLAMAR AL ID USUARIO >>>>>>>>>>
 
