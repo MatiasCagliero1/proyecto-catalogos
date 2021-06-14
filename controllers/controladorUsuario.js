@@ -154,6 +154,7 @@ var controladorUsuario = {
                         //guardo en session el usuario
                         req.session.usuarioIngresado = usuario
 
+
                         // Si el usuario tildo el 'recordarme', guardar el usuario.id en cookies por unas 24 horas
                         if (req.body.recordarme) {
                             res.cookie("userId", usuario.id, {
