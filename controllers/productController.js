@@ -5,11 +5,11 @@ module.exports = {
 
     // El metodo index lleva a la ruta / llevando los productos ordenados
     index: (req, res) => {
-/*         if (req.session.usuarioIngresado === null || req.session.usuarioIngresado === undefined) {
-            return res.send('req.session.usuarioIngresado')
-        } else {
-            return res.send(req.session.usuarioIngresado)
-        } */
+        /*         if (req.session.usuarioIngresado === null || req.session.usuarioIngresado === undefined) {
+                    return res.send('req.session.usuarioIngresado')
+                } else {
+                    return res.send(req.session.usuarioIngresado)
+                } */
 
         db.Producto.findAll({
 
@@ -42,8 +42,10 @@ module.exports = {
 
         //Llamo a las bases de datos -- La de 'producto' que me traiga en funcion de la palabra clave
         let usuario = db.Usuario.findAll()
-        let producto = db.Producto.findAll(
+        
+        let productoName = db.Producto.findAll(
 
+            //Busqueda por nombre i DESCRIPCION >>>>>>>>>>
             {
                 where: [{
                         product_name: {
@@ -60,17 +62,37 @@ module.exports = {
             }
         )
 
-        Promise.all([producto])
+        let productoDetalle = db.Producto.findAll(
 
-            .then(([producto]) => {
+            //Busqueda por nombre i DESCRIPCION >>>>>>>>>>
+            {
+                where: [{
+                        detalle: {
+                            [op.like]: `%${busqueda}%`
+                        }
+                    }
 
+                ], // <<<<<<< NO ANDA EL ORDER >>>>>>>>>>
+                /*  order: [
+
+                     [ 'product_name', `${orden}`]
+
+                 ]   */
+            }
+        )
+
+     Promise.all([productoName,productoDetalle, {association:"Producto"}])
+
+            .then(([productoName, productoDetalle]) => {
+//return res.send (productoDetalle)
                 return res.render('search-results', {
-                    producto,
+                    productoName,
+                    productoDetalle,
                     busqueda,
                     condicionNumber,
                     orden
                 })
-            })
+            }) 
     },
 
     // El metodo detalle lleva a la pagina de producto
@@ -83,49 +105,40 @@ module.exports = {
         // Si se acaba de agregar un producto o editar, manda un valor (mensajeBack) a la vista para renderizar un mensaje
         let mensaje = req.query.mensaje;
 
-        if (mensaje == 'actualizadoBien') {
-            mensajeBack = 'actualizado';
-        }
-        if (mensaje == 'creadoBien') {
-            mensajeBack = 'creado';
-        } else {
-            mensajeBack = 0;
-        }
+        Promise.all([producto, comentarios, usuarios])
 
-        Promise.all([producto,comentarios,usuarios ])
-
-            .then(([producto,comentarios, usuarios]) => {
+            .then(([producto, comentarios, usuarios]) => {
                 //return res.send (req.session.usuarioIngresado)
-    //         return res.send(comentarios)
+                //         return res.send(comentarios)
 
                 return res.render('product', {
                     producto,
-                    mensajeBack,
+                    mensaje,
                     comentarios,
                     usuarios
                 })
             })
 
-    
+
     },
 
     // El metodo destroy elimina el producto en la base de datos
     destroy: (req, res) => {
         if (req.session.usuarioIngresado == null) {
-             res.redirect("/")
+            res.redirect("/")
         } else {
-          
-        let idProduct = req.params.id;
 
-        db.Producto.destroy({
-                where: {
-                    id: idProduct
-                }
-            })
+            let idProduct = req.params.id;
 
-            .then(producto => {
-                return res.redirect('/')
-            })
+            db.Producto.destroy({
+                    where: {
+                        id: idProduct
+                    }
+                })
+
+                .then(producto => {
+                    return res.redirect('/')
+                })
         }
     },
 
@@ -141,14 +154,13 @@ module.exports = {
 
     // El metodo newProductPost carga la info subida al formulario en la base de datos
     newProductPost: (req, res) => {
-
         let user_added = req.session.usuarioIngresado.id;
         //req.session.usuarioIngresado.id
 
         db.Producto.create({
                 product_name: req.body.nombre,
                 detalle: req.body.detalle,
-                img_name: req.file ? req.file.filename : 'default-image',
+                img_name: req.file ? req.file.filename : 'default-image.png',
                 condicion: req.body.condicion,
                 userAdded: user_added,
             })
@@ -163,41 +175,40 @@ module.exports = {
         let id = req.params.id;
 
         if (req.session.usuarioIngresado == null) {
-             res.redirect("/")
+            res.redirect("/")
         } else {
-        db.Producto.findByPk(id)
+            db.Producto.findByPk(id)
 
-            .then(producto => {
-                //llamar al product usser added
-                return res.render('product-edit', {
-                    producto,
-                    id
+                .then(producto => {
+                    //llamar al product usser added
+                    return res.render('product-edit', {
+                        producto,
+                        id
+                    })
                 })
-            })
         }
     },
 
     // El metodo editProductPost modifica la info subida al formulario en la base de datos
     editProductPost: (req, res) => {
-        let id = req.params.id;
 
         let user_added = req.session.usuarioIngresado.id;
+        idProducto = req.body.idProducto,
 
-        // <<<<<<< LLAMAR AL ID USUARIO >>>>>>>>>>
-
-        db.Producto.update({
+            db.Producto.update({
+                id: req.body.idProducto,
                 product_name: req.body.nombre,
                 detalle: req.body.detalle,
                 img_name: req.body.image,
                 condicion: req.body.condicion,
-                user_added: user_added,
+                userAdded: user_added,
             }, {
                 where: {
-                    id: id
+                    id: idProducto
                 }
             })
             .then(product => {
-                return res.redirect(`/productos/detalle/${product.id}?mensaje=actualizadoBien`);
+                return res.redirect(`/productos/detalle/${idProducto}?mensaje=actualizadoBien`);
             })
             .catch(error => console.log(error));
 

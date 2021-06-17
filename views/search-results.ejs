@@ -19,6 +19,15 @@
     <%-include("./partials/headerDeslogueado")%>
     <%}%>
 
+    <%   if (productoName.length > 0) {
+        producto = productoName
+    }%> 
+
+    <%   if (productoDetalle.length > 0) {
+        producto = productoDetalle
+    }%> 
+        
+
                         <section class="maincontent">
 
                             <div class="resultadoyordenar">
@@ -74,7 +83,7 @@
                         <%=element.product_name%>
                     </h3>
                     <h6>Por
-                        <%=element.user_added%>
+                        <%=element.userAdded%>
                     </h6>
                     <!-- Te trae el id, no el nombre -->
                     
@@ -123,7 +132,7 @@
                             <%=element.product_name%>
                         </h3>
                         <h6>Por
-                            <%=element.user_added%>
+                          <% // =element.userAdded[userAdded]%>
                         </h6>
                         <!-- Te trae el id, no el nombre -->
                         

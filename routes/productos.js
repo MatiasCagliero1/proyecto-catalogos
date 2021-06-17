@@ -42,9 +42,6 @@ router.post('/editproduct/post', upload.single('img_name'), productController.ed
 
 module.exports = router;
 
-
-
 //No anda el order sequialize en search
 
-// Fotos no encontradas
 
