@@ -1,4 +1,3 @@
-
 DROP DATABASE IF EXISTS SUPERMERCADO;
 CREATE DATABASE SUPERMERCADO;
  USE  SUPERMERCADO;
@@ -6,7 +5,6 @@ CREATE DATABASE SUPERMERCADO;
 --
 -- Table structure for table `productos`
 --
-
 DROP TABLE IF EXISTS `productos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
@@ -19,16 +17,14 @@ CREATE TABLE `productos` (
   `userAdded` int(11) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_95407dd7-28ee-46dc-92a8-7956bc8217b5` (`userAdded`),
-  CONSTRAINT `FK_95407dd7-28ee-46dc-92a8-7956bc8217b5` FOREIGN KEY (`userAdded`) REFERENCES `usuarios` (`id`)
+  PRIMARY KEY (`id`)
+
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `productos`
 --
-
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
 INSERT INTO `productos` VALUES 
@@ -47,13 +43,9 @@ INSERT INTO `productos` VALUES
 UNLOCK TABLES;
 --
 
--- Table structure for table `usuarios`
---
-
 --
 -- Table structure for table `usuarios`
 --
-
 DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -96,34 +88,11 @@ CREATE TABLE `comentarios` (
   `productos_id` int(11) NOT NULL,
   `createdAt` datetime DEFAULT NULL,
   `updatedAt` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_59549d28-20d0-4cd7-9199-a731eec636d4` (`usuarios_id`),
-  KEY `FK_ebc754eb-4d64-445b-8845-889d7f2dc391` (`productos_id`),
-  CONSTRAINT `FK_59549d28-20d0-4cd7-9199-a731eec636d4` FOREIGN KEY (`usuarios_id`) REFERENCES `usuarios` (`id`),
-  CONSTRAINT `FK_ebc754eb-4d64-445b-8845-889d7f2dc391` FOREIGN KEY (`productos_id`) REFERENCES `productos` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `comentarios`
 --
-
-
-LOCK TABLES `comentarios` WRITE;
-/*!40000 ALTER TABLE `comentarios` DISABLE KEYS */;
-INSERT INTO `comentarios`  VALUES (1,'Muy buen pr','2021-04-25',1,1),(2,'Me gusta porque tiene una buena relación cal','2021-04-25',1,1),(3,'No lo compres, a mi me vino uno ve','2021-04-25',1,1),
-(4,'Muy buen pr','2021-04-25',2,2),(5,'Me gusta porque tiene una buena relación cal','2021-04-25',2,2),(6,'No lo compres, a mi me vino uno ve','2021-04-25',2,2),(7,'Para recetas sobre como cocinar un buen bisc','2021-04-25',2,2),
- (8,'Muy buen pr','2021-04-25',3,3),(9,'Me gusta porque tiene una buena relación cal','2021-04-25',3,3),(10,'No lo compres, a mi me vino uno ve','2021-04-25',3,3),(11,'Para recetas sobre como cocinar un buen bisc','2021-04-25',3,3),
- (12,'Muy buen pr','2021-04-25',4,4),(13,'Me gusta porque tiene una buena relación cal','2021-04-25',4,4),(14,'No lo compres, a mi me vino uno ve','2021-04-25',4,4),(15,'Para recetas sobre como cocinar un buen bisc','2021-04-25',4,4),
-(16,'Muy buen pr','2021-04-25',2,5),(17,'Me gusta porque tiene una buena relación cal','2021-04-25',2,5),(18,'No lo compres, a mi me vino uno ve','2021-04-25',2,5),(19,'Para recetas sobre como cocinar un buen bisc','2021-04-25',2,5),
-(20,'Muy buen pr','2021-04-25',3,6),(21,'Me gusta porque tiene una buena relación cal','2021-04-25',3,6),(22,'No lo compres, a mi me vino uno ve','2021-04-25',3,6),(23,'Para recetas sobre como cocinar un buen bisc','2021-04-25',3,6),
-(24,'Muy buen pr','2021-04-25',4,7),(25,'Me gusta porque tiene una buena relación cal','2021-04-25',4,7),(26,'No lo compres, a mi me vino uno ve','2021-04-25',4,7),(27,'Para recetas sobre como cocinar un buen bisc','2021-04-25',4,7),
-(28,'Muy buen pr','2021-04-25',2,8),(29,'Me gusta porque tiene una buena relación cal','2021-04-25',2,8),(30,'No lo compres, a mi me vino uno ve','2021-04-25',2,8),(31,'Para recetas sobre como cocinar un buen bisc','2021-04-25',2,8),
- (32,'Muy buen pr','2021-04-25',3,9),(33,'Me gusta porque tiene una buena relación cal','2021-04-25',3,9),(34,'No lo compres, a mi me vino uno ve','2021-04-25',3,9),(35,'Para recetas sobre como cocinar un buen bisc','2021-04-25',3,9),
-(36,'Muy buen pr','2021-04-25',4,10),(37,'Me gusta porque tiene una buena relación cal','2021-04-25',4,10),(38,'No lo compres, a mi me vino uno ve','2021-04-25',4,10),(39,'Para recetas sobre como cocinar un buen bisc','2021-04-25',4,10);
-
-/*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
-UNLOCK TABLES;
--- Dump completed on 2021-04-25 10:59:49
-
 

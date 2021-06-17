@@ -41,17 +41,17 @@ module.exports = {
         let orden = req.params.orden;
 
         //Llamo a las bases de datos -- La de 'producto' que me traiga en funcion de la palabra clave
-        let usuario = db.Usuario.findAll()
         
         let productoName = db.Producto.findAll(
 
             //Busqueda por nombre i DESCRIPCION >>>>>>>>>>
             {
-                where: [{
-                        product_name: {
-                            [op.like]: `%${busqueda}%`
-                        }
-                    }
+                where: [ {
+                    [Op.or]: [
+                        {product_name: {[Op.like]: `%${busqueda}%`}},
+                        {detalle: {[Op.like]: `%${busqueda}%`}}
+                    ] 
+                }
 
                 ], // <<<<<<< NO ANDA EL ORDER >>>>>>>>>>
                 /*  order: [
@@ -59,32 +59,18 @@ module.exports = {
                      [ 'product_name', `${orden}`]
 
                  ]   */
+
+                 include: [
+                    {association:"userAdd"}
+                 ]
             }
         )
+    
 
-        let productoDetalle = db.Producto.findAll(
-
-            //Busqueda por nombre i DESCRIPCION >>>>>>>>>>
-            {
-                where: [{
-                        detalle: {
-                            [op.like]: `%${busqueda}%`
-                        }
-                    }
-
-                ], // <<<<<<< NO ANDA EL ORDER >>>>>>>>>>
-                /*  order: [
-
-                     [ 'product_name', `${orden}`]
-
-                 ]   */
-            }
-        )
-
-     Promise.all([productoName,productoDetalle, {association:"Producto"}])
+     Promise.all([productoName])
 
             .then(([productoName, productoDetalle]) => {
-//return res.send (productoDetalle)
+return res.send (productoDetalle)
                 return res.render('search-results', {
                     productoName,
                     productoDetalle,
