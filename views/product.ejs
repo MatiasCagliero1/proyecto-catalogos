@@ -5,7 +5,7 @@
     <%-include('./partials/head')%>
 
     <title>
-        <%=producto.product_name%> Detalle Producto</title>
+        <%=producto[0].product_name%> Detalle Producto</title>
 
     <!-- Stylesheet Propios -->
     <link rel="stylesheet" href="/stylesheets/product.css">
@@ -41,7 +41,7 @@
                         <div class="container products-wrapper contenedor">
                             <div class="d-flex align-items-center">
                                 <h2 class="products-title">
-                                    <%=producto.product_name%>
+                                    <%=producto[0].product_name%>
     </h2>
 
     <% if(usuarioLogueado != null ){ %>
@@ -59,11 +59,11 @@
     <div class="product-detail">
         <div class="row">
             <article class="col-12 col-lg-8 product-detail-info">
-                <img src="/images/productosFile/<%=producto.img_name%>" class="product-detail-img">
+                <img src="/images/productosFile/<%=producto[0].img_name%>" class="product-detail-img">
                 <p class="product-detail-description">
-                    <%=producto.product_name%>
+                    <%=producto[0].product_name%>
                     <br>
-                    <%=producto.detalle%>
+                    <%=producto[0].detalle%>
                     <br>
                 Condición: <%
                 switch (producto.condicion) {
@@ -88,22 +88,26 @@
 
                 <%     break;
         
-            }%> </p>
-
+            }%> 
+        <br>
+        
+       <!-- PROFILE LINK -->
+        <a href="http://">Por: <%=producto[0].userAdd.nombre + ' ' + producto[0].userAdd.apellido%></a>
+                </p>
             </article>
 
 
             <div class="col-12 col-lg-4">
                 <section class="comments">
 
-                    <% comentarios.forEach(element => { %>
+                    <% //comentarios.forEach(element => { %>
                         <article>
-                            <img class="userphoto" src="/images/users/<%=usuarios.imgUsuario%>" alt="<%=usuarios.imgUsuario%>">
+                            <img class="userphoto" src="/images/users/" alt="">
                             <div class="data">
-                                    <strong> <a href="profile.html"><%=usuarios.nombre + usuarios.apellido%></a></strong><%=comentarios.texto%></p>
+                                    <strong> <a href="profile.html"></a></strong></p>
                             </div>
                         </article>
-                        <% }); %> 
+                        <% //}); %> 
                     
                 </section>
 

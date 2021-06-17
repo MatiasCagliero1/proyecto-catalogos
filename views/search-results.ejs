@@ -18,16 +18,7 @@
     <% } else { %>
     <%-include("./partials/headerDeslogueado")%>
     <%}%>
-
-    <%   if (productoName.length > 0) {
-        producto = productoName
-    }%> 
-
-    <%   if (productoDetalle.length > 0) {
-        producto = productoDetalle
-    }%> 
         
-
                         <section class="maincontent">
 
                             <div class="resultadoyordenar">
@@ -61,8 +52,6 @@
 
         <div class="resultados">
 
-            
-
             <% if (producto.length > 0 ){ %>
                 
                 <% contadorFiltrados = 0 %>
@@ -83,7 +72,7 @@
                         <%=element.product_name%>
                     </h3>
                     <h6>Por
-                        <%=element.userAdded%>
+                        <%=element.userAdded.nombre%>
                     </h6>
                     <!-- Te trae el id, no el nombre -->
                     
@@ -132,9 +121,9 @@
                             <%=element.product_name%>
                         </h3>
                         <h6>Por
-                          <% // =element.userAdded[userAdded]%>
+                            <%=element.userAdd.nombre + ' ' + element.userAdd.apellido%>
                         </h6>
-                        <!-- Te trae el id, no el nombre -->
+                    
                         
                             <%
                             switch (element.condicion) {
