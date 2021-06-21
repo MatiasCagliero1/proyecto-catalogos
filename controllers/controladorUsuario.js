@@ -200,9 +200,11 @@ var controladorUsuario = {
     edit: (req, res) => {
         let id = req.params.id;
         //res.send(id)
+
         db.Usuario.findByPk(id)
         
         .then(usuario => {
+            //res.send(usuario)
             res.render('profile-edit', {usuario})
             }
         )},
@@ -214,9 +216,10 @@ var controladorUsuario = {
 
         db.Usuario.update({
                     id: editado,
+                    nombre: req.body.nombre,
                     email: req.body.email,
                     usuario: req.body.usuario,
-                    //contraseña
+                    contraseña: bcryptjs.hashSync(req.body.contraseña, 10)
                 }, { where: { id: editado } }
 
             )
