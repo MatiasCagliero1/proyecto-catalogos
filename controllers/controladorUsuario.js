@@ -98,7 +98,7 @@ var controladorUsuario = {
                         return res.render("register")
                     } else {
                         db.Usuario.create({
-                                imgUsuario: req.file.filename,
+                                imgUsuario: req.file ? req.file.filename : "default-image.png",
                                 nombre: req.body.nombre,
                                 apellido: req.body.apellido,
                                 email: req.body.email,
@@ -192,12 +192,12 @@ var controladorUsuario = {
         let id = req.params.id;
         //res.send(id)
         db.Usuario.findByPk(id)
-        
+
         .then(usuario => {
-            res.render('profile-edit', {usuario})
-            }
-        )},
-        
+            res.render('profile-edit', { usuario })
+        })
+    },
+
     editado: (req, res) => {
         let editado = req.params.id
             //let errores = []
