@@ -43,5 +43,14 @@ module.exports = (sequelize, dataTypes) => {
     }
 
     const Producto = sequelize.define(alias, cols, config);
+
+// El userAdded es el id de el modelo Usuario y quiero tener el nombre
+    Producto.associate = function (models) {
+        Producto.belongsTo(models.Usuario, {
+            as: "userAdd",
+            foreignKey: "userAdded"
+        });
+    }
+
     return Producto;
 };

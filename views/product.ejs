@@ -5,7 +5,7 @@
     <%-include('./partials/head')%>
 
     <title>
-        <%=producto.product_name%> Detalle Producto</title>
+        <%=producto[0].product_name%> Detalle Producto</title>
 
     <!-- Stylesheet Propios -->
     <link rel="stylesheet" href="/stylesheets/product.css">
@@ -23,13 +23,13 @@
     
     <%}%>
 
-    <%  if (mensajeBack == 'actualizado') {%>
+    <%  if (mensaje == 'actualizadoBien') {%>
         <div class="alignMensaje">
        <h3 class="actualizado">El producto se ha actualizado correctamente</h3>
     </div>
         <%}%>
 
-        <% if ( mensajeBack == 'creado') {%>
+        <% if ( mensaje == 'creadoBien') {%>
             <div class="alignMensaje">
             <h3 class="creado">El producto se ha creado correctamente</h3>
         </div>
@@ -41,29 +41,29 @@
                         <div class="container products-wrapper contenedor">
                             <div class="d-flex align-items-center">
                                 <h2 class="products-title">
-                                    <%=producto.product_name%>
+                                    <%=producto[0].product_name%>
     </h2>
 
-
-    <% // if(usuarioLogueado.role===3){ %>
+    <% if(usuarioLogueado != null ){ %>
+    <% if(usuarioLogueado.role === 3 || usuarioLogueado.id == producto.userAdded ){ %>
         
     <p class="product-detail-description">
-        <button href="/productos/editproduct/<%=producto.id%>" class="editarLink">Editar Producto</button>
+        <button class="editarLink"><a href="/productos/editproduct/<%=producto.id%>">Editar Producto</a></button>
         <button onclick="alerta()" class="editarLink">Eliminar Producto</button> 
     </p>
 
-    <% //} %>
-
+    <% } %>
+    <% } %>
 
     </div>
     <div class="product-detail">
         <div class="row">
             <article class="col-12 col-lg-8 product-detail-info">
-                <img src="/images/productosFile/<%=producto.img_name%>" class="product-detail-img">
+                <img src="/images/productosFile/<%=producto[0].img_name%>" class="product-detail-img">
                 <p class="product-detail-description">
-                    <%=producto.product_name%>
+                    <%=producto[0].product_name%>
                     <br>
-                    <%=producto.detalle%>
+                    <%=producto[0].detalle%>
                     <br>
                 Condición: <%
                 switch (producto.condicion) {
@@ -88,34 +88,43 @@
 
                 <%     break;
         
-            }%> </p>
-
+            }%> 
+        <br>
+        
+       <!-- PROFILE LINK -->
+        <a href="http://">Por: <%=producto[0].userAdd.nombre + ' ' + producto[0].userAdd.apellido%></a>
+                </p>
             </article>
 
 
             <div class="col-12 col-lg-4">
                 <section class="comments">
 
-                    <article>
-                        <img class="userphoto" src="" alt="">
-                        <div class="data">
-                            <p class="user">
-                                <strong> <a href="profile.html"></a> </strong></p>
-                        </div>
-                    </article>
-
+                    <% //comentarios.forEach(element => { %>
+                        <article>
+                            <img class="userphoto" src="/images/users/" alt="">
+                            <div class="data">
+                                    <strong> <a href="profile.html"></a></strong></p>
+                            </div>
+                        </article>
+                        <% //}); %> 
+                    
                 </section>
+
                 <form class="form" action="" method="POST">
                     <input class="form-input" type="text" value="" placeholder="Agregar comentario">
                     <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
                 </form>
+
                 <hr>
             </div>
         </div>
     </div>
+    
     </div>
 
     <%-include('./partials/footer')%>
+
     <script src="/js/producto.js"></script>
 </body>
 

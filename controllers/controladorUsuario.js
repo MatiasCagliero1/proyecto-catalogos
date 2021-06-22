@@ -174,26 +174,37 @@ var controladorUsuario = {
             .catch(error => console.log(error))
     },
     perfil: (req, res) => {
-        db.Producto.findAll()
-            .then(respuesta => {
-                    return res.render('profile', { respuesta })
-                },
-                db.Usuario.findAll()
-                .then(usuario => {
-                    return res.render('profile', { usuario })
-                }))
-            .then(respuesta => {
+        if (req.session.usuarioIngresado != null) {
+            let id = req.session.usuarioIngresado.id
+
+            let usuario = db.Usuario.findByPk(id)
+            let producto = db.Producto.findAll()
+
+            Promise.all([usuario, producto])
+
+            .then(([usuario, producto]) => {
+                //return res.send (req.session.usuarioIngresado)
                 return res.render('profile', {
-                    respuesta
+                    producto,
+                    usuario
                 })
             })
+        } else {
+            res.redirect('/')
+        }
+
+
+
     },
+
     edit: (req, res) => {
         let id = req.params.id;
         //res.send(id)
+
         db.Usuario.findByPk(id)
 
         .then(usuario => {
+            //res.send(usuario)
             res.render('profile-edit', { usuario })
         })
     },
@@ -205,9 +216,10 @@ var controladorUsuario = {
 
         db.Usuario.update({
                     id: editado,
+                    nombre: req.body.nombre,
                     email: req.body.email,
                     usuario: req.body.usuario,
-                    //contraseña
+                    contraseña: bcryptjs.hashSync(req.body.contraseña, 10)
                 }, { where: { id: editado } }
 
             )

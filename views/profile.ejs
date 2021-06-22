@@ -4,6 +4,7 @@
 
 <head>
     <%-include("./partials/head") %>
+    <link rel="stylesheet" href="/stylesheets/userphoto.css">
         <title>Profile</title>
 </head>
 
@@ -20,12 +21,12 @@
                         <section class="info-usuario container products-wrapper">
                             <div class="row">
                                 <div class="img-container offset-3 col-2">
-                                    <img src="https://us.123rf.com/450wm/thesomeday123/thesomeday1231712/thesomeday123171200009/91087331-icono-de-perfil-de-avatar-predeterminado-para-hombre-marcador-de-posici%C3%B3n-de-foto-gris-vector-de-ilustr.jpg?ver=6" alt="foto de perfil" class="foto-perfil">
+                                    <img id="userphoto" src="/images/users/<%=usuario.imgUsuario%>" alt="<%=usuario.imgUsuario%>">
                                 </div>
                                 <div class="data-container col-6">
                                     <div class="d-flex align-items-center ">
-                                        <h1 class="main-title"> santi
-                                            <a href="/users/profile/edit">
+                                        <h1 class="main-title"> <%= usuarioLogueado.nombre %> 
+                                            <a href="/users/profile/edit/<%= usuario.id %>  ">
                                                 <i class="fas fa-cog"></i>
                                             </a>
                                         </h1>
@@ -50,20 +51,20 @@
                                     <h2 class="products-title">Mis productos</h2>
                                 </div>
                                 <!-- Show mis productos -->
-                                <% for(let i = 0; i < respuesta.length; i++){ %>
+                                <% for(let i = 0; i < producto.length; i++){ %>
                                     <div class="col-12 col-sm-6 col-lg-3">
                                         <section class="product-box">
 
-                                            <a href="/productos/detalle:<%= respuesta[i].id %>?id=<%=element.id%>">
+                                            <a href="/productos/detalle:<%= producto[i].id %>?id=<%= producto.id%>">
                                                 <figure class="product-box_image">
-                                                    <img src="/images/products/<%=respuesta[i].imagenSrc%> " alt="<%=respuesta[i].nombre%>">
+                                                    <img src="/images/products/<%= producto[i].imagenSrc%> " alt="<%= producto[i].nombre%>">
                                                 </figure>
                                                 <article class="product-box_data">
                                                     <h2>
-                                                        <%=respuesta[i].nombre %>
+                                                        <%= producto[i].nombre %>
                                                     </h2>
                                                     <p>Precio: $
-                                                        <%=respuesta[i].preciopor %>
+                                                        <%= producto[i].preciopor %>
                                                     </p>
 
                                                 </article>

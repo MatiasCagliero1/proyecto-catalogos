@@ -44,8 +44,4 @@ module.exports = router;
 
 //No anda el order sequialize en search
 
-//No anda el value en product-edit
 
-// Carpeta bin?
-
-// Fotos no encontradas
