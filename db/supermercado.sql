@@ -49,6 +49,7 @@ INSERT INTO `comentarios` VALUES (1,'Muy buen producto','2021-04-25',1,4,NULL,NU
 UNLOCK TABLES;
 
 
+
 --
 -- Table structure for table `productos`
 --
@@ -77,9 +78,11 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'Yerba Mate CHAMIGO 500g','yerba.jpg','Yerba Chamigo ideal para toda la familia.','1',1,'2021-01-25 00:00:00','2021-04-25 00:00:00'),(2,'Papas Noisettes Mc Cain 1kg','papas1.jpg','Papar ricas para disfrutar.','4',2,'2021-02-25 00:00:00','2021-04-25 00:00:00'),(3,'Papas Finas Mc Cain 1kg','papas.jpg','Papar ricas para disfrutar. Buenisimas!','4',3,'2021-03-25 00:00:00','2021-04-25 00:00:00'),(4,'Pan Bimbo Artesano Receta Original 500g','pan.jpg','Pan de los mejores arrtesanos de Bimbo.','3',3,'2021-04-25 00:00:00','2021-04-25 00:00:00'),(5,'Mermelada Patagonia Berries 100% Natural','mermelada.jpg','Mermelada rica sabor Berries.','3',4,'2021-05-25 00:00:00','2021-04-25 00:00:00'),(6,'Liquido limpiador ALA lavado perfecto 3L','jabon.jpg','Limpiador para ropa ALA.','4',4,'2021-06-25 00:00:00','2021-04-25 00:00:00'),(7,'Cerveza Heineken Premium Quality','cerveza.jpg','Heineken para disfrutar con amigos.','4',3,'2021-07-25 00:00:00','2021-04-25 00:00:00'),(8,'Coca Cola Original 1,5L','coca_cola.jpg','Coca Cola para compartir felicidad.','4',3,'2021-08-25 00:00:00','2021-04-25 00:00:00'),(9,'Alfajor Terrabusi Clatico 300g','alfajor.jpg','Alfabores ricos de chocolate.','4',3,'2021-09-25 00:00:00','2021-04-25 00:00:00'),(10,'Fideos Matarazzo 500g','fideos.jpg','Fideos ricos para compartir en familia. Matarazzo.','4',2,'2021-10-25 00:00:00','2021-04-25 00:00:00');
+INSERT INTO `productos` VALUES (DEFAULT,'Yerba Mate CHAMIGO 500g','yerba.jpg','Yerba Chamigo ideal para toda la familia.','1',1,'2021-01-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Papas Noisettes Mc Cain 1kg','papas1.jpg','Papar ricas para disfrutar.','4',2,'2021-02-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Papas Finas Mc Cain 1kg','papas.jpg','Papar ricas para disfrutar. Buenisimas!','4',3,'2021-03-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Pan Bimbo Artesano Receta Original 500g','pan.jpg','Pan de los mejores arrtesanos de Bimbo.','3',3,'2021-04-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Mermelada Patagonia Berries 100% Natural','mermelada.jpg','Mermelada rica sabor Berries.','3',4,'2021-05-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Liquido limpiador ALA lavado perfecto 3L','jabon.jpg','Limpiador para ropa ALA.','4',4,'2021-06-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Cerveza Heineken Premium Quality','cerveza.jpg','Heineken para disfrutar con amigos.','4',3,'2021-07-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Coca Cola Original 1,5L','coca_cola.jpg','Coca Cola para compartir felicidad.','4',3,'2021-08-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Alfajor Terrabusi Clatico 300g','alfajor.jpg','Alfabores ricos de chocolate.','4',3,'2021-09-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Fideos Matarazzo 500g','fideos.jpg','Fideos ricos para compartir en familia. Matarazzo.','4',2,'2021-10-25 00:00:00','2021-04-25 00:00:00');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `usuarios`
