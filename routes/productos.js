@@ -44,4 +44,4 @@ module.exports = router;
 
 //No anda el order sequialize en search
 
-
+//Llamar a vistas en carpetas

@@ -85,7 +85,7 @@ module.exports = {
         Promise.all([producto])
 
             .then(([producto]) => {
-             //return res.send (producto)
+       //  return res.send (producto)
         
                 return res.render('product', {
                     producto,

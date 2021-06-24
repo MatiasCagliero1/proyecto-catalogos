@@ -48,37 +48,38 @@ INSERT INTO `comentarios` VALUES (1,'Muy buen producto','2021-04-25',1,4,NULL,NU
 /*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
 --
 -- Table structure for table `productos`
 --
+
 DROP TABLE IF EXISTS `productos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `productos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `product_name` varchar(255) NOT NULL,
-  `img_name` varchar(255) NOT NULL,
+  `img_name` varchar(255) DEFAULT NULL,
   `detalle` varchar(255) NOT NULL,
-  `precioMedida` double NOT NULL,
   `condicion` varchar(255) NOT NULL,
   `userAdded` int(11) NOT NULL,
-  `createdAt` datetime DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
   `updatedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_95407dd7-28ee-46dc-92a8-7956bc8217b5` (`userAdded`),
-  CONSTRAINT `FK_95407dd7-28ee-46dc-92a8-7956bc8217b5` FOREIGN KEY (`userAdded`) REFERENCES `usuarios` (`id`)
+  KEY `productosUsers` (`userAdded`),
+  CONSTRAINT `productosUsers` FOREIGN KEY (`userAdded`) REFERENCES `usuarios` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `productos`
 --
+
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (2,'Papas McCain. Fritas cocinadas, con Cascara','papas.jpg','0',200,'Vegano',2,NULL,NULL),(3,'Cerveza Lager Heineken Botella 1 Litro','cerveza.jpg','0',400,'Vegano',1,NULL,NULL),(4,'Lavavajillas Bio Act.Frutas Cif Bot 500 ml','lavavajillas.jpg','0',300,'Vegano',4,NULL,NULL),(5,'Jabon Liquido ALA Para Diluir 500 ml. Nueva formula','jabon.jpg','0',500,'Vegano',5,NULL,NULL),(6,'Papas Noisette McCain Bsa 1 kg. Nueva reseta.','papas1.jpg','0',300,'Vegano',2,NULL,NULL),(7,'Alfajor Terrabusi Chocolate 50 Gr X 6 Uni','yerba.jpg','0',200,'Vegano',2,NULL,NULL),(9,'Pan Artesano Bimbo 500grm. Celiaco','pan.jpg','0',500,'Vegano',2,NULL,NULL),(10,'Yerba Mate C/Palo Chamigo Paq 500 Grm','yerba.jpg','0',200,'Vegano',5,NULL,NULL);
+INSERT INTO `productos` VALUES (1,'Yerba Mate CHAMIGO 500g','yerba.jpg','Yerba Chamigo ideal para toda la familia.','1',1,'2021-01-25 00:00:00','2021-04-25 00:00:00'),(2,'Papas Noisettes Mc Cain 1kg','papas1.jpg','Papar ricas para disfrutar.','4',2,'2021-02-25 00:00:00','2021-04-25 00:00:00'),(3,'Papas Finas Mc Cain 1kg','papas.jpg','Papar ricas para disfrutar. Buenisimas!','4',3,'2021-03-25 00:00:00','2021-04-25 00:00:00'),(4,'Pan Bimbo Artesano Receta Original 500g','pan.jpg','Pan de los mejores arrtesanos de Bimbo.','3',3,'2021-04-25 00:00:00','2021-04-25 00:00:00'),(5,'Mermelada Patagonia Berries 100% Natural','mermelada.jpg','Mermelada rica sabor Berries.','3',4,'2021-05-25 00:00:00','2021-04-25 00:00:00'),(6,'Liquido limpiador ALA lavado perfecto 3L','jabon.jpg','Limpiador para ropa ALA.','4',4,'2021-06-25 00:00:00','2021-04-25 00:00:00'),(7,'Cerveza Heineken Premium Quality','cerveza.jpg','Heineken para disfrutar con amigos.','4',3,'2021-07-25 00:00:00','2021-04-25 00:00:00'),(8,'Coca Cola Original 1,5L','coca_cola.jpg','Coca Cola para compartir felicidad.','4',3,'2021-08-25 00:00:00','2021-04-25 00:00:00'),(9,'Alfajor Terrabusi Clatico 300g','alfajor.jpg','Alfabores ricos de chocolate.','4',3,'2021-09-25 00:00:00','2021-04-25 00:00:00'),(10,'Fideos Matarazzo 500g','fideos.jpg','Fideos ricos para compartir en familia. Matarazzo.','4',2,'2021-10-25 00:00:00','2021-04-25 00:00:00');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
---
 
 --
 -- Table structure for table `usuarios`
