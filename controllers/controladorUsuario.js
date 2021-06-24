@@ -198,15 +198,22 @@ var controladorUsuario = {
     },
 
     edit: (req, res) => {
-        let id = req.params.id;
+        if (req.params.id == req.session.usuarioIngresado.id) {
+            let id = req.params.id;
+            db.Usuario.findByPk(id)
+
+            .then(usuario => {
+                //res.send(usuario)
+                res.render('profile-edit', { usuario })
+            })
+
+        } else {
+            return res.redirect("/")
+        }
+
         //res.send(id)
 
-        db.Usuario.findByPk(id)
 
-        .then(usuario => {
-            //res.send(usuario)
-            res.render('profile-edit', { usuario })
-        })
     },
 
     editado: (req, res) => {
