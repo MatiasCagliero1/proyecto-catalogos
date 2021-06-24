@@ -175,15 +175,18 @@ var controladorUsuario = {
     },
     perfil: (req, res) => {
         if (req.session.usuarioIngresado != null) {
-            let id = req.session.usuarioIngresado.id
+            let id = req.params.id
 
             let usuario = db.Usuario.findByPk(id)
-            let producto = db.Producto.findAll()
+            let producto = db.Producto.findAll({
+                where: [{ userAdded: req.params.id }]
+            })
 
             Promise.all([usuario, producto])
 
             .then(([usuario, producto]) => {
                 //return res.send (req.session.usuarioIngresado)
+
                 return res.render('profile', {
                     producto,
                     usuario
@@ -198,15 +201,22 @@ var controladorUsuario = {
     },
 
     edit: (req, res) => {
-        let id = req.params.id;
+        if (req.params.id == req.session.usuarioIngresado.id) {
+            let id = req.params.id;
+            db.Usuario.findByPk(id)
+
+            .then(usuario => {
+                //res.send(usuario)
+                res.render('profile-edit', { usuario })
+            })
+
+        } else {
+            return res.redirect("/")
+        }
+
         //res.send(id)
 
-        db.Usuario.findByPk(id)
 
-        .then(usuario => {
-            //res.send(usuario)
-            res.render('profile-edit', { usuario })
-        })
     },
 
     editado: (req, res) => {

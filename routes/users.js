@@ -31,7 +31,7 @@ router.get("/admin/deleteUsuario/:id", controladorUsuario.adminUsuariosDelete)
 
 //Ruta pagina Profile - Profile-edit
 
-router.get('/profile', controladorUsuario.perfil)
+router.get('/profile/:id', controladorUsuario.perfil)
 router.get('/profile/edit/:id', controladorUsuario.edit)
 router.post('/profile/edit/:id', controladorUsuario.editado)
 

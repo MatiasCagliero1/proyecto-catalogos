@@ -71,7 +71,7 @@ hr {
 /*====== Main Header ======*/
 
 .main-header {
-    padding: 15px0;
+    padding: 12px;
     background-color: rgb(12, 81, 201);
 }
 
@@ -173,7 +173,6 @@ hr {
     margin-top: 30px;
     margin-bottom: 30px;
 }
-
 
 .product-box {
     background-color: #ffffff;
