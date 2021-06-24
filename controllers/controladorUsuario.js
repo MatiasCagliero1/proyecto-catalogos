@@ -175,7 +175,7 @@ var controladorUsuario = {
     },
     perfil: (req, res) => {
         if (req.session.usuarioIngresado != null) {
-            let id = req.session.usuarioIngresado.id
+            let id = req.params.id
 
             let usuario = db.Usuario.findByPk(id)
             let producto = db.Producto.findAll()
