@@ -7,20 +7,20 @@ const path = require('path');
 
 var storage = multer.diskStorage({
 
-  destination: (req, file, cb) => {
+    destination: (req, file, cb) => {
 
-    cb(null,path.resolve(__dirname,'../public/images/productosFile'))
+        cb(null, path.resolve(__dirname, '../public/images/productosFile'))
 
-  },
+    },
 
-  filename: (req, file, cb) => {
-//Ver UniqueID
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+    filename: (req, file, cb) => {
+        //Ver UniqueID
+        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
 
-  }
+    }
 })
 
-var upload = multer({storage});
+var upload = multer({ storage });
 
 // Requiriendo Controlador
 var productController = require('../controllers/productController');
@@ -39,6 +39,7 @@ router.post('/newproduct/post', upload.single('img_name'), productController.new
 router.get('/editproduct/:id', productController.editProduct);
 router.post('/editproduct/post', upload.single('img_name'), productController.editProductPost);
 
+router.post("/comentario/:id/:idProducto", productController.createComent)
 
 module.exports = router;
 

@@ -44,12 +44,17 @@ module.exports = (sequelize, dataTypes) => {
 
     const Producto = sequelize.define(alias, cols, config);
 
-// El userAdded es el id de el modelo Usuario y quiero tener el nombre
-    Producto.associate = function (models) {
+    // El userAdded es el id de el modelo Usuario y quiero tener el nombre
+    Producto.associate = function(models) {
         Producto.belongsTo(models.Usuario, {
-            as: "userAdd",
-            foreignKey: "userAdded"
-        });
+                as: "userAdd",
+                foreignKey: "userAdded"
+            }),
+            Producto.hasMany(models.Comentario, {
+                as: "productoId",
+                foreignKey: "productos_id"
+
+            })
     }
 
     return Producto;

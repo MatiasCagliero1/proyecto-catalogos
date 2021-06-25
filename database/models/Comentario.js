@@ -15,10 +15,7 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.STRING,
             allowNull: false
         },
-        fecha_comentario: {
-            type: dataTypes.DATE,
-            allowNull: false
-        },
+
         usuarios_id: {
             type: dataTypes.INTEGER,
             allowNull: false
@@ -33,23 +30,23 @@ module.exports = (sequelize, dataTypes) => {
         updatedAt: {
             type: dataTypes.DATE,
         }
-        
+
     }
     let config = {
         timestamps: true,
-        underscored: true,
+        underscored: false,
     }
 
     const Comentario = sequelize.define(alias, cols, config);
-    Comentario.associate = function(models){
+    Comentario.associate = function(models) {
         Comentario.belongsTo(models.Usuario, {
-            as: 'usuariosId',
-            foreignKey: 'usuarios_id'
-        },
-        Comentario.belongsTo(models.Producto, {
-            as: 'productosId',
-            foreignKey: 'productos_id'
-        }))
+                as: 'usuarioId',
+                foreignKey: 'usuarios_id'
+            },
+            Comentario.belongsTo(models.Producto, {
+                as: 'productoId',
+                foreignKey: 'productos_id'
+            }))
     }
     return Comentario;
 };
