@@ -6,16 +6,12 @@ module.exports = (sequelize, dataTypes) => {
             type: dataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
-            autoIncrement: true,
-            allowNull: false,
-            defaultValue: true,
-            unique: true
+            allowNull: false
         },
         texto: {
             type: dataTypes.STRING,
             allowNull: false
         },
-
         usuarios_id: {
             type: dataTypes.INTEGER,
             allowNull: false
@@ -33,12 +29,14 @@ module.exports = (sequelize, dataTypes) => {
 
     }
     let config = {
+        tableName: "comentarios",
         timestamps: true,
         underscored: false,
     }
 
     const Comentario = sequelize.define(alias, cols, config);
-    Comentario.associate = function(models) {
+    
+    Comentario.associate = function (models) {
         Comentario.belongsTo(models.Usuario, {
                 as: 'usuarioId',
                 foreignKey: 'usuarios_id'

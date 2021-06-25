@@ -39,7 +39,7 @@ router.post('/newproduct/post', upload.single('img_name'), productController.new
 router.get('/editproduct/:id', productController.editProduct);
 router.post('/editproduct/post', upload.single('img_name'), productController.editProductPost);
 
-router.post("/comentario/:id/:idProducto", productController.createComent)
+router.post("/comentario", productController.createComent);
 
 module.exports = router;
 

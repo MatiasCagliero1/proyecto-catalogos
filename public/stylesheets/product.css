@@ -67,6 +67,10 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.none{
+    display: none;
+}
+
 .contenedor {
     margin-top: 0em !important;
 }

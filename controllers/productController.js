@@ -191,15 +191,20 @@ module.exports = {
             .catch(error => console.log(error));
 
     },
+
     createComent: (req, res) => {
 
         db.Comentario.create({
                 texto: req.body.comentario,
-                usuarios_id: req.params.id,
-                productos_id: req.params.idProducto
+                usuarios_id: req.body.id,
+                productos_id: req.body.idProducto,
             })
-            .then(() => {
-                return res.redirect("/")
+
+      //      Borrar comentarios si se borra el producto?
+      // No lleva al siguiente paso
+
+            .then((comentario) => {
+                return res.redirect(`/productos/detalle/${productos_id}?mensaje=comentadoBien`);
             })
             .catch((error) => error)
 
@@ -207,14 +212,3 @@ module.exports = {
 
 
 };
-
-//   
-
-{
-    /* <article>
-    <img class="userphoto" src="/images/users/<%=usuarios.imgUsuario%>" alt="<%=usuarios.imgUsuario%>">
-    <div class="data">
-            <strong> <a href="profile.html"><%=usuarios.nombre + usuarios.apellido%></a></strong><%=comentarios.texto%></p>
-    </div>
-    </article> */
-}
