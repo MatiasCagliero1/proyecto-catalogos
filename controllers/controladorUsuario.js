@@ -178,18 +178,22 @@ var controladorUsuario = {
             let id = req.params.id
 
             let usuario = db.Usuario.findByPk(id)
+            let comentario = db.Comentario.findAll({
+                where: [{ usuarios_id: id }]
+            })
             let producto = db.Producto.findAll({
                 where: [{ userAdded: req.params.id }]
             })
 
-            Promise.all([usuario, producto])
+            Promise.all([usuario, producto, comentario])
 
-            .then(([usuario, producto]) => {
+            .then(([usuario, producto, comentario]) => {
                 //return res.send (req.session.usuarioIngresado)
 
                 return res.render('profile', {
                     producto,
-                    usuario
+                    usuario,
+                    comentario
                 })
             })
         } else {
