@@ -9,6 +9,10 @@
     margin: 0 auto;
 }
 
+.editar {
+    margin: 0 50%;
+}
+
 .tituloRegistrate {
     margin-left: 35%;
 }
@@ -33,6 +37,10 @@ form input {
     margin: 0 0 15px;
     padding: 15px;
     font-size: 14px;
+}
+
+.conteinerEdit {
+    width: 30px;
 }
 
 .checkbox {
