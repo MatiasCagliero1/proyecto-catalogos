@@ -1,0 +1,44 @@
+<% respuesta.forEach(element => {%>
+
+                                    <% if (element.condicion == 1) {%>
+                    
+                                <a href="/productos/detalle/<%=element.id%>?id=<%=element.id%>">
+                                    <div class="product">
+                                        <div class="fotos"> <img src="/images/productosFile/<%=element.img_name%>">
+                                        </div>
+                                        <h3>
+                                            <%=element.product_name%>
+                                        </h3>
+                                        <h6>Por
+                                            <%=element.userAdded.nombre%>
+                                        </h6>
+                                        <!-- Te trae el id, no el nombre -->
+                                        
+                                            <%
+                                            switch (element.condicion) {
+                    
+                                                case '1':%>
+                                              <h6>Vegetariano</h6>
+                    
+                                               <%     break;
+                                        
+                                            case '2':%>
+                                            <h6>Vegano</h6>
+                    
+                                             <%     break;
+                                     
+                                          case '3':%>
+                                          <h6>Sin TACC</h6>
+                    
+                                           <%     break;
+                    
+                                          default:%>
+                                           <h6>Normal</h6>
+                    
+                                            <%     break;
+                                    
+                                        }%>      
+                                    </div>
+                                </a>
+                            <% }}) %> 
+                                

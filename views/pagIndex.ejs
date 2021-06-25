@@ -32,21 +32,23 @@
                                     <h2 class="products-title">Mas Vendidos</h2>
                                 </div>
                                 <!-- Show the "ultimos" products -->
-                                <% for(let i = 0; i < respuesta.length; i++){ %>
+                                
+                                <% for(let i = 0; i < producto.length; i++){ %>
                                     <div class="col-12 col-sm-6 col-lg-3">
                                         <section class="product-box">
 
-                                            <a href="/productos/detalle/<%= respuesta[i].id %>?id=<%=respuesta[i].id%>">
+                                            <a href="/productos/detalle/<%= producto[i].id %>?id=<%=producto[i].id%>">
                                                 <figure class="product-box_image">
-                                                    <img src="images/productosFile/<%=respuesta[i].img_name%> " alt="<%=respuesta[i].product_name%>">
+                                                    <img src="images/productosFile/<%=producto[i].img_name%> " alt="<%=producto[i].product_name%>">
                                                 </figure>
                                                 <article class="product-box_data">
                                                     <h2>
-                                                        <%=respuesta[i].product_name %>
+                                                        <%=producto[i].product_name %>
                                                     </h2>
-                                                    <p>Precio: $
-                                                        <%=respuesta[i].preciopor %>
+                                                    <a href="/users/profile/<%=producto[i].userAdded.id%>"> Por: <%=producto[i].userAdded.nombre + ' ' + producto[i].userAdded.apellido%></a>
                                                     </p>
+                                                    </article>
+                                                    
 
                                                 </article>
                                             </a>
@@ -64,24 +66,22 @@
                         <div class="container products-wrapper">
                             <div class="row">
                                 <div class="col-12">
-                                    <h2 class="products-title">Oferta 2x1</h2>
+                                    <h2 class="products-title">Vegetarianos</h2>
                                 </div>
                                 <!-- Show the "ultimos" products -->
-                                <% for(let i = 0; i < respuesta.length; i++){ %>
+                                <% for(let i = 0; i < productoVegetariano.length; i++){ %>
                                     <div class="col-12 col-sm-6 col-lg-3">
                                         <section class="product-box">
 
-                                            <a href="/productos/detalle/<%=respuesta[i].id %>id=<%=respuesta[i].id%>">
+                                            <a href="/productos/detalle/<%=productoVegetariano[i].id %>id=<%=productoVegetariano[i].id%>">
                                                 <figure class="product-box_image">
-                                                    <img src="images/products/<%=respuesta[i].imgName%> " alt=<%= respuesta[i].product_name %> >
+                                                    <img src="images/productosFile/<%=productoVegetariano[i].img_name%> " alt=<%= productoVegetariano[i].product_name %> >
                                                 </figure>
                                                 <article class="product-box_data">
                                                     <h2>
-                                                        <%=respuesta[i].product_name %>
+                                                        <%=productoVegetariano[i].product_name %>
                                                     </h2>
-                                                    <p>Precio: $
-                                                        <%=respuesta[i].preciopor %>
-                                                    </p>
+                                                    
 
                                                 </article>
                                             </a>
