@@ -1,7 +1,7 @@
 const db = require('../database/models')
 
 module.exports = {
-    /*
+    
     index: (req, res) => {
         let producto = db.Producto.findAll({
             order: [
@@ -33,7 +33,7 @@ module.exports = {
             //res.send(respuesta)
         })
         
-    },*/
+    },/*
     index: (req, res) => {
         db.Comentario.findAll({/*
             include: {
@@ -50,11 +50,11 @@ module.exports = {
                 nested: true
             }
         })
-*/
+
         })
         .then(respuesta=>{
             return res.send(respuesta)
         })
         
-    }
+    }*/
 }
