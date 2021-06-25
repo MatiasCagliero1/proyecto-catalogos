@@ -4,9 +4,12 @@
 
 <head>
     <%-include("./partials/head") %>
-        <!-- Own Stylesheet -->
-        <link rel="stylesheet" href="stylesheets/app.css">
-        <link rel="stylesheet" href="/stylesheets/formularioEditarPerfil.css">
+        <link rel="stylesheet" href="/stylesheets/formularios.css">
+
+
+
+
+
         <title>ProfileEdit</title>
 
 
@@ -15,34 +18,60 @@
 <body>
     <!--Header-->
 
-    
+    <% if(usuarioLogueado != null){ %>
+        <%-include("./partials/headerLogueado") %>
 
-        <!-- formulario para editar perfil-->
-        <h1 class="titulo">Editar Perfil</h1>
+            <% } else { %>
+                <%-include("./partials/headerDeslogueado")%>
+                    <%}%>
+                        <div class="container products-wrapper">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h1 class="products-title tituloLogIn">Editar Perfil</h1>
+                                </div>
 
-        <form class="formulario" action="/users/profile/edit/<%= usuario.id %>  " method="POST">
-            <div class="margen">
-                <input placeholder="Nuevo Nombre" type="text" name="nombre" id="nombre">
-            </div>
-            <div class="margen">
-                <input placeholder="Nuevo Email" type="email" name="email" id="email">
-            </div>
-            <div class="margen">
-                <input type="text" placeholder="Nuevo nombre de Usuario" name="usuario" id="usuario">
-            </div>
-            <div class="margen">
-                <input type="password" placeholder="Nueva contraseña" name="contraseña" id="password">
-            </div>
-            <div class="margen">
-                <button type="submit">Confirmar cambios</button>
-            </div>
+                                <!-- Show the "ultimos" products -->
+
+                                <!-- Formulario de logIn-->
+                                <section class="conteiner">
+                                    <form action="/users/profile/edit/<%= usuario.id %>  " method="POST">
+
+                                        <div>
+                                            <label for="nombre">Nuevo nombre</label>
+                                            <input placeholder="<%=usuario.nombre%>" value="<%= usuario.nombre %> " type="text" name="nombre" id="nombre">
+                                        </div>
+                                        <div>
+                                            <label for="email">Nuevo email</label>
+                                            <input placeholder="<%= usuario.email %> " value="<%= usuario.email %> " type="email" name="email" id="email">
+                                        </div>
+                                        <div>
+                                            <label for="usuario">Nuevo usuario</label>
+                                            <input type="text" placeholder="<%= usuario.usuario %> " value="<%= usuario.usuario %> " name="usuario" id="usuario">
+                                        </div>
+                                        <div>
+                                            <label for="contraseña">Nueva contraseña</label>
+                                            <input type="password" placeholder="<%= usuario.contraseña %> " value="<%= usuario.contraseña %> " name="contraseña" id="password">
+                                        </div>
 
 
 
 
-        </form>
+                                        <div class="boton">
 
-        <%-include('./partials/footer')%>
+                                            <button type="submit" class="btn">Confirmar Cambios</button>
+
+                                        </div>
+
+
+                                    </form>
+
+
+                                </section>
+
+
+
+
+                                <%-include('./partials/footer')%>
 </body>
 
 </html>

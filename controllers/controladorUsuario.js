@@ -207,6 +207,7 @@ var controladorUsuario = {
 
             .then(usuario => {
                 //res.send(usuario)
+
                 res.render('profile-edit', { usuario })
             })
 
@@ -225,7 +226,7 @@ var controladorUsuario = {
 
 
         db.Usuario.update({
-                    id: editado,
+
                     nombre: req.body.nombre,
                     email: req.body.email,
                     usuario: req.body.usuario,
@@ -234,7 +235,13 @@ var controladorUsuario = {
 
             )
             .then(() => {
-                return res.redirect('/')
+                db.Usuario.findByPk(editado)
+                    .then(usuario => {
+                        req.session.usuarioIngresado = usuario
+                        return res.redirect('/')
+                    })
+
+
             })
 
     },
