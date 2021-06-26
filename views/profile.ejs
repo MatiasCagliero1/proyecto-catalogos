@@ -93,11 +93,42 @@
 
 
                                                 <!-- /Mis productos -->
+                                                <div class="row">
+                                                    <% if(comentario.length > 0){ %>
+                                                        <div class="col-12">
+                                                            <h2 class="products-title">Mis comentarios</h2>
+                                                        </div>
+
+                                                        <% } %>
+
+                                                            <!-- Show mis productos -->
+                                                            <% for (let index = 0; index < comentario.length; index++) {
+                                                                 const cadaComent = comentario[index]; %>
+                                                                <div class="col-12 col-sm-6 col-lg-3">
+                                                                    <section class="product-box">
+
+                                                                        <a href="/productos/detalle/<%= cadaComent.comentarioId.id %>">
+                                                                            <figure class="product-box_image">
+                                                                                <img src="/images/productosFile/<%= cadaComent.comentarioId.img_name%> " alt="<%= cadaComent.comentarioId.product_name%>">
+                                                                            </figure>
+                                                                            <article class="product-box_data">
+                                                                                <h2> comentario:
+                                                                                    <%= cadaComent.texto%>
+                                                                                </h2>
 
 
-                                                <!-- footer -->
-                                                <%-include("./partials/footer") %>
-                                                    <!-- /footer -->
+                                                                            </article>
+                                                                        </a>
+
+                                                                    </section>
+                                                                </div>
+
+                                                                <% } %>
+
+
+                                                                    <!-- footer -->
+                                                                    <%-include("./partials/footer") %>
+                                                                        <!-- /footer -->
 </body>
 
 </html>

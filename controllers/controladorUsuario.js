@@ -179,10 +179,24 @@ var controladorUsuario = {
 
             let usuario = db.Usuario.findByPk(id)
             let comentario = db.Comentario.findAll({
-                where: [{ usuarios_id: id }]
+                where: [{ usuarios_id: id }],
+                include: [{
+                        association: "usuarioId"
+                    }, {
+                        association: "comentarioId"
+                    }
+
+                ]
             })
             let producto = db.Producto.findAll({
-                where: [{ userAdded: req.params.id }]
+                where: [{ userAdded: req.params.id }],
+                include: [{
+                        association: "userAdd"
+                    }, {
+                        association: "productoId"
+                    }
+
+                ]
             })
 
             Promise.all([usuario, producto, comentario])
