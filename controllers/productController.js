@@ -209,8 +209,8 @@ module.exports = {
             // No lleva al siguiente paso
 
             .then((comentario) => {
-                return res.send(comentario)
-                return res.redirect(`/productos/detalle/${productos_id}?mensaje=comentadoBien`);
+           //     return res.send(comentario)
+                return res.redirect(`/productos/detalle/${comentario.productos_id}?mensaje=comentadoBien`);
             })
             .catch((error) => error)
 
