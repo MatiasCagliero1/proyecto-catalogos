@@ -230,7 +230,7 @@ var controladorUsuario = {
 
 
         db.Usuario.update({
-
+                    imgUsuario: req.file ? req.file.filename : "default-image.png",
                     nombre: req.body.nombre,
                     email: req.body.email,
                     usuario: req.body.usuario,

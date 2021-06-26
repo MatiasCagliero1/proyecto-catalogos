@@ -34,8 +34,8 @@
 
                                 <!-- Formulario de logIn-->
                                 <section class="conteiner">
-                                    <form action="/users/profile/edit/<%= usuario.id %>  " method="POST">
-
+                                    <form action="/users/profile/edit/<%=usuario.id%>  " method="POST" enctype="multipart/form-data">
+                                        <input accept=".jpg , .png" type="file" name="fotoUsuario">
                                         <div>
                                             <label for="nombre">Nuevo nombre</label>
                                             <input placeholder="<%=usuario.nombre%>" value="<%= usuario.nombre %> " type="text" name="nombre" id="nombre">
