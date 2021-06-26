@@ -94,11 +94,11 @@ module.exports = {
         Promise.all([producto])
 
             .then(([producto]) => {
-   //     return res.send(producto[0].productoId)
+     //return res.send(producto)
 
                 return res.render('product', {
                     producto,
-                    mensaje
+                    mensaje,id
                 })
             })
 
@@ -205,11 +205,8 @@ module.exports = {
                 productos_id: req.body.idProducto,
             })
 
-            //      Borrar comentarios si se borra el producto?
-            // No lleva al siguiente paso
-
             .then((comentario) => {
-           //     return res.send(comentario)
+          //    return res.send(comentario)
                 return res.redirect(`/productos/detalle/${comentario.productos_id}?mensaje=comentadoBien`);
             })
             .catch((error) => error)

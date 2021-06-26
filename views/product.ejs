@@ -107,8 +107,11 @@
                 <section class="comments">
 
                     <% comentariosProducto = producto[0].productoId;%>
-                    
-                    <% comentariosProducto.forEach(element => { %>
+
+                    <% if (comentariosProducto == 0) { %>
+<h2>No hay comentarios</h2>
+                        <% }%>
+                    <%  comentariosProducto.forEach(element => { %>
                     <article>
                         <img class="userphoto" src="/images/users/" alt="">
                         <div class="data">
@@ -123,9 +126,9 @@
 
                     <input class="form-input" name="comentario" type="text" placeholder="Agregar comentario">
 
-                    <input class="none" name="id" type="number" value="<%=producto[0].id%>">
+                    <input class="none" name="id" type="number" value="<%=producto[0].userAdd.id%>">
 
-                    <input class="none" name="idProducto" type="number" value="<%=producto[0].userAdd.id%>">
+                    <input class="none" name="idProducto" type="number" value="<%=id%>">
 
                     <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
                 </form>
