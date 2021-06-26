@@ -58,49 +58,62 @@ module.exports = {
 
         Promise.all([producto])
 
-            .then(([producto]) => {
-                //return res.send (productoDetalle)
+        .then(([producto]) => {
+            //return res.send (productoDetalle)
 
-                return res.render('search-results', {
-                    producto,
-                    busqueda,
-                    condicionNumber,
-                    orden
-                })
+            return res.render('search-results', {
+                producto,
+                busqueda,
+                condicionNumber,
+                orden
             })
+        })
     },
 
     // El metodo detalle lleva a la pagina de producto
     detalle: (req, res) => {
         let id = req.params.id;
 
-        let producto = db.Producto.findAll( {
+        let producto = db.Producto.findAll({
             where: {
                 id: id
             },
 
             include: [{
                     association: "userAdd"
-                },{
+                }, {
                     association: "productoId"
                 }
 
             ]
         })
+        let comentario = db.Comentario.findAll({
+            where: [{ productos_id: id }],
+            include: [{
+                    association: "usuarioId"
+                }, {
+                    association: "comentarioId"
+                }
+
+            ]
+        })
+
 
         // Si se acaba de agregar un producto o editar, manda un valor (mensajeBack) a la vista para renderizar un mensaje
         let mensaje = req.query.mensaje;
 
-        Promise.all([producto])
+        Promise.all([producto, comentario])
 
-            .then(([producto]) => {
-     //return res.send(producto)
-
-                return res.render('product', {
-                    producto,
-                    mensaje,id
-                })
+        .then(([producto, comentario]) => {
+            //return res.send(producto)
+            // return res.send(comentario)
+            return res.render('product', {
+                producto,
+                mensaje,
+                id,
+                comentario
             })
+        })
 
 
     },
@@ -114,14 +127,14 @@ module.exports = {
             let idProduct = req.params.id;
 
             db.Producto.destroy({
-                    where: {
-                        id: idProduct
-                    }
-                })
+                where: {
+                    id: idProduct
+                }
+            })
 
-                .then(producto => {
-                    return res.redirect('/')
-                })
+            .then(producto => {
+                return res.redirect('/')
+            })
         }
     },
 
@@ -162,13 +175,13 @@ module.exports = {
         } else {
             db.Producto.findByPk(id)
 
-                .then(producto => {
-                    //llamar al product usser added
-                    return res.render('product-edit', {
-                        producto,
-                        id
-                    })
+            .then(producto => {
+                //llamar al product usser added
+                return res.render('product-edit', {
+                    producto,
+                    id
                 })
+            })
         }
     },
 
@@ -200,13 +213,13 @@ module.exports = {
     createComent: (req, res) => {
 
         db.Comentario.create({
-                texto: req.body.comentario,
-                usuarios_id: req.body.id,
-                productos_id: req.body.idProducto,
-            })
+            texto: req.body.comentario,
+            usuarios_id: req.body.id,
+            productos_id: req.body.idProducto,
+        })
 
-            .then((comentario) => {
-          //    return res.send(comentario)
+        .then((comentario) => {
+                //    return res.send(comentario)
                 return res.redirect(`/productos/detalle/${comentario.productos_id}?mensaje=comentadoBien`);
             })
             .catch((error) => error)
