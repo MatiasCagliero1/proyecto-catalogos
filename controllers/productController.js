@@ -50,36 +50,41 @@ module.exports = {
 
                 ], */
 
-                include: [
-                    { association: "userAdd" }
-                ]
+                include: [{
+                    association: "userAdd"
+                }]
             }
         )
 
         Promise.all([producto])
 
-        .then(([producto]) => {
-            //return res.send (productoDetalle)
+            .then(([producto]) => {
+                //return res.send (productoDetalle)
 
-            return res.render('search-results', {
-                producto,
-                busqueda,
-                condicionNumber,
-                orden
+                return res.render('search-results', {
+                    producto,
+                    busqueda,
+                    condicionNumber,
+                    orden
+                })
             })
-        })
     },
 
     // El metodo detalle lleva a la pagina de producto
     detalle: (req, res) => {
         let id = req.params.id;
 
-        let producto = db.Producto.findAll({
-            where: [{
+        let producto = db.Producto.findAll( {
+            where: {
                 id: id
-            }],
-            include: [
-                { association: "userAdd" }
+            },
+
+            include: [{
+                    association: "userAdd"
+                },{
+                    association: "productoId"
+                }
+
             ]
         })
 
@@ -88,14 +93,14 @@ module.exports = {
 
         Promise.all([producto])
 
-        .then(([producto]) => {
-            //  return res.send (producto)
+            .then(([producto]) => {
+   //     return res.send(producto[0].productoId)
 
-            return res.render('product', {
-                producto,
-                mensaje
+                return res.render('product', {
+                    producto,
+                    mensaje
+                })
             })
-        })
 
 
     },
@@ -109,14 +114,14 @@ module.exports = {
             let idProduct = req.params.id;
 
             db.Producto.destroy({
-                where: {
-                    id: idProduct
-                }
-            })
+                    where: {
+                        id: idProduct
+                    }
+                })
 
-            .then(producto => {
-                return res.redirect('/')
-            })
+                .then(producto => {
+                    return res.redirect('/')
+                })
         }
     },
 
@@ -157,13 +162,13 @@ module.exports = {
         } else {
             db.Producto.findByPk(id)
 
-            .then(producto => {
-                //llamar al product usser added
-                return res.render('product-edit', {
-                    producto,
-                    id
+                .then(producto => {
+                    //llamar al product usser added
+                    return res.render('product-edit', {
+                        producto,
+                        id
+                    })
                 })
-            })
         }
     },
 
@@ -200,15 +205,31 @@ module.exports = {
                 productos_id: req.body.idProducto,
             })
 
-      //      Borrar comentarios si se borra el producto?
-      // No lleva al siguiente paso
+            //      Borrar comentarios si se borra el producto?
+            // No lleva al siguiente paso
 
             .then((comentario) => {
+                return res.send(comentario)
                 return res.redirect(`/productos/detalle/${productos_id}?mensaje=comentadoBien`);
             })
             .catch((error) => error)
 
-    }
+    },
 
+    /*    show : (req, res)=> {
+           let id = req.params.id;
+          
+           db.Rescatado.findByPk(id, {
+                include:[
+                   {association: 'comentarios', include: {association: 'usuario'}},
+                   {association: 'producto'}]   
+               })
+           .then(rescatado=> {
+               let comentarios = rescatado.comentarios
+               return res.render('product', {rescatado, comentarios})
+               
+           })
+           .catch(error => console.log(error))
+       }, */
 
 };

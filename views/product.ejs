@@ -42,7 +42,7 @@
 
     <%}%>
 
-                                        <!-- product detail -->
+                                          <!-- product detail -->
                                         <div class="container products-wrapper contenedor">
                                             <div class="d-flex align-items-center">
                                                 <h2 class="products-title">
@@ -106,15 +106,16 @@
             <div class="col-12 col-lg-4">
                 <section class="comments">
 
-                    <% //comentarios.forEach(element => { %>
+                    <% comentariosProducto = producto[0].productoId;%>
+                    
+                    <% comentariosProducto.forEach(element => { %>
                     <article>
-
-                        <img class="userphoto" src="/images/users/<%=producto[0].userAdd.imgUsuario%>" alt="">
+                        <img class="userphoto" src="/images/users/" alt="">
                         <div class="data">
-                            <strong> <a href="profile.html"></a></strong></p>
+                            <strong> <a href="profile.html"></a></strong><%=element.texto%></p>
                         </div>
                     </article>
-                    <% //}); %>
+                    <% }); %>
 
                 </section>
                 <%if (usuarioLogueado != null) { %>
