@@ -84,7 +84,9 @@ module.exports = {
             ]
         })
         let comentario = db.Comentario.findAll({
-            where: [{ productos_id: id }],
+            where: [{
+                productos_id: id
+            }],
             order: [
                 ['createdAt', 'DESC']
             ],
