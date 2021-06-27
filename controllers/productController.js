@@ -174,20 +174,16 @@ module.exports = {
         } else {
             db.Producto.findByPk(id)
 
-            .then(producto => {
-                if (req.session.usuarioIngresado.id == producto.userAdd) {
+                .then(producto => {
                     //llamar al product usser added
                     return res.render('product-edit', {
                         producto,
                         id
                     })
-                } else {
-                    return res.redirect("/")
-                }
-
-            })
+                })
         }
     },
+
 
     // El metodo editProductPost modifica la info subida al formulario en la base de datos
     editProductPost: (req, res) => {
