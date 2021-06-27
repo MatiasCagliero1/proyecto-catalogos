@@ -85,6 +85,9 @@ module.exports = {
         })
         let comentario = db.Comentario.findAll({
             where: [{ productos_id: id }],
+            order: [
+                ['createdAt', 'DESC']
+            ],
             include: [{
                     association: "usuarioId"
                 }, {
