@@ -28,7 +28,7 @@ module.exports = {
 
         let producto = db.Producto.findAll(
 
-            //Busqueda por nombre i DESCRIPCION >>>>>>>>>>
+            //Busqueda por nombre y DESCRIPCION >>>>>>>>>>
             {
                 where: [{
                         [op.or]: [{
@@ -45,10 +45,6 @@ module.exports = {
                     }
 
                 ],
-                /*  order: [
-                    [ "product_name", `${orden}`]
-
-                ], */
 
                 include: [{
                     association: "userAdd"
