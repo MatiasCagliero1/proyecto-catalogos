@@ -4,137 +4,137 @@
 <head>
     <%-include('./partials/head')%>
 
-    <title>
-        <%=producto[0].product_name%> Detalle Producto</title>
+        <title>
+            <%=producto[0].product_name%> Detalle Producto</title>
 
-    <!-- Stylesheet Propios -->
-    <link rel="stylesheet" href="/stylesheets/product.css">
+        <!-- Stylesheet Propios -->
+        <link rel="stylesheet" href="/stylesheets/product.css">
 </head>
 
 <body>
 
     <% if(usuarioLogueado != null){ %>
 
-    <%-include("./partials/headerLogueado") %>
+        <%-include("./partials/headerLogueado") %>
 
-    <% } else { %>
+            <% } else { %>
 
-    <%-include("./partials/headerDeslogueado")%>
+                <%-include("./partials/headerDeslogueado")%>
 
-    <%}%>
+                    <%}%>
 
                         <%  if (mensaje == 'actualizadoBien') {%>
-    <div class="alignMensaje">
-        <h3 class="actualizado">El producto se ha actualizado correctamente</h3>
-    </div>
-    <%}%>
+                            <div class="alignMensaje">
+                                <h3 class="actualizado">El producto se ha actualizado correctamente</h3>
+                            </div>
+                            <%}%>
 
                                 <% if ( mensaje == 'creadoBien') {%>
-    <div class="alignMensaje">
-        <h3 class="creado">El producto se ha creado correctamente</h3>
-    </div>
+                                    <div class="alignMensaje">
+                                        <h3 class="creado">El producto se ha creado correctamente</h3>
+                                    </div>
 
-    <% } if ( mensaje == 'comentadoBien') {%>
-    <div class="alignMensaje">
-        <h3 class="creado">El comentario se ha publicado correctamente</h3>
-    </div>
+                                    <% } if ( mensaje == 'comentadoBien') {%>
+                                        <div class="alignMensaje">
+                                            <h3 class="creado">El comentario se ha publicado correctamente</h3>
+                                        </div>
 
 
-    <%}%>
+                                        <%}%>
 
                                             <!-- product detail -->
                                             <div class="container products-wrapper contenedor">
                                                 <div class="d-flex align-items-center">
                                                     <h2 class="products-title">
                                                         <%=producto[0].product_name%>
-    </h2>
+                                                    </h2>
 
 
-    <% if(usuarioLogueado != null ){ %>
-  
+                                                    <% if(usuarioLogueado != null ){ %>
 
-    <p class="product-detail-description">
-        <% if( usuarioLogueado.id == producto[0].userAdd.id ){ %>
-        <button class="editarLink"><a href="/productos/editproduct/<%=producto[0].id%>">Editar Producto</a></button>
-        <% } %>
-        <% if(usuarioLogueado.role === 3 || usuarioLogueado.id == producto[0].userAdd.id ){ %>
-        <button onclick="alerta()" class="editarLink">Eliminar Producto</button>
-    </p>
 
-    
-    <% } %>
-    <% } %>
+                                                        <p class="product-detail-description">
+                                                            <% if( usuarioLogueado.id == producto[0].userAdd.id ){ %>
+                                                                <button class="editarLink"><a href="/productos/editproduct/<%=producto[0].id%>">Editar Producto</a></button>
+                                                                <% } %>
+                                                                    <% if(usuarioLogueado.role === 3 || usuarioLogueado.id == producto[0].userAdd.id ){ %>
+                                                                        <button onclick="alerta()" class="editarLink">Eliminar Producto</button>
+                                                        </p>
 
-    </div>
-    <div class="product-detail">
-        <div class="row">
-            <article class="col-12 col-lg-8 product-detail-info">
-                <img src="/images/productosFile/<%=producto[0].img_name%>" class="product-detail-img">
-                <p class="product-detail-description">
-                    <%=producto[0].product_name%>
-                    <br>
-                    <%=producto[0].detalle%>
-                    <br> Condición:
-                    <%
+
+                                                        <% } %>
+                                                            <% } %>
+
+                                                </div>
+                                                <div class="product-detail">
+                                                    <div class="row">
+                                                        <article class="col-12 col-lg-8 product-detail-info">
+                                                            <img src="/images/productosFile/<%=producto[0].img_name%>" class="product-detail-img">
+                                                            <p class="product-detail-description">
+                                                                <%=producto[0].product_name%>
+                                                                    <br>
+                                                                    <%=producto[0].detalle%>
+                                                                        <br> Condición:
+                                                                        <%
                 switch (producto.condicion) {
 
                     case '1':%>
-                    Vegetariano
+                                                                            Vegetariano
 
-                    <%     break;
+                                                                            <%     break;
             
                 case '2':%>
-                    Vegano
+                                                                                Vegano
 
-                    <%     break;
+                                                                                <%     break;
          
               case '3':%>
-                    Sin TACC
+                                                                                    Sin TACC
 
-                    <%     break;
+                                                                                    <%     break;
 
               default:%>
-                    Normal
+                                                                                        Normal
 
-                    <%     break;
+                                                                                        <%     break;
         
             }%>
-                    <br>
+                                                                                            <br>
 
-                    <!-- PROFILE LINK -->
-                    <a href="/users/profile/<%=producto[0].userAdd.id%>"> Por:
+                                                                                            <!-- PROFILE LINK -->
+                                                                                            <a href="/users/profile/<%=producto[0].userAdd.id%>"> Por:
                         <%=producto[0].userAdd.nombre + ' ' + producto[0].userAdd.apellido%></a>
-                </p>
-            </article>
+                                                            </p>
+                                                        </article>
 
 
-            <div class="col-12 col-lg-4">
-                <section class="comments">
+                                                        <div class="col-12 col-lg-4">
+                                                            <section class="comments">
 
-                    <% comentariosProducto = producto[0].productoId;%>
+                                                                <% comentariosProducto = producto[0].productoId;%>
 
 
-                    <% if (comentariosProducto == 0) { %>
-                    <h2>No hay comentarios</h2>
-                    <% }%>
-                    <%  for (let index = 0; index < comentario.length; index++) {
+                                                                    <% if (comentariosProducto == 0) { %>
+                                                                        <h2>No hay comentarios</h2>
+                                                                        <% }%>
+                                                                            <%  for (let index = 0; index < comentario.length; index++) {
                                                                                 const cadaComent = comentario[index]; %>
 
 
-                    <article>
-                        <img class="userphoto" src="/images/users/<%=cadaComent.usuarioId.imgUsuario%>" alt="">
-                        <div class="data">
-                            <strong> <a href="profile.html"></a></strong>
-                            <%=cadaComent.texto%>
-                            </p>
-                            <a href="/users/profile/<%=cadaComent.usuarioId.id%>">
-                                <h5>Por :
-                                    <%=cadaComent.usuarioId.usuario%>
-                                </h5>
-                            </a>
-                        </div>
-                    </article>
-                    <%}%>
+                                                                                <article>
+                                                                                    <img class="userphoto" src="/images/users/<%=cadaComent.usuarioId.imgUsuario%>" alt="">
+                                                                                    <div class="data">
+                                                                                        <strong> <a href="profile.html"></a></strong>
+                                                                                        <%=cadaComent.texto%>
+                                                                                            </p>
+                                                                                            <a href="/users/profile/<%=cadaComent.usuarioId.id%>">
+                                                                                                <h5>Por :
+                                                                                                    <%=cadaComent.usuarioId.usuario%>
+                                                                                                </h5>
+                                                                                            </a>
+                                                                                    </div>
+                                                                                </article>
+                                                                                <%}%>
 
 
                                                             </section>
@@ -143,31 +143,31 @@
 
                                                                 <input class="form-input" name="comentario" type="text" placeholder="Agregar comentario">
                                                                 <%if (locals.usuarioLogueado != null) { %>
-                    <input class="none" name="id" type="number" value="<%=usuarioLogueado.id%>">
-                    <%  }%>
+                                                                    <input class="none" name="id" type="number" value="<%=usuarioLogueado.id%>">
+                                                                    <%  }%>
 
-                    <input class="none" name="idProducto" type="number" value="<%=producto[0].id%>">
-
-
-
-
-                    <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-                    </form>
+                                                                        <input class="none" name="idProducto" type="number" value="<%=producto[0].id%>">
 
 
 
 
+                                                                        <button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+                                                            </form>
 
-                    <hr>
-            </div>
-        </div>
-    </div>
 
-    </div>
 
-    <%-include('./partials/footer')%>
 
-    <script src="/js/producto.js"></script>
+
+                                                            <hr>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <%-include('./partials/footer')%>
+
+                                                <script src="/js/producto.js"></script>
 </body>
 
 </html>

@@ -167,20 +167,27 @@ module.exports = {
 
     // Editar un producto en funcion del id
     editProduct: (req, res) => {
-        let id = req.params.id;
 
-        if (req.session.usuarioIngresado == null) {
-            res.redirect("/")
-        } else {
+        let id = req.params.id;
+        // productoId = req.params.productoId
+        //return res.send(req.params.productoId)
+
+        if (req.session.usuarioIngresado != null) {
+            //return res.send("req.params.productoId")
+
             db.Producto.findByPk(id)
 
-                .then(producto => {
-                    //llamar al product usser added
-                    return res.render('product-edit', {
-                        producto,
-                        id
-                    })
+            .then(producto => {
+                //res.send("req.params.productoId")
+
+                //llamar al product usser added
+                return res.render('product-edit', {
+                    producto,
+                    id
                 })
+            })
+        } else {
+            return res.redirect("/")
         }
     },
 
@@ -189,24 +196,30 @@ module.exports = {
     editProductPost: (req, res) => {
 
         let user_added = req.session.usuarioIngresado.id;
-        idProducto = req.body.idProducto,
+        let idProducto = req.body.idProducto
 
+        if (user_added == req.params.id) {
             db.Producto.update({
-                id: req.body.idProducto,
-                product_name: req.body.nombre,
-                detalle: req.body.detalle,
-                img_name: req.body.image,
-                condicion: req.body.condicion,
-                userAdded: user_added,
-            }, {
-                where: {
-                    id: idProducto
-                }
-            })
-            .then(product => {
-                return res.redirect(`/productos/detalle/${idProducto}?mensaje=actualizadoBien`);
-            })
-            .catch(error => console.log(error));
+                    id: req.body.idProducto,
+                    product_name: req.body.nombre,
+                    detalle: req.body.detalle,
+                    img_name: req.body.image,
+                    condicion: req.body.condicion,
+                    userAdded: user_added,
+                }, {
+                    where: {
+                        id: idProducto
+                    }
+                })
+                .then(product => {
+                    return res.redirect(`/productos/detalle/${idProducto}?mensaje=actualizadoBien`);
+                })
+                .catch(error => console.log(error));
+
+        } else {
+            return res.redirect("/")
+        }
+
 
     },
 

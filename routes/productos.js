@@ -37,7 +37,7 @@ router.get('/newproduct', productController.newProduct);
 router.post('/newproduct/post', upload.single('img_name'), productController.newProductPost);
 
 router.get('/editproduct/:id', productController.editProduct);
-router.post('/editproduct/post', upload.single('img_name'), productController.editProductPost);
+router.post('/editproduct/post/:id', upload.single('img_name'), productController.editProductPost);
 
 router.post("/comentario", productController.createComent);
 
