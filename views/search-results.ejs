@@ -64,45 +64,48 @@
 
             <% if (contadorFiltrados != 0 ){ %>
 
-            <div class="contenedorProducto">
-                <div class="product">
-                    <div class="fotos"> <img src="/images/productosFile/<%=element.img_name%>">
+                <div class="contenedorProducto">
+                    <div class="product">
+    
+                        <a href="/productos/detalle/<%=element.id%>?id=<%=element.id%>">
+                            <div class="fotos"> <img src="/images/productosFile/<%=element.img_name%>">
+                            </div>
+                        
+                            <h3>
+                                <%=element.product_name%>
+                            </h3>
+                        </a>
+    
+                            <a class="nombreId" href="/users/profile/<%=element.userAdd.id%>">
+                                <h6>Por <%=element.userAdd.nombre%></h6>
+                            </a>
+    
+                            <%
+                                switch (element.condicion) {
+        
+                                    case '1':%>
+                            <h6>Vegetariano</h6>
+    
+                            <%     break;
+                            
+                                case '2':%>
+                            <h6>Vegano</h6>
+    
+                            <%     break;
+                         
+                              case '3':%>
+                            <h6>Sin TACC</h6>
+    
+                            <%     break;
+        
+                              default:%>
+                            <h6>Normal</h6>
+    
+                            <%     break;
+                        
+                            }%>
                     </div>
-                    <h3>
-                        <%=element.product_name%>
-                    </h3>
-                    <a href="/user/profile/<%=element.userAdded.id%>">
-                        <h6>Por <%=element.userAdded.nombre%>
-                    </a>
-                    </h6>
-                    <!-- Te trae el id, no el nombre -->
-
-                    <%
-                        switch (element.condicion) {
-
-                            case '1':%>
-                    <h6>Vegetariano</h6>
-
-                    <%     break;
-                    
-                        case '2':%>
-                    <h6>Vegano</h6>
-
-                    <%     break;
-                 
-                      case '3':%>
-                    <h6>Sin TACC</h6>
-
-                    <%     break;
-
-                      default:%>
-                    <h6>Normal</h6>
-
-                    <%     break;
-                
-                    }%>
                 </div>
-            </div>
 
             <% } else { %>
             <div class="sinResultados">
@@ -114,7 +117,7 @@
 
             <% } if (condicionNumber == 0) { %>
 
-            <!-- -->
+           
             <div class="contenedorProducto">
                 <div class="product">
 
