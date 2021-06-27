@@ -24,7 +24,7 @@ module.exports = (sequelize, dataTypes) => {
             allowNull: false
         },
         userAdded: {
-            type: dataTypes.INTEGER,
+            type: dataTypes.STRING,
             allowNull: false
         },
         createdAt: {

@@ -54,16 +54,16 @@ module.exports = {
 
         Promise.all([producto])
 
-        .then(([producto]) => {
-            //return res.send (productoDetalle)
+            .then(([producto]) => {
+                //return res.send (productoDetalle)
 
-            return res.render('search-results', {
-                producto,
-                busqueda,
-                condicionNumber,
-                orden
+                return res.render('search-results', {
+                    producto,
+                    busqueda,
+                    condicionNumber,
+                    orden
+                })
             })
-        })
     },
 
     // El metodo detalle lleva a la pagina de producto
@@ -84,7 +84,9 @@ module.exports = {
             ]
         })
         let comentario = db.Comentario.findAll({
-            where: [{ productos_id: id }],
+            where: [{
+                productos_id: id
+            }],
             order: [
                 ['createdAt', 'DESC']
             ],
@@ -103,16 +105,16 @@ module.exports = {
 
         Promise.all([producto, comentario])
 
-        .then(([producto, comentario]) => {
-            //return res.send(producto)
-            // return res.send(comentario)
-            return res.render('product', {
-                producto,
-                mensaje,
-                id,
-                comentario
+            .then(([producto, comentario]) => {
+                //return res.send(producto)
+                // return res.send(comentario)
+                return res.render('product', {
+                    producto,
+                    mensaje,
+                    id,
+                    comentario
+                })
             })
-        })
 
 
     },
@@ -126,14 +128,14 @@ module.exports = {
             let idProduct = req.params.id;
 
             db.Producto.destroy({
-                where: {
-                    id: idProduct
-                }
-            })
+                    where: {
+                        id: idProduct
+                    }
+                })
 
-            .then(producto => {
-                return res.redirect('/')
-            })
+                .then(producto => {
+                    return res.redirect('/')
+                })
         }
     },
 
@@ -171,17 +173,31 @@ module.exports = {
 
         if (req.session.usuarioIngresado == null) {
             res.redirect("/")
-        } else {
-            db.Producto.findByPk(id)
+        }
 
-                .then(producto => {
-                    //llamar al product usser added
+
+        db.Producto.findByPk(id)
+
+            .then(producto => {
+
+                let IdEntero = req.session.usuarioIngresado.id;
+                 Idcadena = IdEntero.toString()
+
+                 numEntero = producto.userAdded;
+                 numcadena = numEntero.toString()
+          //    
+
+                if (Idcadena == numcadena ) {
+                    
+                    return res.send('bien hecho')
+
                     return res.render('product-edit', {
                         producto,
                         id
                     })
-                })
-        }
+                } 
+            })
+
     },
 
 
@@ -213,12 +229,12 @@ module.exports = {
     createComent: (req, res) => {
         if (req.session.usuarioIngresado != null) {
             db.Comentario.create({
-                texto: req.body.comentario,
-                usuarios_id: req.body.id,
-                productos_id: req.body.idProducto,
-            })
+                    texto: req.body.comentario,
+                    usuarios_id: req.body.id,
+                    productos_id: req.body.idProducto,
+                })
 
-            .then((comentario) => {
+                .then((comentario) => {
                     //return res.send(comentario)
                     return res.redirect(`/productos/detalle/${comentario.productos_id}?mensaje=comentadoBien`);
                 })
