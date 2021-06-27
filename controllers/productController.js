@@ -85,6 +85,9 @@ module.exports = {
         })
         let comentario = db.Comentario.findAll({
             where: [{ productos_id: id }],
+            order: [
+                ['createdAt', 'DESC']
+            ],
             include: [{
                     association: "usuarioId"
                 }, {
@@ -172,11 +175,17 @@ module.exports = {
             db.Producto.findByPk(id)
 
             .then(producto => {
-                //llamar al product usser added
-                return res.render('product-edit', {
-                    producto,
-                    id
-                })
+                if (req.session.usuarioIngresado.id == producto.userAdd) {
+                    //llamar al product usser added
+                    return res.render('product-edit', {
+                        producto,
+                        id
+                    })
+                } else {
+                    return res.redirect("/")
+                }
+
+
             })
         }
     },

@@ -28,7 +28,7 @@
                                         <h1 class="main-title">
                                             <%= usuario.nombre %>
 
-                                                <% if (usuario.id == usuarioLogueado.id) { %>
+                                                <% if (locals.usuarioLogueado != null && usuario.id == usuarioLogueado.id) { %>
                                                     <a href="/users/profile/edit/<%= usuario.id %> ">
                                                         <i class="fas fa-cog"></i>
                                                     </a>
@@ -36,13 +36,13 @@
                                                     <% } %>
 
                                         </h1>
-                                        
+
                                     </div>
                                     <div>
                                         <ul class="">
                                             <li>
                                                 <%= producto.length %> productos</li>
-                                            
+
                                             <li>
                                                 <%= comentario.length %> comentarios</li>
                                         </ul>

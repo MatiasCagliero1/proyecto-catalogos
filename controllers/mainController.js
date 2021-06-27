@@ -16,6 +16,9 @@ module.exports = {
 
         let productoVegetariano = db.Producto.findAll({
             where: [{ condicion: '1' }],
+            order: [
+                ['createdAt', 'DESC']
+            ],
             include: [{
                     association: "userAdd"
                 }
