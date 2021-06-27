@@ -216,18 +216,24 @@ module.exports = {
     },
 
     createComent: (req, res) => {
-
-        db.Comentario.create({
-            texto: req.body.comentario,
-            usuarios_id: req.body.id,
-            productos_id: req.body.idProducto,
-        })
-
-        .then((comentario) => {
-                //    return res.send(comentario)
-                return res.redirect(`/productos/detalle/${comentario.productos_id}?mensaje=comentadoBien`);
+        if (req.session.usuarioIngresado != null) {
+            db.Comentario.create({
+                texto: req.body.comentario,
+                usuarios_id: req.body.id,
+                productos_id: req.body.idProducto,
             })
-            .catch((error) => error)
+
+            .then((comentario) => {
+                    //return res.send(comentario)
+                    return res.redirect(`/productos/detalle/${comentario.productos_id}?mensaje=comentadoBien`);
+                })
+                .catch((error) => error)
+
+        } else {
+            return res.redirect("/users/login")
+        }
+
+
 
     },
 
