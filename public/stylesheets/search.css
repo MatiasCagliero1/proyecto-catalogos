@@ -79,7 +79,7 @@ h2{
     border: black 1px solid;
 }
 
-.resultados a {
+.contenedorProducto {
     margin: 2em 2em;
     width: 18em;
 }
@@ -132,10 +132,15 @@ h5 {
     font-weight: 500;
 }
 
-h6 {
+.nombreId{
+    display: flex;
+   justify-content: center;
+}
+
+.nombreId h6, h6{
     font-size: 1.3em;
     margin: 0.5em 0em;
-    text-align: center;
+    text-align: center !important;
 color: rgb(106, 106, 106);
     font-weight: 500;
 }
