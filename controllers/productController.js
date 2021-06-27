@@ -236,21 +236,4 @@ module.exports = {
 
 
     },
-
-    /*    show : (req, res)=> {
-           let id = req.params.id;
-          
-           db.Rescatado.findByPk(id, {
-                include:[
-                   {association: 'comentarios', include: {association: 'usuario'}},
-                   {association: 'producto'}]   
-               })
-           .then(rescatado=> {
-               let comentarios = rescatado.comentarios
-               return res.render('product', {rescatado, comentarios})
-               
-           })
-           .catch(error => console.log(error))
-       }, */
-
 };
