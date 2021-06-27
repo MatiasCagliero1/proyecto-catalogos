@@ -1,5 +1,14 @@
-.footer {
-    padding: 0 0;
+#tituloFooter{
+    color: black;
+    font-weight: 500;
+    margin-top: 0.6em;
+    margin-bottom: 0.5em;
+}
+
+#integrantes{
+  color: black;
+  font-size: 1.6em;
+  font-weight: 500;
 }
 
 .imgDigital {
