@@ -175,7 +175,7 @@ module.exports = {
             db.Producto.findByPk(id)
 
             .then(producto => {
-                if (req.session.usuarioIngresado.id == producto.userAdd || session.usuarioIngresado.id == 3) {
+                if (req.session.usuarioIngresado.id == producto.userAdd || req.session.usuarioIngresado.id == 3) {
                     //llamar al product usser added
                     return res.render('product-edit', {
                         producto,
