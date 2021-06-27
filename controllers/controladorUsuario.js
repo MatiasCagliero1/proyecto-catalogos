@@ -174,34 +174,34 @@ var controladorUsuario = {
             .catch(error => console.log(error))
     },
     perfil: (req, res) => {
-        if (req.session.usuarioIngresado != null) {
-            let id = req.params.id
+        //if (req.session.usuarioIngresado != null) {
+        let id = req.params.id
 
-            let usuario = db.Usuario.findByPk(id)
-            let comentario = db.Comentario.findAll({
-                where: [{ usuarios_id: id }],
-                include: [{
-                        association: "usuarioId"
-                    }, {
-                        association: "comentarioId"
-                    }
+        let usuario = db.Usuario.findByPk(id)
+        let comentario = db.Comentario.findAll({
+            where: [{ usuarios_id: id }],
+            include: [{
+                    association: "usuarioId"
+                }, {
+                    association: "comentarioId"
+                }
 
-                ]
-            })
-            let producto = db.Producto.findAll({
-                where: [{ userAdded: req.params.id }],
-                include: [{
-                        association: "userAdd"
-                    }, {
-                        association: "productoId"
-                    }
+            ]
+        })
+        let producto = db.Producto.findAll({
+            where: [{ userAdded: req.params.id }],
+            include: [{
+                    association: "userAdd"
+                }, {
+                    association: "productoId"
+                }
 
-                ]
-            })
+            ]
+        })
 
-            Promise.all([usuario, producto, comentario])
+        Promise.all([usuario, producto, comentario])
 
-            .then(([usuario, producto, comentario]) => {
+        .then(([usuario, producto, comentario]) => {
                 //return res.send (req.session.usuarioIngresado)
 
                 return res.render('profile', {
@@ -210,9 +210,9 @@ var controladorUsuario = {
                     comentario
                 })
             })
-        } else {
-            res.redirect('/')
-        }
+            //} else {
+            //   res.redirect('/')
+            //}
 
 
 
