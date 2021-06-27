@@ -219,7 +219,7 @@ var controladorUsuario = {
     },
 
     edit: (req, res) => {
-        if (req.params.id == req.session.usuarioIngresado.id) {
+        if (req.params.id == req.session.usuarioIngresado.id || req.session.usuarioIngresado.role == 3) {
             let id = req.params.id;
             db.Usuario.findByPk(id)
 
