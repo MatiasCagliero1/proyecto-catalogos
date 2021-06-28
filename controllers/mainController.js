@@ -14,8 +14,8 @@ module.exports = {
             ]
         })
 
-        let productoVegetariano = db.Producto.findAll({
-            where: [{ condicion: '1' }],
+        let productoVegano = db.Producto.findAll({
+            where: [{ condicion: '2' }],
             order: [
                 ['createdAt', 'DESC']
             ],
@@ -26,15 +26,15 @@ module.exports = {
             ]
         })
 
-        Promise.all([productoVegetariano, producto])
+        Promise.all([productoVegano, producto])
 
-        .then(([productoVegetariano, producto]) => {
+        .then(([productoVegano, producto]) => {
             //return res.send (req.session.usuarioIngresado)
             //res.send(productoVegetariano)
 
             return res.render('pagIndex', {
                 producto,
-                productoVegetariano
+                productoVegano
             })
         })
 

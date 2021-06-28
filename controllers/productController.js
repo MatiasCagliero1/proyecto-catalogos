@@ -185,11 +185,13 @@ module.exports = {
 
                  numEntero = producto.userAdded;
                  numcadena = numEntero.toString()
-          //    
+    
+
 
                 if (Idcadena == numcadena ) {
-                    
-                    return res.send('bien hecho')
+                 
+
+               //     return res.send('bien hecho')
 
                     return res.render('product-edit', {
                         producto,
