@@ -219,19 +219,26 @@ var controladorUsuario = {
     },
 
     edit: (req, res) => {
-        if (req.params.id == req.session.usuarioIngresado.id) {
-            let id = req.params.id;
-            db.Usuario.findByPk(id)
 
-            .then(usuario => {
-                //res.send(usuario)
+        if (req.session.usuarioIngresado != null) {
+            if (req.params.id == req.session.usuarioIngresado.id || req.session.usuarioIngresado.role == 3) {
+                let id = req.params.id;
+                db.Usuario.findByPk(id)
 
-                res.render('profile-edit', { usuario })
-            })
+                .then(usuario => {
+                    //res.send(usuario)
+
+                    res.render('profile-edit', { usuario })
+                })
+
+            } else {
+                return res.redirect("/")
+            }
 
         } else {
             return res.redirect("/")
         }
+
 
         //res.send(id)
 

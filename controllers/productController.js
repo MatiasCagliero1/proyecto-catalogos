@@ -54,16 +54,16 @@ module.exports = {
 
         Promise.all([producto])
 
-            .then(([producto]) => {
-                //return res.send (productoDetalle)
+        .then(([producto]) => {
+            //return res.send (productoDetalle)
 
-                return res.render('search-results', {
-                    producto,
-                    busqueda,
-                    condicionNumber,
-                    orden
-                })
+            return res.render('search-results', {
+                producto,
+                busqueda,
+                condicionNumber,
+                orden
             })
+        })
     },
 
     // El metodo detalle lleva a la pagina de producto
@@ -105,16 +105,16 @@ module.exports = {
 
         Promise.all([producto, comentario])
 
-            .then(([producto, comentario]) => {
-                //return res.send(producto)
-                // return res.send(comentario)
-                return res.render('product', {
-                    producto,
-                    mensaje,
-                    id,
-                    comentario
-                })
+        .then(([producto, comentario]) => {
+            //return res.send(producto)
+            // return res.send(comentario)
+            return res.render('product', {
+                producto,
+                mensaje,
+                id,
+                comentario
             })
+        })
 
 
     },
@@ -128,14 +128,14 @@ module.exports = {
             let idProduct = req.params.id;
 
             db.Producto.destroy({
-                    where: {
-                        id: idProduct
-                    }
-                })
+                where: {
+                    id: idProduct
+                }
+            })
 
-                .then(producto => {
-                    return res.redirect('/')
-                })
+            .then(producto => {
+                return res.redirect('/')
+            })
         }
     },
 
@@ -169,16 +169,18 @@ module.exports = {
 
     // Editar un producto en funcion del id
     editProduct: (req, res) => {
+
         let id = req.params.id;
+        // productoId = req.params.productoId
+        //return res.send(req.params.productoId)
 
-        if (req.session.usuarioIngresado == null) {
-            res.redirect("/")
-        }
+        if (req.session.usuarioIngresado != null) {
+            //return res.send("req.params.productoId")
 
-
-        db.Producto.findByPk(id)
+            db.Producto.findByPk(id)
 
             .then(producto => {
+                //res.send("req.params.productoId")
 
                 let IdEntero = req.session.usuarioIngresado.id;
                  Idcadena = IdEntero.toString()
@@ -199,7 +201,9 @@ module.exports = {
                     })
                 } 
             })
-
+        } else {
+            return res.redirect("/")
+        }
     },
 
 
@@ -207,36 +211,42 @@ module.exports = {
     editProductPost: (req, res) => {
 
         let user_added = req.session.usuarioIngresado.id;
-        idProducto = req.body.idProducto,
+        let idProducto = req.body.idProducto
 
+        if (user_added == req.params.id) {
             db.Producto.update({
-                id: req.body.idProducto,
-                product_name: req.body.nombre,
-                detalle: req.body.detalle,
-                img_name: req.body.image,
-                condicion: req.body.condicion,
-                userAdded: user_added,
-            }, {
-                where: {
-                    id: idProducto
-                }
-            })
-            .then(product => {
-                return res.redirect(`/productos/detalle/${idProducto}?mensaje=actualizadoBien`);
-            })
-            .catch(error => console.log(error));
+                    id: req.body.idProducto,
+                    product_name: req.body.nombre,
+                    detalle: req.body.detalle,
+                    img_name: req.body.image,
+                    condicion: req.body.condicion,
+                    userAdded: user_added,
+                }, {
+                    where: {
+                        id: idProducto
+                    }
+                })
+                .then(product => {
+                    return res.redirect(`/productos/detalle/${idProducto}?mensaje=actualizadoBien`);
+                })
+                .catch(error => console.log(error));
+
+        } else {
+            return res.redirect("/")
+        }
+
 
     },
 
     createComent: (req, res) => {
         if (req.session.usuarioIngresado != null) {
             db.Comentario.create({
-                    texto: req.body.comentario,
-                    usuarios_id: req.body.id,
-                    productos_id: req.body.idProducto,
-                })
+                texto: req.body.comentario,
+                usuarios_id: req.body.id,
+                productos_id: req.body.idProducto,
+            })
 
-                .then((comentario) => {
+            .then((comentario) => {
                     //return res.send(comentario)
                     return res.redirect(`/productos/detalle/${comentario.productos_id}?mensaje=comentadoBien`);
                 })
