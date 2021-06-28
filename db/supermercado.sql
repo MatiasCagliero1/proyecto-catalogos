@@ -63,13 +63,12 @@ CREATE TABLE `productos` (
   `img_name` varchar(255) DEFAULT NULL,
   `detalle` varchar(255) NOT NULL,
   `condicion` varchar(255) NOT NULL,
-  `userAdded` int(11) NOT NULL,
+  `userAdded` varchar(255) NOT NULL,
   `createdAt` datetime NOT NULL,
   `updatedAt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `productosUsers` (`userAdded`),
-  CONSTRAINT `productosUsers` FOREIGN KEY (`userAdded`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+  KEY `productosUsers` (`userAdded`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,11 +77,9 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (DEFAULT,'Yerba Mate CHAMIGO 500g','yerba.jpg','Yerba Chamigo ideal para toda la familia.','1',1,'2021-01-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Papas Noisettes Mc Cain 1kg','papas1.jpg','Papar ricas para disfrutar.','4',2,'2021-02-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Papas Finas Mc Cain 1kg','papas.jpg','Papar ricas para disfrutar. Buenisimas!','4',3,'2021-03-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Pan Bimbo Artesano Receta Original 500g','pan.jpg','Pan de los mejores arrtesanos de Bimbo.','3',3,'2021-04-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Mermelada Patagonia Berries 100% Natural','mermelada.jpg','Mermelada rica sabor Berries.','3',4,'2021-05-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Liquido limpiador ALA lavado perfecto 3L','jabon.jpg','Limpiador para ropa ALA.','4',4,'2021-06-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Cerveza Heineken Premium Quality','cerveza.jpg','Heineken para disfrutar con amigos.','4',3,'2021-07-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Coca Cola Original 1,5L','coca_cola.jpg','Coca Cola para compartir felicidad.','4',3,'2021-08-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Alfajor Terrabusi Clatico 300g','alfajor.jpg','Alfabores ricos de chocolate.','4',3,'2021-09-25 00:00:00','2021-04-25 00:00:00'),(DEFAULT,'Fideos Matarazzo 500g','fideos.jpg','Fideos ricos para compartir en familia. Matarazzo.','4',2,'2021-10-25 00:00:00','2021-04-25 00:00:00');
+INSERT INTO `productos` VALUES (15,'Yerba Mate CHAMIGO 500g','yerba.jpg','Yerba Chamigo ideal para toda la familia.','2','1','2021-01-25 00:00:00','2021-04-25 00:00:00'),(16,'Papas Noisettes Mc Cain 1kg','papas1.jpg','Papar ricas para disfrutar.','4','2','2021-02-25 00:00:00','2021-04-25 00:00:00'),(17,'Papas Finas Mc Cain 1kg','papas.jpg','Papar ricas para disfrutar. Buenisimas!','4','3','2021-03-25 00:00:00','2021-04-25 00:00:00'),(18,'Pan Bimbo Artesano Receta Original 500g','pan.jpg','Pan de los mejores arrtesanos de Bimbo.','3','3','2021-04-25 00:00:00','2021-04-25 00:00:00'),(19,'Mermelada Patagonia Berries 100% Natural','mermelada.jpg','Mermelada rica sabor Berries.','3','4','2021-05-25 00:00:00','2021-04-25 00:00:00'),(20,'Liquido limpiador ALA lavado perfecto 3L','jabon.jpg','Limpiador para ropa ALA.','4','4','2021-06-25 00:00:00','2021-04-25 00:00:00'),(21,'Cerveza Heineken Premium Quality','cerveza.jpg','Heineken para disfrutar con amigos.','4','3','2021-07-25 00:00:00','2021-04-25 00:00:00'),(22,'Coca Cola Original 1,5L','coca_cola.jpg','Coca Cola para compartir felicidad.','4','3','2021-08-25 00:00:00','2021-04-25 00:00:00'),(23,'Alfajor Terrabusi Clatico 300g','alfajor.jpg','Alfabores ricos de chocolate.','4','3','2021-09-25 00:00:00','2021-04-25 00:00:00'),(24,'Fideos Matarazzo 500g','fideos.jpg','Fideos ricos para compartir en familia. Matarazzo.','4','2','2021-10-25 00:00:00','2021-04-25 00:00:00'),(25,'Provenzal ALICANTE Ajo Y Perejil Sobre 50 Gr','provenzal.jpeg','Provenzal para condimentar tus comidas','2','1','2021-01-25 00:00:00','2021-04-25 00:00:00'),(26,'Polvo Para Bizcochuelo EXQUISITA Vainilla Caja 540 Gr','exquisita.jpeg','Cocina tu esquisita facil y rapido.','4','2','2021-02-25 00:00:00','2021-04-25 00:00:00'),(27,'Hamburguesas PATY 4 Uni X 80 Gr Clásicas','paty.jpeg','Patys para comer con amigos. La mejor hamburguesa!','4','3','2021-03-25 00:00:00','2021-04-25 00:00:00'),(28,'Medallones Vegetales Vegetaléx 4 Uni X 75 Gr Espinaca','vegeralex.jpeg','Hamburguesas veganas. Sanas y ricas.','2','3','2021-04-25 00:00:00','2021-04-25 00:00:00'),(29,'Medallones A Base De Prot Not Burger Fwp 160 Grm','notburger.jpeg','Medallones Not Burguer. Ricos y Sanos.','2','4','2021-05-25 00:00:00','2021-04-25 00:00:00'),(30,'Choclos . Granja Del Bsa 300 Grm','choclo.jpeg','Choclo para condimentar comidas.','2','4','2021-06-25 00:00:00','2021-04-25 00:00:00'),(31,'Brocoli Granja Del Bsa 400 Grm','brocoli.jpeg','Brocoli para acompañar comidas.','2','3','2021-07-25 00:00:00','2021-04-25 00:00:00'),(32,'Helado Chocolate Dobl Freddo Pot 375 Grm','freddo.jpeg','Helado Freddo para comer en casa.','4','3','2021-08-25 00:00:00','2021-04-25 00:00:00'),(33,'Cerveza Black Lager Schneider Lata 473 CC','schneider.jpeg','Cerveza Black Lager Schneider para tomar bien fria','1','3','2021-09-25 00:00:00','2021-04-25 00:00:00'),(34,'Cerveza Red Schneider Lata 473 CC','Schneider-2.jpeg','Cerveza Red Schneider Lata para disfrutar en casa.','4','2','2021-10-25 00:00:00','2021-04-25 00:00:00'),(35,'fe','default-image.png','kin','','40','2021-06-28 15:33:51','2021-06-28 15:33:51');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
-
-
 
 --
 -- Table structure for table `usuarios`

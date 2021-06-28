@@ -8,6 +8,7 @@ module.exports = {
         return res.redirect('/')
     },
 
+    
     // El metodo search se encarga de llamar a los productos rn funcion de la palabra clave
     search: (req, res) => {
         let QuerySearch = req.query.search;
