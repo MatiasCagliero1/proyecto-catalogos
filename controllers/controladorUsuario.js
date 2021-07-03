@@ -127,6 +127,7 @@ var controladorUsuario = {
         }
 
     },
+    
     logIn: (req, res) => {
         if (req.session.usuarioIngresado != null) {
             return res.redirect("/")

@@ -123,7 +123,9 @@ module.exports = {
     // El metodo destroy elimina el producto en la base de datos
     destroy: (req, res) => {
         if (req.session.usuarioIngresado == null) {
+
             res.redirect("/")
+
         } else {
 
             let idProduct = req.params.id;
@@ -153,7 +155,6 @@ module.exports = {
     // El metodo newProductPost carga la info subida al formulario en la base de datos
     newProductPost: (req, res) => {
         let user_added = req.session.usuarioIngresado.id;
-        //req.session.usuarioIngresado.id
 
         db.Producto.create({
                 product_name: req.body.nombre,
@@ -188,7 +189,7 @@ module.exports = {
 
                  numEntero = producto.userAdded;
                  numcadena = numEntero.toString()
-    
+
 
 
                 if (Idcadena == numcadena ) {
@@ -215,11 +216,12 @@ module.exports = {
         let idProducto = req.body.idProducto
 
         if (user_added == req.params.id) {
+
             db.Producto.update({
                     id: req.body.idProducto,
                     product_name: req.body.nombre,
                     detalle: req.body.detalle,
-                    img_name: req.body.image,
+                    img_name: req.file ? req.file.filename : 'default-image.png',
                     condicion: req.body.condicion,
                     userAdded: user_added,
                 }, {
@@ -241,6 +243,7 @@ module.exports = {
 
     createComent: (req, res) => {
         if (req.session.usuarioIngresado != null) {
+
             db.Comentario.create({
                 texto: req.body.comentario,
                 usuarios_id: req.body.id,
