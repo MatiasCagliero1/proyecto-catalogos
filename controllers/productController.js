@@ -8,7 +8,6 @@ module.exports = {
         return res.redirect('/')
     },
 
-    
     // El metodo search se encarga de llamar a los productos rn funcion de la palabra clave
     search: (req, res) => {
         let QuerySearch = req.query.search;
@@ -81,7 +80,6 @@ module.exports = {
                 }, {
                     association: "productoId"
                 }
-
             ]
         })
         let comentario = db.Comentario.findAll({
@@ -116,8 +114,6 @@ module.exports = {
                 comentario
             })
         })
-
-
     },
 
     // El metodo destroy elimina el producto en la base de datos
@@ -172,36 +168,26 @@ module.exports = {
     // Editar un producto en funcion del id
     editProduct: (req, res) => {
 
-        let id = req.params.id;
         // productoId = req.params.productoId
         //return res.send(req.params.productoId)
 
         if (req.session.usuarioIngresado != null) {
-            //return res.send("req.params.productoId")
-
-            db.Producto.findByPk(id)
+            let id = req.params.id;
+            db.Producto.findOne({
+                where: [{ id: req.params.id, userAdded: req.session.usuarioIngresado.id }]
+            })
 
             .then(producto => {
-                //res.send("req.params.productoId")
-
-                let IdEntero = req.session.usuarioIngresado.id;
-                 Idcadena = IdEntero.toString()
-
-                 numEntero = producto.userAdded;
-                 numcadena = numEntero.toString()
-
-
-
-                if (Idcadena == numcadena ) {
-                 
-
-               //     return res.send('bien hecho')
-
+                if (producto != null) {
                     return res.render('product-edit', {
                         producto,
                         id
                     })
-                } 
+
+                } else {
+                    return res.redirect("/")
+                }
+
             })
         } else {
             return res.redirect("/")
@@ -215,30 +201,22 @@ module.exports = {
         let user_added = req.session.usuarioIngresado.id;
         let idProducto = req.body.idProducto
 
-        if (user_added == req.params.id) {
-
-            db.Producto.update({
-                    id: req.body.idProducto,
-                    product_name: req.body.nombre,
-                    detalle: req.body.detalle,
-                    img_name: req.file ? req.file.filename : 'default-image.png',
-                    condicion: req.body.condicion,
-                    userAdded: user_added,
-                }, {
-                    where: {
-                        id: idProducto
-                    }
-                })
-                .then(product => {
-                    return res.redirect(`/productos/detalle/${idProducto}?mensaje=actualizadoBien`);
-                })
-                .catch(error => console.log(error));
-
-        } else {
-            return res.redirect("/")
-        }
-
-
+        db.Producto.update({
+                id: req.body.idProducto,
+                product_name: req.body.nombre,
+                detalle: req.body.detalle,
+                img_name: req.body.image,
+                condicion: req.body.condicion,
+                userAdded: user_added,
+            }, {
+                where: {
+                    id: idProducto
+                }
+            })
+            .then(product => {
+                return res.redirect(`/productos/detalle/${idProducto}?mensaje=actualizadoBien`);
+            })
+            .catch(error => console.log(error));
     },
 
     createComent: (req, res) => {
@@ -259,8 +237,5 @@ module.exports = {
         } else {
             return res.redirect("/users/login")
         }
-
-
-
     },
 };
